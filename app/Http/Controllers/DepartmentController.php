@@ -13,6 +13,25 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
+    /**
+     * @OA\GET(
+     * path="/api/Department",
+     * summary="Get all Departments",
+     * description="",
+     *
+     * tags={"Department"},
+     * security={ {"sanctum": {} }},
+     * @OA\RequestBody(
+
+     * ),
+     * @OA\Response(
+     *    response=200,
+     *    description="",
+     *  @OA\JsonContent()
+     *
+     *     )
+     * )
+     */
     public function index()
     {
         return $this->sendList(
@@ -36,6 +55,28 @@ class DepartmentController extends Controller
      * @param  \App\Http\Requests\StoreDepartmentRequest  $request
    //  * @return \Illuminate\Http\Response
      */
+    /**
+     * @OA\POST(
+     * path="/api/Department",
+     * summary="create a Department",
+     * description="",
+     *
+     * tags={"Department"},
+     *
+     * @OA\RequestBody(
+     * @OA\JsonContent(
+     *       @OA\Property(property="name", example="قسم"),
+     *
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=200,
+     *    description="",
+     *  @OA\JsonContent()
+     *
+     *     )
+     * )
+     */
     public function store(StoreDepartmentRequest $request)
     {
         $params = $request->validated();
@@ -58,6 +99,7 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
    //  * @return \Illuminate\Http\Response
      */
+
     public function show(  $id)
     {
         return $this->sendItem('',
@@ -83,6 +125,41 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
     // * @return \Illuminate\Http\Response
      */
+    /**
+     * @OA\PUT(
+     * path="/api/Department/{id}",
+     * summary="update Department",
+     * description="",
+
+     * tags={"Department"},
+     *  * @OA\Parameter(
+     *    description="id of Department",
+     *    in="path",
+     *    name="id",
+     *    required=true,
+     *    example=1,
+     *    @OA\Schema(
+     *       type="integer",
+     *
+     *    )
+     * ),
+     * @OA\RequestBody(
+     * @OA\JsonContent(
+     *
+     *     @OA\Property(property="name", example="قسم المواد الجاهزة"),
+     *
+     *
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=200,
+     *    description="",
+     *  @OA\JsonContent()
+     *
+     *     )
+     * )
+     */
+
     public function update(StoreDepartmentRequest $request, $id)
     {
         $params = $request->validated();
@@ -107,6 +184,33 @@ class DepartmentController extends Controller
      *
      * @param  \App\Models\Department  $department
      //* @return \Illuminate\Http\Response
+     */
+    /**
+     * @OA\DELETE(
+     * path="/api/Department/{id}",
+     * summary="delete Department",
+     * description="",
+
+     * tags={"Department"},
+     *  * @OA\Parameter(
+     *    description="id of Department",
+     *    in="path",
+     *    name="id",
+     *    required=true,
+     *    example=1,
+     *    @OA\Schema(
+     *       type="integer",
+     *
+     *    )
+     * ),
+
+     * @OA\Response(
+     *    response=200,
+     *    description="",
+     *  @OA\JsonContent()
+     *
+     *     )
+     * )
      */
     public function destroy($id)
     {
