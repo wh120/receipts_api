@@ -25,9 +25,8 @@
   public function index()
   {
       return $this->sendList(
-          'items',
-          Subject::all(),
-      );
+            Department::all()
+        );
   }
 
   */
@@ -67,9 +66,8 @@
 
      $params = $request->validated();
         try {
-            $obj = Grade::create( $params);
-            return $this->created($obj);
-
+            $model = Department::create( $params);
+            return $this->created($model );
         } catch (\Exception $e) {
             return $this->catchError($e->getMessage() );
         }
@@ -78,7 +76,12 @@
 
 
    */
-
+/*
+public function show(  $id)
+{
+      return $this->sendItem(Role::where('id',$id)->firstOrFail());
+}
+*/
   /**
    * @OA\PUT(
    * path="/api/X/{id}",
@@ -120,18 +123,18 @@
 
   public function update(Request $request, $id)
   {
-      $params = $request->validated();
+     $params = $request->validated();
+        try {
+            $model = Department::find( $id);
+            if($model == null)
+                return $this->notFoundError( );
 
-      try {
-          $obj = X::find( $id);
-              if($obj == null)
-                  return $this->notFoundError( );
-          $obj->update( $params);
-          return $this->updated($obj);
+            $model->update( $params);
+            return $this->updated($model );
 
-      } catch (\Exception $e) {
-      return $this->catchError($e->getMessage() );
-    }
+        } catch (\Exception $e) {
+            return $this->catchError($e->getMessage() );
+        }
   }
 */
 
@@ -168,9 +171,8 @@
   /*
   public function destroy( $id)
     {
-        try {
-            $obj = X::find( $id);
-
+       try {
+            $obj = Department::find( $id);
             if($obj == null)
                 return $this->notFoundError();
 

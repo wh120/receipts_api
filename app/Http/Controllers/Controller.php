@@ -23,7 +23,7 @@ class Controller extends BaseController
             ]
         ], 200);
     }
-    public function sendItem($message ,$item=null , $code = 200)
+    public function sendItem( $item=null ,$message ='', $code = 200)
     {
 
         return response()->json([
@@ -42,19 +42,19 @@ class Controller extends BaseController
     }
     public function successfully()
     {
-        return $this->sendItem($this->getMessage('Done successfully') );
+        return $this->sendItem(null,$this->getMessage('Done successfully') );
     }
     public function created($object =null)
     {
-        return $this->sendItem($this->getMessage('Created successfully') ,$object);
+        return $this->sendItem($object,$this->getMessage('Created successfully') ,);
     }
     public function updated($object =null)
     {
-        return $this->sendItem($this->getMessage('Updated successfully') ,$object);
+        return $this->sendItem($object,$this->getMessage('Updated successfully') );
     }
     public function deleted()
     {
-        return $this->sendItem($this->getMessage('Deleted successfully') );
+        return $this->sendItem(null,$this->getMessage('Deleted successfully') );
     }
     public function notFoundError($e = null)
     {

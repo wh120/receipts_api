@@ -81,13 +81,8 @@ class DepartmentController extends Controller
     {
         $params = $request->validated();
         try {
-
-
             $model = Department::create( $params);
-
-                return new \App\Http\Resources\Department($model);
-        //    return $this->created($model );
-
+            return $this->created($model );
         } catch (\Exception $e) {
             return $this->catchError($e->getMessage() );
         }
@@ -102,9 +97,7 @@ class DepartmentController extends Controller
 
     public function show(  $id)
     {
-        return $this->sendItem('',
-            Department::where('id',$id)->firstOrFail()
-        );
+        return $this->sendItem(Department::where('id',$id)->firstOrFail());
     }
 
     /**
@@ -163,15 +156,12 @@ class DepartmentController extends Controller
     public function update(StoreDepartmentRequest $request, $id)
     {
         $params = $request->validated();
-
         try {
             $model = Department::find( $id);
             if($model == null)
                 return $this->notFoundError( );
 
-
             $model->update( $params);
-
             return $this->updated($model );
 
         } catch (\Exception $e) {
@@ -216,7 +206,6 @@ class DepartmentController extends Controller
     {
         try {
             $obj = Department::find( $id);
-
             if($obj == null)
                 return $this->notFoundError();
 
