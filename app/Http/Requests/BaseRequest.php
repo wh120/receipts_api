@@ -16,4 +16,12 @@ class BaseRequest extends FormRequest
             $c->validationError( $validator->errors())
         );
     }
+
+    public function messages()
+    {
+        return [
+         //   '*.required' => 'A title is required',
+         //   'body.required' => 'A message is required',
+        ];
+    }
 }

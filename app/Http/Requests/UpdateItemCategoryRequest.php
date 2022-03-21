@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 
-class UpdateDepartmentRequest extends BaseRequest
+class UpdateItemCategoryRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +27,11 @@ class UpdateDepartmentRequest extends BaseRequest
      */
     public function rules()
     {
-
         $id=$this->route() != null?  $this->route()->parameter(explode('.',$this->route()->getName())[0]) :null;
 
-
         return [
-            'name' => [ 'max:255','required' , Rule::unique('departments')->ignore($id)] ,
+            'name' => [ 'max:255','required' , Rule::unique('item_categories')->ignore($id)] ,
         ];
     }
+
 }

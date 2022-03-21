@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 use Throwable;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -44,5 +47,25 @@ class Handler extends ExceptionHandler
             if($request->expectsJson())
             return $c->notFoundError( $e->getMessage());
         });
+        $this->renderable(function (UnprocessableEntityHttpException $e, $request) {
+
+            $c = new Controller();
+            if($request->expectsJson())
+                return $c->validationError($e->getMessage()) ;
+        });
+
+
+
+
+
+        //Else
+
+        $this->renderable(function (HttpException $e, $request) {
+
+            $c = new Controller();
+            if($request->expectsJson())
+                return $c->sendError('',$e->getMessage() ,$e->getStatusCode()  ) ;
+        });
+
     }
 }

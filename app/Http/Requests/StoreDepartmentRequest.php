@@ -24,12 +24,9 @@ class StoreDepartmentRequest extends BaseRequest
     public function rules()
     {
         return [
-//            'image'  =>  'nullable|required_without:video|exists:images,url',
-//            'video' => 'nullable|required_without:image',
-//            'year' => 'nullable',
+
               'name' => 'required|unique:departments|max:255',
-//            'description' => 'nullable',
-//            'grade_id' => 'required|exists:grades,id',
+
            // 'status' => ['nullable', new ValidateIndex('course_status') ],
 
         ];

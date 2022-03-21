@@ -153,7 +153,7 @@ class DepartmentController extends Controller
      * )
      */
 
-    public function update(StoreDepartmentRequest $request, $id)
+    public function update(UpdateDepartmentRequest $request, $id)
     {
         $params = $request->validated();
         try {

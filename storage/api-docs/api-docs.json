@@ -400,6 +400,174 @@
                     }
                 ]
             }
+        },
+        "\/api\/ItemCategory": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "\/api\/ItemCategory\/{ItemCategory}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            }
         }
     }
 }
