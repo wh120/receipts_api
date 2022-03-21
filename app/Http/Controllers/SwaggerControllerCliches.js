@@ -1,4 +1,4 @@
-
+//php artisan laravel-swagger:generate --filter="/api" > storage\api-docs\api-docs.json
   // Get All
   /**
      * @OA\GET(

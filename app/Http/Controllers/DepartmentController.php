@@ -85,8 +85,8 @@ class DepartmentController extends Controller
 
             $model = Department::create( $params);
 
-
-            return $this->created($model );
+                return new \App\Http\Resources\Department($model);
+        //    return $this->created($model );
 
         } catch (\Exception $e) {
             return $this->catchError($e->getMessage() );
