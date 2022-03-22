@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreItemCategoryRequest extends BaseRequest
+class UpdateItemMainCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +24,10 @@ class StoreItemCategoryRequest extends BaseRequest
      */
     public function rules()
     {
+        $id=$this->route() != null?  $this->route()->parameter(explode('.',$this->route()->getName())[0]) :null;
         return [
-            'name' => 'required|unique:item_categories|max:255',
-            'code' => 'required|unique:item_categories|max:255',
-            'item_main_category_id' =>'required|exists:item_main_categories,id|integer',
+            'name' => [ 'max:255','required' , Rule::unique('item_main_categories')->ignore($id)] ,
+            'code' => [ 'max:255','required' , Rule::unique('item_main_categories')->ignore($id)] ,
         ];
     }
 }

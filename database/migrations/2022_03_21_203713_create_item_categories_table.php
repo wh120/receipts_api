@@ -15,9 +15,11 @@ class CreateItemCategoriesTable extends Migration
     {
         Schema::create('item_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->timestamps();
+            $table->string('name')->unique();
+
+            $table->foreignId('item_main_category_id')->constrained();
+          //  $table->timestamps();
         });
     }
 

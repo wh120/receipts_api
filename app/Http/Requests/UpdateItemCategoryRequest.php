@@ -32,6 +32,7 @@ class UpdateItemCategoryRequest extends BaseRequest
         return [
             'name' => [ 'max:255','required' , Rule::unique('item_categories')->ignore($id)] ,
             'code' => [ 'max:255','required' , Rule::unique('item_categories')->ignore($id)] ,
+            'item_main_category_id' =>'required|exists:item_main_categories,id|integer',
         ];
     }
 

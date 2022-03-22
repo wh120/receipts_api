@@ -401,6 +401,186 @@
                 ]
             }
         },
+        "\/api\/ItemMainCategory": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemMainCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemMainCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "code"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "\/api\/ItemMainCategory\/{ItemMainCategory}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemMainCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemMainCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemMainCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemMainCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "code"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemMainCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemMainCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "code"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ItemMainCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "ItemMainCategory",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            }
+        },
         "\/api\/ItemCategory": {
             "get": {
                 "summary": "Display a listing of the resource.",
@@ -436,7 +616,8 @@
                             "type": "object",
                             "required": [
                                 "name",
-                                "code"
+                                "code",
+                                "item_main_category_id"
                             ],
                             "properties": {
                                 "name": {
@@ -444,6 +625,9 @@
                                 },
                                 "code": {
                                     "type": "string"
+                                },
+                                "item_main_category_id": {
+                                    "type": "integer"
                                 }
                             }
                         }
@@ -502,7 +686,8 @@
                             "type": "object",
                             "required": [
                                 "name",
-                                "code"
+                                "code",
+                                "item_main_category_id"
                             ],
                             "properties": {
                                 "name": {
@@ -510,6 +695,9 @@
                                 },
                                 "code": {
                                     "type": "string"
+                                },
+                                "item_main_category_id": {
+                                    "type": "integer"
                                 }
                             }
                         }
@@ -544,7 +732,8 @@
                             "type": "object",
                             "required": [
                                 "name",
-                                "code"
+                                "code",
+                                "item_main_category_id"
                             ],
                             "properties": {
                                 "name": {
@@ -552,6 +741,9 @@
                                 },
                                 "code": {
                                     "type": "string"
+                                },
+                                "item_main_category_id": {
+                                    "type": "integer"
                                 }
                             }
                         }
