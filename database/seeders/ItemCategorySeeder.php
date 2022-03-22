@@ -15,10 +15,10 @@ class ItemCategorySeeder extends Seeder
     public function run()
     {
         $data = [
-            ['name'=>'الشراب' ],
-            ['name'=>'المنكهات' ],
-            ['name'=>'الملحقات' ],
-            ['name'=>'مواد التغليف' ],
+            ['name'=>'الشراب' , 'code'=>'001' ],
+            ['name'=>'المنكهات' , 'code'=>'002'],
+            ['name'=>'الملحقات' , 'code'=>'003'],
+            ['name'=>'مواد التغليف', 'code'=>'004' ],
 
         ];
         ItemCategory::insert($data);

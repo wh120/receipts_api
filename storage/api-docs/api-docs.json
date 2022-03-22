@@ -435,10 +435,14 @@
                         "schema": {
                             "type": "object",
                             "required": [
-                                "name"
+                                "name",
+                                "code"
                             ],
                             "properties": {
                                 "name": {
+                                    "type": "string"
+                                },
+                                "code": {
                                     "type": "string"
                                 }
                             }
@@ -497,10 +501,14 @@
                         "schema": {
                             "type": "object",
                             "required": [
-                                "name"
+                                "name",
+                                "code"
                             ],
                             "properties": {
                                 "name": {
+                                    "type": "string"
+                                },
+                                "code": {
                                     "type": "string"
                                 }
                             }
@@ -535,10 +543,14 @@
                         "schema": {
                             "type": "object",
                             "required": [
-                                "name"
+                                "name",
+                                "code"
                             ],
                             "properties": {
                                 "name": {
+                                    "type": "string"
+                                },
+                                "code": {
                                     "type": "string"
                                 }
                             }

@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -67,5 +68,13 @@ class Handler extends ExceptionHandler
                 return $c->sendError('',$e->getMessage() ,$e->getStatusCode()  ) ;
         });
 
+        $this->renderable(function (QueryException $e, $request) {
+
+            $c = new Controller();
+            if($request->expectsJson())
+                return $c->sendError('',$e->getMessage()  ,500  ) ;
+        });
+
     }
 }
+
