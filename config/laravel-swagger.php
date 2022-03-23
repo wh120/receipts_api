@@ -14,7 +14,7 @@ return [
 
     'title' => env('APP_NAME'),
 
-    'description' => '',
+    'description' => 'Receipt API',
 
     'appVersion' => '1.0.0',
 
@@ -81,5 +81,5 @@ return [
 
     'parseSecurity' => true,
 
-    'authFlow' => 'accessCode',
+    'authFlow' => 'implicit',
 ];
