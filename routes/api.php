@@ -22,4 +22,5 @@ Route::apiResource('Department', App\Http\Controllers\DepartmentController::clas
 Route::apiResource('Role', App\Http\Controllers\RoleController::class);
 Route::apiResource('ItemMainCategory', App\Http\Controllers\ItemMainCategoryController::class);
 Route::apiResource('ItemCategory', App\Http\Controllers\ItemCategoryController::class);
+Route::apiResource('Item', App\Http\Controllers\ItemController::class);
 
