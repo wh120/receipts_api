@@ -68,9 +68,10 @@ class Controller extends BaseController
     {
         return $this->sendError($this->getMessage('Validation Error'),$error,400);
     }
-
-
-
+    public function AuthenticationError($error=null)
+    {
+        return $this->sendError($this->getMessage('authentication error'),$error,401);
+    }
 
 
     protected function getMessage($message , $lang='ar')
@@ -127,6 +128,11 @@ class Controller extends BaseController
         'already exists'=>[
             'en' =>'already exists',
             'ar' =>'موجود مسبقاً'
+        ],
+
+        'authentication error'=>[
+            'en' =>'Please login',
+            'ar' => "يرجى تسجيل الدخول"
         ],
 
 

@@ -41,7 +41,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return $this->sendItem(auth()->user(), 'Successfully logged in');
     }
 
     /**
@@ -53,8 +53,8 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
-    }
+        return $this->sendItem(null ,'Successfully logged out');
+     }
 
     /**
      * Refresh a token.
@@ -63,7 +63,8 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->sendItem(auth()->refresh());
+
     }
 
     /**

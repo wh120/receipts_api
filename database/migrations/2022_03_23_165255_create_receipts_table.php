@@ -16,7 +16,7 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
             $table->string('receipt_number')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('created_by_user_id')->constrained('users');
             $table->foreignId('department_id')->constrained();
 
             $table->foreignId('must_approved_by_role')->constrained('roles');

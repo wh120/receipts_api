@@ -39,9 +39,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('Department', App\Http\Controllers\DepartmentController::class);
-Route::apiResource('Role', App\Http\Controllers\RoleController::class);
-Route::apiResource('ItemMainCategory', App\Http\Controllers\ItemMainCategoryController::class);
-Route::apiResource('ItemCategory', App\Http\Controllers\ItemCategoryController::class);
-Route::apiResource('Item', App\Http\Controllers\ItemController::class);
+
+Route::group([
+
+    'middleware' => 'auth:api'
+
+], function ($router) {
+
+
+
+    Route::apiResource('Department', App\Http\Controllers\DepartmentController::class);
+    Route::apiResource('Role', App\Http\Controllers\RoleController::class);
+    Route::apiResource('ItemMainCategory', App\Http\Controllers\ItemMainCategoryController::class);
+    Route::apiResource('ItemCategory', App\Http\Controllers\ItemCategoryController::class);
+    Route::apiResource('Item', App\Http\Controllers\ItemController::class);
+
+});
+
+
 

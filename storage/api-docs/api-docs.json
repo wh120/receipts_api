@@ -20,7 +20,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         },
         "\/api\/oauth2-callback": {
@@ -35,7 +46,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         },
         "\/api\/auth\/login": {
@@ -87,7 +109,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         },
         "\/api\/auth\/refresh": {
@@ -102,7 +135,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         },
         "\/api\/auth\/me": {
@@ -117,7 +161,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         },
         "\/api\/oauth": {
@@ -132,7 +187,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         },
         "\/api\/user": {
@@ -147,7 +213,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             }
         },
         "\/api\/Department": {
@@ -162,7 +239,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             },
             "post": {
                 "summary": "",
@@ -330,7 +418,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             },
             "post": {
                 "summary": "Store a newly created resource in storage.",
@@ -510,7 +609,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             },
             "post": {
                 "summary": "Store a newly created resource in storage.",
@@ -690,7 +800,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             },
             "post": {
                 "summary": "Store a newly created resource in storage.",
@@ -882,7 +1003,18 @@
                     "200": {
                         "description": "OK"
                     }
-                }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
             },
             "post": {
                 "summary": "Store a newly created resource in storage.",
