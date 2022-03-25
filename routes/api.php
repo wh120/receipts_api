@@ -42,7 +42,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([
 
-    'middleware' => 'auth:api'
+   // 'middleware' => 'auth:api'
 
 ], function ($router) {
 
