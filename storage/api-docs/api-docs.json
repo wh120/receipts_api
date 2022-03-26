@@ -3,7 +3,7 @@
     "info": {
         "title": "Laravel",
         "description": "Receipt API",
-        "version": "1.0.0"
+        "version": "1.0.1"
     },
     "host": "localhost",
     "basePath": "\/",
@@ -21,15 +21,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -47,15 +41,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -73,6 +61,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -110,15 +103,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -136,15 +123,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -162,15 +143,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -188,15 +163,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -214,15 +183,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             }
@@ -240,15 +203,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             },
@@ -264,6 +221,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -297,6 +259,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -319,6 +286,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -357,6 +329,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -395,6 +372,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -419,15 +401,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             },
@@ -443,6 +419,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -480,6 +461,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -502,6 +488,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -544,6 +535,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -586,6 +582,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -610,15 +611,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             },
@@ -634,6 +629,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -671,6 +671,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -693,6 +698,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -735,6 +745,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -777,6 +792,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -801,15 +821,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             },
@@ -825,6 +839,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -866,6 +885,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -888,6 +912,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -934,6 +963,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -980,6 +1014,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -1004,15 +1043,9 @@
                         "description": "OK"
                     }
                 },
-                "parameters": [
+                "security": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer eyJhbGciOiJIUzI1NiI...",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "bearerAuth": []
                     }
                 ]
             },
@@ -1028,6 +1061,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "body",
@@ -1079,6 +1117,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -1101,6 +1144,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -1157,6 +1205,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -1213,6 +1266,11 @@
                         "description": "OK"
                     }
                 },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "parameters": [
                     {
                         "in": "path",
@@ -1223,14 +1281,228 @@
                     }
                 ]
             }
+        },
+        "\/api\/Receipt": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "receipt_number": {
+                                    "type": "string"
+                                },
+                                "must_approved_by_role": {
+                                    "type": "integer"
+                                },
+                                "receipt_type_id": {
+                                    "type": "integer"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "items": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "integer"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "\/api\/Receipt\/{Receipt}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Receipt",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Receipt",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "patch": {
+                "summary": "Update the specified resource in storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Receipt",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "Receipt",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            }
         }
     },
     "securityDefinitions": {
-        "OAuth2": {
-            "type": "oauth2",
-            "flow": "implicit",
-            "authorizationUrl": "localhost\/oauth\/authorize",
-            "scopes": []
+        "bearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "value": "ss",
+            "bearerFormat": "JWT",
+            "scheme": "bearer"
         }
     }
 }

@@ -18,7 +18,7 @@ class CreateReceiptsTable extends Migration
             $table->string('receipt_number')->nullable();
             $table->foreignId('created_by_user_id')->constrained('users');
             $table->foreignId('accepted_by_user_id')->nullable()->constrained('users');
-            $table->foreignId('department_id')->constrained();
+         //   $table->foreignId('department_id')->constrained();
             $table->foreignId('must_approved_by_role')->constrained('roles');
             $table->foreignId('receipt_type_id')->constrained();
 

@@ -27,6 +27,10 @@
       return $this->sendList(
             Department::all()
         );
+
+        return $this->sendItem(
+            Item::simplePaginate($request->page_count)
+        );
   }
 
   */

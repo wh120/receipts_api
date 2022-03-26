@@ -53,6 +53,7 @@ Route::group([
     Route::apiResource('ItemMainCategory', App\Http\Controllers\ItemMainCategoryController::class);
     Route::apiResource('ItemCategory', App\Http\Controllers\ItemCategoryController::class);
     Route::apiResource('Item', App\Http\Controllers\ItemController::class);
+    Route::apiResource('Receipt', App\Http\Controllers\ReceiptController::class);
 
 });
 

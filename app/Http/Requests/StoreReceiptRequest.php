@@ -13,7 +13,7 @@ class StoreReceiptRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreReceiptRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'receipt_number' => 'nullable',
+            'must_approved_by_role' =>['integer' , 'nullable' , 'exists:roles,id'  ],
+            'receipt_type_id' => ['integer' , ' required' , 'exists:receipt_types,id'],
+            'description' => ['nullable' , 'string'],
+            'items' => ['array'],
+            'items.*' => ['integer']
+
         ];
     }
 }

@@ -16,7 +16,7 @@ return [
 
     'description' => 'Receipt API',
 
-    'appVersion' => '1.0.0',
+    'appVersion' => '1.0.1',
 
     'host' => env('APP_URL'),
 
@@ -81,5 +81,5 @@ return [
 
     'parseSecurity' => true,
 
-    'authFlow' => 'implicit',
+    'authFlow' => 'bearer',
 ];

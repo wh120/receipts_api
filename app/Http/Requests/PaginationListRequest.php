@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateReceiptRequest extends FormRequest
+class PaginationListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class UpdateReceiptRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required'
+            'page'=> ['nullable' , 'integer'],
+            'page_count'=> ['nullable' , 'integer'],
         ];
     }
 }
