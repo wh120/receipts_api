@@ -48,7 +48,7 @@ class ReceiptController extends Controller
         $user = $request->user();
         if($user == null) throw new AuthenticationException();
 
-        $params["receipt_number"] = "123";
+        $params["receipt_number"] = date('ymdHis');
         $params["created_by_user_id"] = $user->id;
 
         try {
@@ -56,11 +56,16 @@ class ReceiptController extends Controller
             $model= null;
             DB::transaction(function () use ($params , &$model){
                 $model = Receipt::create( $params);
-                $model->items()->attach($params['items']);
+                foreach ($params['items'] as $item)
+                {
+                    $model->items()->attach($item['id'], ['value' => $item['value']]);
+                    // should you need a sensible default pass it as a 3rd parameter to the array_get()
+                }
+                //$model->items()->attach($params['items']);
 
             });
 
-            return $this->created($model );
+            return $this->created($model->load('items') );
 
 
         } catch (\Exception $e) {

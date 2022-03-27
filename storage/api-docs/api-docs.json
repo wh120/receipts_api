@@ -5,7 +5,7 @@
         "description": "Receipt API",
         "version": "1.0.1"
     },
-    "host": "alumaracoffe.com\/Receipts\/public",
+    "host": "localhost",
     "basePath": "\/",
     "paths": {
         "\/api\/docs": {
@@ -1342,7 +1342,15 @@
                                     "type": "array",
                                     "items": [
                                         {
-                                            "type": "integer"
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     ]
                                 }

@@ -29,7 +29,8 @@ class StoreReceiptRequest extends FormRequest
             'receipt_type_id' => ['integer' , ' required' , 'exists:receipt_types,id'],
             'description' => ['nullable' , 'string'],
             'items' => ['array'],
-            'items.*' => ['integer']
+            'items.*.id' => ['integer' ,'required'],
+            'items.*.value' => ['integer' ,'required'],
 
         ];
     }

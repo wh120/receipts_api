@@ -25,7 +25,7 @@ class ReceiptSeeder extends Seeder
         $rec->accepted_at = now();
         $rec->save();
 
-        $rec->items()->attach([1,2,3]);
+        $rec->items()->attach([1 => ['value' => 3], 4 => ['value' => 1]]);
 
     }
 }

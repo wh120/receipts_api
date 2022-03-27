@@ -17,7 +17,10 @@ class CreateItemReceiptsTable extends Migration
             $table->id();
             $table->foreignId('receipt_id')->constrained();
             $table->foreignId('item_id')->constrained();
+            $table->bigInteger('value');
             $table->timestamps();
+
+            $table->unique(['receipt_id', 'item_id']);
         });
     }
 
@@ -28,6 +31,6 @@ class CreateItemReceiptsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_receipts');
+        Schema::dropIfExists('item_receipt');
     }
 }
