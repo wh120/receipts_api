@@ -4,3 +4,5 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('role') }}'><i class='nav-icon la la-question'></i> Roles</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('item-main-category') }}'><i class='nav-icon la la-question'></i> Item main categories</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('item-category') }}'><i class='nav-icon la la-question'></i> Item categories</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('item') }}'><i class='nav-icon la la-question'></i> Items</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('item-unit') }}'><i class='nav-icon la la-question'></i> Item units</a></li>
