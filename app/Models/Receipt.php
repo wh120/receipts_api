@@ -12,10 +12,9 @@ class Receipt extends Model
 
     protected $fillable = ["receipt_number" ,"description" , "created_by_user_id" ,"must_approved_by_role_id","receipt_type_id" ];
 
-
     public function items()
     {
-        return $this->belongsToMany(Item::class)->withPivot('value' );;
+        return $this->belongsToMany(Item::class)->as('value')->withPivot('value' );;
     }
 
     public function must_approved_by_role()
@@ -33,5 +32,11 @@ class Receipt extends Model
     {
         return $this->belongsTo(ReceiptType::class );
     }
+
+    public function getItemsAttribute($value)
+    {
+        return 'ucfirst($value)';
+    }
+
 
 }

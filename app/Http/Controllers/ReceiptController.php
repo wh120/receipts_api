@@ -81,7 +81,7 @@ class ReceiptController extends Controller
      */
     public function show($id)
     {
-        return $this->sendItem(Receipt::with(['items' ,'must_approved_by_role' ,'created_by_user'])->where('id',$id)->firstOrFail());
+        return $this->sendItem(Receipt::with(['items.units' ,'must_approved_by_role.department' ,'created_by_user'])->where('id',$id)->firstOrFail());
     }
 
     /**
@@ -123,7 +123,7 @@ class ReceiptController extends Controller
         $roles  = auth()->user()->roles()->pluck('id');
         $receipts = Receipt::whereIn('must_approved_by_role_id' ,$roles)
             ->whereNull('accepted_at' )->get();
-        return $this->sendItem($receipts);
+        return $this->sendList($receipts);
     }
     public function approveReceipt(Request $request)
     {
