@@ -7,3 +7,5 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('item') }}'><i class='nav-icon la la-question'></i> Items</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('item-unit') }}'><i class='nav-icon la la-question'></i> Item units</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-question'></i> Users</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('receipt-type') }}'><i class='nav-icon la la-question'></i> Receipt types</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('receipt') }}'><i class='nav-icon la la-question'></i> Receipts</a></li>

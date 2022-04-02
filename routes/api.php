@@ -28,24 +28,25 @@ Route::group([
     Route::post('refresh', [App\Http\Controllers\AuthController::class, 'refresh']);
     Route::post('me', [App\Http\Controllers\AuthController::class, 'me']);
 
+
+
 });
 
 
-Route::get('/oauth', function (Request $request) {
-    return $request->user();
-});
+//Route::get('/oauth', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 
 Route::group([
 
-   // 'middleware' => 'auth:api'
+    'middleware' => 'auth:api'
 
 ], function ($router) {
-
 
 
     Route::apiResource('Department', App\Http\Controllers\DepartmentController::class);
@@ -53,7 +54,15 @@ Route::group([
     Route::apiResource('ItemMainCategory', App\Http\Controllers\ItemMainCategoryController::class);
     Route::apiResource('ItemCategory', App\Http\Controllers\ItemCategoryController::class);
     Route::apiResource('Item', App\Http\Controllers\ItemController::class);
+    Route::get('/Receipt/MyRequest', [ App\Http\Controllers\ReceiptController::class, 'getMyApprovalReceipt']);
+    Route::post('/Receipt/{id}/approveRequest', [ App\Http\Controllers\ReceiptController::class, 'approveReceipt']);
     Route::apiResource('Receipt', App\Http\Controllers\ReceiptController::class);
+
+    Route::get('/User/profile', [App\Http\Controllers\UserController::class, 'getMyProfile']);
+
+    // Route::apiResource('User', App\Http\Controllers\UserController::class);
+
+
 
 });
 

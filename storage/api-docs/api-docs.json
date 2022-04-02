@@ -150,46 +150,6 @@
                 ]
             }
         },
-        "\/api\/oauth": {
-            "get": {
-                "summary": "",
-                "description": "",
-                "deprecated": false,
-                "tags": [
-                    "oauth"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "\/api\/user": {
-            "get": {
-                "summary": "",
-                "description": "",
-                "deprecated": false,
-                "tags": [
-                    "user"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
         "\/api\/Department": {
             "get": {
                 "summary": "",
@@ -1282,6 +1242,55 @@
                 ]
             }
         },
+        "\/api\/Receipt\/MyRequest": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "\/api\/Receipt\/{id}\/approveRequest": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            }
+        },
         "\/api\/Receipt": {
             "get": {
                 "summary": "Display a listing of the resource.",
@@ -1325,11 +1334,15 @@
                         "description": "",
                         "schema": {
                             "type": "object",
+                            "required": [
+                                "items.*.id",
+                                "items.*.value"
+                            ],
                             "properties": {
                                 "receipt_number": {
                                     "type": "string"
                                 },
-                                "must_approved_by_role": {
+                                "must_approved_by_role_id": {
                                     "type": "integer"
                                 },
                                 "receipt_type_id": {
@@ -1347,8 +1360,8 @@
                                                 "id": {
                                                     "type": "integer"
                                                 },
-                                                "name": {
-                                                    "type": "string"
+                                                "value": {
+                                                    "type": "integer"
                                                 }
                                             }
                                         }
@@ -1498,6 +1511,26 @@
                         "type": "string",
                         "required": true,
                         "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/User\/profile": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
                     }
                 ]
             }

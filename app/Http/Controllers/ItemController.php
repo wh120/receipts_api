@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function index()
     {
         return $this->sendList(
-            Item::all()
+            Item::with('units')->get()
         );
     }
 

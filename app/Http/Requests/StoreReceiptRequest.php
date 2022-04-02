@@ -25,10 +25,10 @@ class StoreReceiptRequest extends FormRequest
     {
         return [
             'receipt_number' => 'nullable',
-            'must_approved_by_role' =>['integer' , 'nullable' , 'exists:roles,id'  ],
+            'must_approved_by_role_id' =>['integer' , 'nullable' , 'exists:roles,id'  ],
             'receipt_type_id' => ['integer' , ' required' , 'exists:receipt_types,id'],
             'description' => ['nullable' , 'string'],
-            'items' => ['array'],
+            'items' => ['array' ,'min:1'],
             'items.*.id' => ['integer' ,'required'],
             'items.*.value' => ['integer' ,'required'],
 

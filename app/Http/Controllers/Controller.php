@@ -18,9 +18,10 @@ class Controller extends BaseController
         return response()->json([
             'success' => true,
             'message' => '',
-            'results' => [
+            'result' => [
                 $key=>$items
-            ]
+            ],
+            'error'=> Null
         ], 200);
     }
     public function sendItem( $item=null ,$message ='', $code = 200)
@@ -29,20 +30,25 @@ class Controller extends BaseController
         return response()->json([
             'success' => true,
             'message' => $message,
-            'results' => $item
+            'result' => $item,
+            'error'=>  Null
         ], $code);
     }
     public function sendError($message='',$error =null, $code = 400)
     {
         return response()->json([
             'success' => false,
-            'message' => $message,
-            'error' => $error
+            'message' => '',
+            'result' => Null,
+            'error' => [
+                "message"=>$message,
+                "details" =>$error
+            ]
         ], $code);
     }
-    public function successfully()
+    public function successfully($item=null)
     {
-        return $this->sendItem(null,$this->getMessage('Done successfully') );
+        return $this->sendItem($item,$this->getMessage('Done successfully') );
     }
     public function created($object =null)
     {
@@ -71,6 +77,10 @@ class Controller extends BaseController
     public function AuthenticationError($error=null)
     {
         return $this->sendError($this->getMessage('authentication error'),$error,401);
+    }
+    public function LoginError($error=null)
+    {
+        return $this->sendError($this->getMessage('credentials do not match'),$error,404);
     }
 
 
@@ -133,6 +143,21 @@ class Controller extends BaseController
         'authentication error'=>[
             'en' =>'Please login',
             'ar' => "يرجى تسجيل الدخول"
+        ],
+
+        'credentials do not match'=>[
+            'en' =>'These credentials do not match our records.',
+            'ar' => "الحساب وكلمة المرور غير متطابقين"
+        ],
+
+        'can not approve receipt'=>[
+            'en' =>'You do not have the appropriate role to accept the receipt',
+            'ar' => "ليس لديك الدور المناسب لقبول الإيصال"
+        ],
+
+        'receipt already approved'=>[
+            'en' =>'The receipt has already been approved',
+            'ar' => "تمت الموافقة على الإيصال بالفعل"
         ],
 
 

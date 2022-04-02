@@ -12,6 +12,8 @@ class Role extends \Spatie\Permission\Models\Role
 //
 //    protected $fillable = ['name' , 'department_id'];
 //
+    protected $hidden = ['pivot'];
+
     public function department()
     {
         return $this->belongsTo(Department::class);

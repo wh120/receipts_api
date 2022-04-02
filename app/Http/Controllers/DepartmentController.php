@@ -35,7 +35,7 @@ class DepartmentController extends Controller
     public function index()
     {
         return $this->sendList(
-            Department::all()
+            Department::with('roles')->get()
         );
     }
 

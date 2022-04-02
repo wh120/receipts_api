@@ -28,10 +28,10 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return $this->LoginError();
         }
 
-        return $this->respondWithToken($token);
+        return $this->respondWithToken($token,auth()->user()->id);
     }
 
     /**
@@ -74,12 +74,13 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token,$id=0)
     {
         return $this->sendItem([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'accessToken' => $token,
+            'tokenType' => 'bearer',
+            'userId'=> $id,
+            'expireInSeconds' => auth()->factory()->getTTL() * 60
         ]);
 
     }

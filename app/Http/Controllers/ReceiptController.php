@@ -79,9 +79,9 @@ class ReceiptController extends Controller
      * @param  \App\Models\Receipt  $receipt
      * @return \Illuminate\Http\Response
      */
-    public function show(Receipt $receipt)
+    public function show($id)
     {
-        //
+        return $this->sendItem(Receipt::with(['items' ,'must_approved_by_role' ,'created_by_user'])->where('id',$id)->firstOrFail());
     }
 
     /**
@@ -117,4 +117,33 @@ class ReceiptController extends Controller
     {
         //
     }
+
+    public function getMyApprovalReceipt()
+    {
+        $roles  = auth()->user()->roles()->pluck('id');
+        $receipts = Receipt::whereIn('must_approved_by_role_id' ,$roles)
+            ->whereNull('accepted_at' )->get();
+        return $this->sendItem($receipts);
+    }
+    public function approveReceipt(Request $request)
+    {
+        $receipt =Receipt:: where('id',$request->id)->firstOrFail();
+
+        if($receipt->accepted_at != null)   return $this->sendError($this->getMessage('receipt already approved'),$receipt);
+
+        $roles  = auth()->user()->roles()->pluck('id')->toArray();
+        if( in_array($receipt->must_approved_by_role_id , $roles) ){
+
+            $receipt->accepted_by_user_id = auth()->user()->id;
+            $receipt->accepted_at=now();
+            $receipt->update();
+
+            return $this->successfully($receipt);
+
+          }
+        else return $this->sendError($this->getMessage('can not approve receipt'),$receipt);
+
+
+    }
+
 }
