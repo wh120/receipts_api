@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,15 @@ Route::group([
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
+Route::get('/clear-cache', function () {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode =  Artisan::call('view:cache');
+
+    //    $exitCode=  Artisan::call('route:cache');
+    return "Cache cleared " . $exitCode;
+});
 
 
 Route::group([
