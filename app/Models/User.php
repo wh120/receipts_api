@@ -15,7 +15,7 @@ class User extends Authenticatable implements JWTSubject
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasApiTokens, HasFactory, Notifiable;
-    use HasRoles;
+
 
     /**
      * The attributes that are mass assignable.
@@ -74,6 +74,10 @@ class User extends Authenticatable implements JWTSubject
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
 
 

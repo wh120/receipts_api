@@ -19,13 +19,24 @@ class UserSeeder extends Seeder
 
         $user = User::create([
             'name' => 'admin',
-            'email' => 'admin@admin.com',
+            'email' => 'admin@qd.com',
             'email_verified_at' => now(),
             'password' => '120120', // password
             'remember_token' => Str::random(10),
         ]);
 
         $role =Role::first();
-        $user->assignRole($role);
+        $user->roles()->save($role);
+
+        $user = User::create([
+            'name' => 'محمد',
+            'email' => 'mhd@qd.com',
+            'email_verified_at' => now(),
+            'password' => '120120', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $role =Role::find(2);
+        $user->roles()->save($role);
     }
 }

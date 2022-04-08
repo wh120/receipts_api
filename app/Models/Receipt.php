@@ -27,6 +27,11 @@ class Receipt extends Model
         return $this->belongsTo(User::class );
     }
 
+    public function accepted_by_user()
+    {
+        return $this->belongsTo(User::class );
+    }
+
 
     public function receipt_type()
     {

@@ -6,7 +6,10 @@ use App\Http\Requests\PaginationListRequest;
 use App\Models\Receipt;
 use App\Http\Requests\StoreReceiptRequest;
 use App\Http\Requests\UpdateReceiptRequest;
+use App\Models\ReceiptType;
+use Carbon\Carbon;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\UnauthorizedException;
@@ -22,7 +25,28 @@ class ReceiptController extends Controller
     {
 
         return $this->sendItem(
-            Receipt::simplePaginate($request->page_count)
+            Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user.roles.department' ,'accepted_by_user'])
+                ->orderBy('id', 'DESC')->simplePaginate($request->page_count)
+        );
+    }
+    public function indexByType( $type_id)
+    {
+
+        return $this->sendList(
+            Receipt::where('receipt_type_id',$type_id)->get()
+        );
+    }
+    public function receiptTypeWithCount( $date=null )
+    {
+
+
+
+        return $this->sendList(
+            ReceiptType::withCount([ 'receipts' => function (  $query) use($date){
+                if($date !=null)
+                  $query->whereDate('created_at', $date);
+            }])->orderBy('id', 'asc')
+                ->get()
         );
     }
 
@@ -77,7 +101,7 @@ class ReceiptController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Receipt  $receipt
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -121,9 +145,9 @@ class ReceiptController extends Controller
     public function getMyApprovalReceipt()
     {
         $roles  = auth()->user()->roles()->pluck('id');
-        $receipts = Receipt::whereIn('must_approved_by_role_id' ,$roles)
-            ->whereNull('accepted_at' )->get();
-        return $this->sendList($receipts);
+        $receipts = Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user'])->whereIn('must_approved_by_role_id' ,$roles)
+            ->whereNull('accepted_at' )->orderBy('id', 'DESC')->get();
+        return $this->sendList($receipts,'data');
     }
     public function approveReceipt(Request $request)
     {
@@ -135,7 +159,7 @@ class ReceiptController extends Controller
         if( in_array($receipt->must_approved_by_role_id , $roles) ){
 
             $receipt->accepted_by_user_id = auth()->user()->id;
-            $receipt->accepted_at=now();
+            $receipt->accepted_at=Carbon::now();
             $receipt->update();
 
             return $this->successfully($receipt);

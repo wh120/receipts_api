@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function getMyProfile()
     {
-        return $this->sendItem(auth()->user()->load('roles'),  );
+        return $this->sendItem(auth()->user()->load('roles.department'),  );
     }
 
     /**

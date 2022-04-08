@@ -21,14 +21,10 @@ Route::group([
 
 ], function ($router) {
 
-
-
     Route::post('login', [App\Http\Controllers\AuthController::class, 'login']);
     Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
     Route::post('refresh', [App\Http\Controllers\AuthController::class, 'refresh']);
     Route::post('me', [App\Http\Controllers\AuthController::class, 'me']);
-
-
 
 });
 
@@ -48,23 +44,31 @@ Route::group([
 
 ], function ($router) {
 
+    Route::get('/User/profile', [App\Http\Controllers\UserController::class, 'getMyProfile']);
+
+
 
     Route::apiResource('Department', App\Http\Controllers\DepartmentController::class);
     Route::apiResource('Role', App\Http\Controllers\RoleController::class);
     Route::apiResource('ItemMainCategory', App\Http\Controllers\ItemMainCategoryController::class);
     Route::apiResource('ItemCategory', App\Http\Controllers\ItemCategoryController::class);
     Route::apiResource('Item', App\Http\Controllers\ItemController::class);
-    Route::get('/Receipt/MyRequest', [ App\Http\Controllers\ReceiptController::class, 'getMyApprovalReceipt']);
-    Route::post('/Receipt/{id}/approveRequest', [ App\Http\Controllers\ReceiptController::class, 'approveReceipt']);
+
+
+    Route::get('/ReceiptType/count/{date?}', [ App\Http\Controllers\ReceiptController::class, 'receiptTypeWithCount']);
+
+
+    Route::get('/Receipt/MyApprovalReceipts', [ App\Http\Controllers\ReceiptController::class, 'getMyApprovalReceipt']);
+
+    Route::get('/Receipt/{type_id}', [ App\Http\Controllers\ReceiptController::class, 'indexByType']);
+    Route::post('/Receipt/{id}/approveReceipt', [ App\Http\Controllers\ReceiptController::class, 'approveReceipt']);
     Route::apiResource('Receipt', App\Http\Controllers\ReceiptController::class);
 
-    Route::get('/User/profile', [App\Http\Controllers\UserController::class, 'getMyProfile']);
 
     // Route::apiResource('User', App\Http\Controllers\UserController::class);
 
 
 
 });
-
 
 

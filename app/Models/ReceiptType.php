@@ -12,4 +12,9 @@ class ReceiptType extends Model
     public $timestamps = false;
     protected $fillable =['name'];
 
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class);
+    }
+
 }

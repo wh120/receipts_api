@@ -150,6 +150,26 @@
                 ]
             }
         },
+        "\/api\/User\/profile": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "\/api\/Department": {
             "get": {
                 "summary": "",
@@ -1242,7 +1262,36 @@
                 ]
             }
         },
-        "\/api\/Receipt\/MyRequest": {
+        "\/api\/ReceiptType\/count\/{date}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "ReceiptType"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "date",
+                        "type": "string",
+                        "required": false,
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/Receipt\/MyApprovalReceipts": {
             "get": {
                 "summary": "",
                 "description": "",
@@ -1262,7 +1311,36 @@
                 ]
             }
         },
-        "\/api\/Receipt\/{id}\/approveRequest": {
+        "\/api\/Receipt\/{type_id}": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "type_id",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            }
+        },
+        "\/api\/Receipt\/{id}\/approveReceipt": {
             "post": {
                 "summary": "",
                 "description": "",
@@ -1511,26 +1589,6 @@
                         "type": "string",
                         "required": true,
                         "description": ""
-                    }
-                ]
-            }
-        },
-        "\/api\/User\/profile": {
-            "get": {
-                "summary": "",
-                "description": "",
-                "deprecated": false,
-                "tags": [
-                    "User"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
                     }
                 ]
             }
