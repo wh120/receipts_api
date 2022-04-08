@@ -18,7 +18,7 @@ return [
 
     'appVersion' => '1.0.1',
 
-    'host' => env('APP_URL'),
+    'host' => env('Server_URL'),
 
     'basePath' => '/',
 

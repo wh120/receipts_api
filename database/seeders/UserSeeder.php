@@ -25,11 +25,11 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        $role =Role::first();
+        $role =Role::find(1);
         $user->roles()->save($role);
 
         $user = User::create([
-            'name' => 'محمد',
+            'name' => 'محمد الأحمد',
             'email' => 'mhd@qd.com',
             'email_verified_at' => now(),
             'password' => '120120', // password
@@ -37,6 +37,40 @@ class UserSeeder extends Seeder
         ]);
 
         $role =Role::find(2);
+        $user->roles()->save($role);
+
+        $user = User::create([
+            'name' => 'أحمد الأحمد',
+            'email' => 'ahmad@qd.com',
+            'email_verified_at' => now(),
+            'password' => '120120', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $role =Role::find(3);
+        $user->roles()->save($role);
+
+        $user = User::create([
+            'name' => 'حمدي الأحمد',
+            'email' => 'hamdi@qd.com',
+            'email_verified_at' => now(),
+            'password' => '120120', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $role =Role::find(4);
+        $user->roles()->save($role);
+
+
+        $user = User::create([
+            'name' => 'حمد الأحمد',
+            'email' => 'hamad@qd.com',
+            'email_verified_at' => now(),
+            'password' => '120120', // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        $role =Role::find(5);
         $user->roles()->save($role);
     }
 }

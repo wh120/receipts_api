@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2022 at 11:02 PM
+-- Generation Time: Apr 08, 2022 at 06:13 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -83,33 +83,33 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `code`, `name`, `description`, `unit`, `is_default_unit`, `item_category_id`, `created_at`, `updated_at`) VALUES
-(1, '10001', 'شراب وينر ظرف 9 غ محلى', 'شراب وينر ظرف 9 غ محلى', 'ظرف', '1', 1, '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(2, '10002', 'شراب عمار ظرف 35 غ اصبع', 'شراب عمار ظرف 35 غ اصبع', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(3, '10003', 'شراب عمار ظرف 35 غ مربع', 'شراب عمار ظرف 35 غ مربع', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(4, '10004', 'شراب عمار 650 غ', 'شراب عمار 650 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(5, '10005', 'شراب عمار 2 كغ علبة بلاستيك', 'شراب عمار 2 كغ علبة بلاستيك', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(6, '10006', 'شراب محلى وينر دكما', 'شراب محلى وينر دكما', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(7, '10007', 'شراب عادي عمار دكما', 'شراب عادي عمار دكما', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(8, '10008', 'شراب عمار 10غ غير محلى', 'شراب عمار 10غ غير محلى', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(9, '10101', 'ميلو وينر علبة بلاستيك 200 غ', 'ميلو وينر علبة بلاستيك 200 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(10, '10102', 'ميلو وينر ظرف 25 غ', 'ميلو وينر ظرف 25 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(11, '10103', 'ميلو الفائز علبة بلاستيك 250 غ', 'ميلو الفائز علبة بلاستيك 250 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(12, '10104', 'ميلو الفائز ظرف 20غ', 'ميلو الفائز ظرف 20غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(13, '10105', 'ميلو الفائز ظرف 20 غ * 12 علبة', 'ميلو الفائز ظرف 20 غ * 12 علبة', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(14, '10106', 'ميلو الفائز دكما', 'ميلو الفائز دكما', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(15, '10107', 'ميلو الفائز فرط', 'ميلو الفائز فرط', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(16, '10108', 'ميلو الفائز 400 غ', 'ميلو الفائز 400 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(17, '10109', 'ميلو الفائز 800 غ', 'ميلو الفائز 800 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(18, '101010', 'ميلو وينر علبة بلاستيك 250 غ', 'ميلو وينر علبة بلاستيك 250 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(19, '101011', 'ميلو وينر ظرف 20 غ', 'ميلو وينر ظرف 20 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(20, '101012', 'ميلو وينر 800غ', 'ميلو وينر 800غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(21, '10201', 'كابتشينو وينر علب', 'كابتشينو وينر علب', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(22, '10202', 'وينر 3*1 علب', 'وينر 3*1 علب', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(23, '10203', 'وينر 3*1 مطربان', 'وينر 3*1 مطربان', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(24, '10301', 'سحلب وينر', 'سحلب وينر', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(25, '10401', 'شوكولا وينر 300 غ', 'شوكولا وينر 300 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(26, '10402', 'شوكولا وينر 700 غ', 'شوكولا وينر 700 غ', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(27, '10403', 'شوكولا وينر دكما', 'شوكولا وينر دكما', 'ظرف', '1', 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20');
+(1, '10001', 'شراب وينر ظرف 9 غ محلى', 'شراب وينر ظرف 9 غ محلى', 'ظرف', '1', 1, '2022-04-08 01:11:09', '2022-04-08 01:11:09'),
+(2, '10002', 'شراب عمار ظرف 35 غ اصبع', 'شراب عمار ظرف 35 غ اصبع', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(3, '10003', 'شراب عمار ظرف 35 غ مربع', 'شراب عمار ظرف 35 غ مربع', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(4, '10004', 'شراب عمار 650 غ', 'شراب عمار 650 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(5, '10005', 'شراب عمار 2 كغ علبة بلاستيك', 'شراب عمار 2 كغ علبة بلاستيك', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(6, '10006', 'شراب محلى وينر دكما', 'شراب محلى وينر دكما', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(7, '10007', 'شراب عادي عمار دكما', 'شراب عادي عمار دكما', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(8, '10008', 'شراب عمار 10غ غير محلى', 'شراب عمار 10غ غير محلى', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(9, '10101', 'ميلو وينر علبة بلاستيك 200 غ', 'ميلو وينر علبة بلاستيك 200 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(10, '10102', 'ميلو وينر ظرف 25 غ', 'ميلو وينر ظرف 25 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(11, '10103', 'ميلو الفائز علبة بلاستيك 250 غ', 'ميلو الفائز علبة بلاستيك 250 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(12, '10104', 'ميلو الفائز ظرف 20غ', 'ميلو الفائز ظرف 20غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(13, '10105', 'ميلو الفائز ظرف 20 غ * 12 علبة', 'ميلو الفائز ظرف 20 غ * 12 علبة', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(14, '10106', 'ميلو الفائز دكما', 'ميلو الفائز دكما', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(15, '10107', 'ميلو الفائز فرط', 'ميلو الفائز فرط', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(16, '10108', 'ميلو الفائز 400 غ', 'ميلو الفائز 400 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(17, '10109', 'ميلو الفائز 800 غ', 'ميلو الفائز 800 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(18, '101010', 'ميلو وينر علبة بلاستيك 250 غ', 'ميلو وينر علبة بلاستيك 250 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(19, '101011', 'ميلو وينر ظرف 20 غ', 'ميلو وينر ظرف 20 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(20, '101012', 'ميلو وينر 800غ', 'ميلو وينر 800غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(21, '10201', 'كابتشينو وينر علب', 'كابتشينو وينر علب', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(22, '10202', 'وينر 3*1 علب', 'وينر 3*1 علب', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(23, '10203', 'وينر 3*1 مطربان', 'وينر 3*1 مطربان', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(24, '10301', 'سحلب وينر', 'سحلب وينر', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(25, '10401', 'شوكولا وينر 300 غ', 'شوكولا وينر 300 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(26, '10402', 'شوكولا وينر 700 غ', 'شوكولا وينر 700 غ', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(27, '10403', 'شوكولا وينر دكما', 'شوكولا وينر دكما', 'ظرف', '1', 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10');
 
 -- --------------------------------------------------------
 
@@ -162,10 +162,25 @@ INSERT INTO `item_main_categories` (`id`, `code`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item_receipts`
+-- Table structure for table `item_receipt`
 --
--- Error reading structure for table receipts.item_receipts: #1146 - Table 'receipts.item_receipts' doesn't exist
--- Error reading data for table receipts.item_receipts: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `receipts`.`item_receipts`' at line 1
+
+CREATE TABLE `item_receipt` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `receipt_id` bigint(20) UNSIGNED NOT NULL,
+  `item_id` bigint(20) UNSIGNED NOT NULL,
+  `value` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `item_receipt`
+--
+
+INSERT INTO `item_receipt` (`id`, `receipt_id`, `item_id`, `value`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 3, NULL, NULL),
+(2, 1, 4, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -188,60 +203,60 @@ CREATE TABLE `item_units` (
 --
 
 INSERT INTO `item_units` (`id`, `name`, `conversion_factor`, `is_default`, `item_id`, `created_at`, `updated_at`) VALUES
-(1, 'علبة', 12, 0, 1, '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(2, 'طرد', 100, 0, 1, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(3, 'علبة', 12, 0, 2, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(4, 'طرد', 100, 0, 2, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(5, 'علبة', 12, 0, 3, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(6, 'طرد', 100, 0, 3, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(7, 'علبة', 12, 0, 4, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(8, 'طرد', 100, 0, 4, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(9, 'علبة', 12, 0, 5, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(10, 'طرد', 100, 0, 5, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(11, 'علبة', 12, 0, 6, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(12, 'طرد', 100, 0, 6, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(13, 'علبة', 12, 0, 7, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(14, 'طرد', 100, 0, 7, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(15, 'علبة', 12, 0, 8, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(16, 'طرد', 100, 0, 8, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(17, 'علبة', 12, 0, 9, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(18, 'طرد', 100, 0, 9, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(19, 'علبة', 12, 0, 10, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(20, 'طرد', 100, 0, 10, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(21, 'علبة', 12, 0, 11, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(22, 'طرد', 100, 0, 11, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(23, 'علبة', 12, 0, 12, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(24, 'طرد', 100, 0, 12, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(25, 'علبة', 12, 0, 13, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(26, 'طرد', 100, 0, 13, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(27, 'علبة', 12, 0, 14, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(28, 'طرد', 100, 0, 14, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(29, 'علبة', 12, 0, 15, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(30, 'طرد', 100, 0, 15, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(31, 'علبة', 12, 0, 16, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(32, 'طرد', 100, 0, 16, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(33, 'علبة', 12, 0, 17, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(34, 'طرد', 100, 0, 17, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(35, 'علبة', 12, 0, 18, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(36, 'طرد', 100, 0, 18, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(37, 'علبة', 12, 0, 19, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(38, 'طرد', 100, 0, 19, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(39, 'علبة', 12, 0, 20, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(40, 'طرد', 100, 0, 20, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(41, 'علبة', 12, 0, 21, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(42, 'طرد', 100, 0, 21, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(43, 'علبة', 12, 0, 22, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(44, 'طرد', 100, 0, 22, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(45, 'علبة', 12, 0, 23, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(46, 'طرد', 100, 0, 23, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(47, 'علبة', 12, 0, 24, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(48, 'طرد', 100, 0, 24, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(49, 'علبة', 12, 0, 25, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(50, 'طرد', 100, 0, 25, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(51, 'علبة', 12, 0, 26, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(52, 'طرد', 100, 0, 26, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(53, 'علبة', 12, 0, 27, '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(54, 'طرد', 100, 0, 27, '2022-03-26 14:07:20', '2022-03-26 14:07:20');
+(1, 'علبة', 12, 0, 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(2, 'طرد', 100, 0, 1, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(3, 'علبة', 12, 0, 2, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(4, 'طرد', 100, 0, 2, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(5, 'علبة', 12, 0, 3, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(6, 'طرد', 100, 0, 3, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(7, 'علبة', 12, 0, 4, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(8, 'طرد', 100, 0, 4, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(9, 'علبة', 12, 0, 5, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(10, 'طرد', 100, 0, 5, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(11, 'علبة', 12, 0, 6, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(12, 'طرد', 100, 0, 6, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(13, 'علبة', 12, 0, 7, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(14, 'طرد', 100, 0, 7, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(15, 'علبة', 12, 0, 8, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(16, 'طرد', 100, 0, 8, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(17, 'علبة', 12, 0, 9, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(18, 'طرد', 100, 0, 9, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(19, 'علبة', 12, 0, 10, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(20, 'طرد', 100, 0, 10, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(21, 'علبة', 12, 0, 11, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(22, 'طرد', 100, 0, 11, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(23, 'علبة', 12, 0, 12, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(24, 'طرد', 100, 0, 12, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(25, 'علبة', 12, 0, 13, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(26, 'طرد', 100, 0, 13, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(27, 'علبة', 12, 0, 14, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(28, 'طرد', 100, 0, 14, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(29, 'علبة', 12, 0, 15, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(30, 'طرد', 100, 0, 15, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(31, 'علبة', 12, 0, 16, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(32, 'طرد', 100, 0, 16, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(33, 'علبة', 12, 0, 17, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(34, 'طرد', 100, 0, 17, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(35, 'علبة', 12, 0, 18, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(36, 'طرد', 100, 0, 18, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(37, 'علبة', 12, 0, 19, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(38, 'طرد', 100, 0, 19, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(39, 'علبة', 12, 0, 20, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(40, 'طرد', 100, 0, 20, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(41, 'علبة', 12, 0, 21, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(42, 'طرد', 100, 0, 21, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(43, 'علبة', 12, 0, 22, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(44, 'طرد', 100, 0, 22, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(45, 'علبة', 12, 0, 23, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(46, 'طرد', 100, 0, 23, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(47, 'علبة', 12, 0, 24, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(48, 'طرد', 100, 0, 24, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(49, 'علبة', 12, 0, 25, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(50, 'طرد', 100, 0, 25, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(51, 'علبة', 12, 0, 26, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(52, 'طرد', 100, 0, 26, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(53, 'علبة', 12, 0, 27, '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(54, 'طرد', 100, 0, 27, '2022-04-08 01:11:10', '2022-04-08 01:11:10');
 
 -- --------------------------------------------------------
 
@@ -260,51 +275,21 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(175, '2014_10_12_000000_create_users_table', 1),
-(176, '2014_10_12_100000_create_password_resets_table', 1),
-(177, '2019_08_19_000000_create_failed_jobs_table', 1),
-(178, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(179, '2022_03_18_153430_create_departments_table', 1),
-(180, '2022_03_21_151217_create_roles_table', 1),
-(181, '2022_03_21_200505_create_item_main_categories_table', 1),
-(182, '2022_03_21_203713_create_item_categories_table', 1),
-(183, '2022_03_21_222233_create_items_table', 1),
-(184, '2022_03_21_235853_create_item_units_table', 1),
-(185, '2022_03_23_164039_create_receipt_types_table', 1),
-(186, '2022_03_25_125211_create_permission_tables', 1),
-(187, '2022_03_25_165255_create_receipts_table', 1),
-(188, '2022_03_25_165324_create_item_receipts_table', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `model_has_permissions`
---
-
-CREATE TABLE `model_has_permissions` (
-  `permission_id` bigint(20) UNSIGNED NOT NULL,
-  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `model_has_roles`
---
-
-CREATE TABLE `model_has_roles` (
-  `role_id` bigint(20) UNSIGNED NOT NULL,
-  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `model_has_roles`
---
-
-INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 11);
+(161, '2014_10_12_000000_create_users_table', 1),
+(162, '2014_10_12_100000_create_password_resets_table', 1),
+(163, '2019_08_19_000000_create_failed_jobs_table', 1),
+(164, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(165, '2022_03_18_153430_create_departments_table', 1),
+(166, '2022_03_21_151217_create_roles_table', 1),
+(167, '2022_03_21_200505_create_item_main_categories_table', 1),
+(168, '2022_03_21_203713_create_item_categories_table', 1),
+(169, '2022_03_21_222233_create_items_table', 1),
+(170, '2022_03_21_235853_create_item_units_table', 1),
+(171, '2022_03_23_164039_create_receipt_types_table', 1),
+(172, '2022_03_25_125211_create_permission_tables', 1),
+(173, '2022_03_25_165255_create_receipts_table', 1),
+(174, '2022_03_25_165324_create_item_receipts_table', 1),
+(175, '2022_04_07_201500_create_role_user_table', 1);
 
 -- --------------------------------------------------------
 
@@ -316,20 +301,6 @@ CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `permissions`
---
-
-CREATE TABLE `permissions` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -361,7 +332,7 @@ CREATE TABLE `receipts` (
   `receipt_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by_user_id` bigint(20) UNSIGNED NOT NULL,
   `accepted_by_user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `must_approved_by_role` bigint(20) UNSIGNED NOT NULL,
+  `must_approved_by_role_id` bigint(20) UNSIGNED NOT NULL,
   `receipt_type_id` bigint(20) UNSIGNED NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `accepted_at` timestamp NULL DEFAULT NULL,
@@ -373,16 +344,8 @@ CREATE TABLE `receipts` (
 -- Dumping data for table `receipts`
 --
 
-INSERT INTO `receipts` (`id`, `receipt_number`, `created_by_user_id`, `accepted_by_user_id`, `must_approved_by_role`, `receipt_type_id`, `description`, `accepted_at`, `created_at`, `updated_at`) VALUES
-(1, '123456', 1, 1, 1, 1, 'لايوجد ملاحظات', '2022-03-26 14:07:20', '2022-03-26 14:07:20', '2022-03-26 14:07:20'),
-(2, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:50:33', '2022-03-26 18:50:33'),
-(3, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:50:42', '2022-03-26 18:50:42'),
-(4, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:53:33', '2022-03-26 18:53:33'),
-(5, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:53:49', '2022-03-26 18:53:49'),
-(6, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:55:15', '2022-03-26 18:55:15'),
-(7, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:55:28', '2022-03-26 18:55:28'),
-(8, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:55:39', '2022-03-26 18:55:39'),
-(9, '123', 11, NULL, 1, 1, 'string', NULL, '2022-03-26 18:55:44', '2022-03-26 18:55:44');
+INSERT INTO `receipts` (`id`, `receipt_number`, `created_by_user_id`, `accepted_by_user_id`, `must_approved_by_role_id`, `receipt_type_id`, `description`, `accepted_at`, `created_at`, `updated_at`) VALUES
+(1, '123456', 2, 1, 1, 1, 'لايوجد ملاحظات', '2022-04-08 01:11:11', '2022-04-08 01:11:11', '2022-04-08 01:11:11');
 
 -- --------------------------------------------------------
 
@@ -400,10 +363,10 @@ CREATE TABLE `receipt_types` (
 --
 
 INSERT INTO `receipt_types` (`id`, `name`) VALUES
-(2, 'input'),
-(3, 'output'),
-(1, 'purchase'),
-(4, 'sale');
+(1, 'input'),
+(2, 'output'),
+(4, 'purchase'),
+(3, 'sale');
 
 -- --------------------------------------------------------
 
@@ -414,33 +377,43 @@ INSERT INTO `receipt_types` (`id`, `name`) VALUES
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `department_id` bigint(20) UNSIGNED DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`, `department_id`) VALUES
-(1, 'مدير النظام', 'api', NULL, NULL, NULL),
-(2, 'مدير قسم المواد الأولية', 'api', NULL, NULL, 1),
-(3, 'مدير قسم المواد الجاهزة', 'api', NULL, NULL, 2),
-(4, 'مدير قسم التحضير', 'api', NULL, NULL, 3),
-(5, 'مدير قسم الأنتاج', 'api', NULL, NULL, 4);
+INSERT INTO `roles` (`id`, `name`, `department_id`, `created_at`, `updated_at`) VALUES
+(1, 'مدير النظام', NULL, NULL, NULL),
+(2, 'مدير قسم المواد الأولية', 1, NULL, NULL),
+(3, 'مدير قسم المواد الجاهزة', 2, NULL, NULL),
+(4, 'مدير قسم التحضير', 3, NULL, NULL),
+(5, 'مدير قسم الأنتاج', 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role_has_permissions`
+-- Table structure for table `role_user`
 --
 
-CREATE TABLE `role_has_permissions` (
-  `permission_id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE `role_user` (
+  `user_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_user`
+--
+
+INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
 
 -- --------------------------------------------------------
 
@@ -464,17 +437,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Benedict Johnston', 'jarrell62@example.net', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '3DVt0FJn2P', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(2, 'Dr. Hettie Conn III', 'jbeer@example.net', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'RhdB8sfzNw', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(3, 'Vidal Blanda I', 'lawrence.stokes@example.com', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Xi1Dt0i5tA', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(4, 'Prof. Edwin Roob', 'skohler@example.com', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'FwfkkabVYJ', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(5, 'Dr. Maximus Greenholt', 'thiel.jayne@example.com', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'kDmZsAeCX5', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(6, 'Alexandrea Prohaska', 'jaylan.white@example.com', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'QcjElbrssJ', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(7, 'Estella Turcotte', 'pagac.kelton@example.com', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'tdJeUTOlp2', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(8, 'Elnora Nader', 'hodkiewicz.boyd@example.com', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'xYx3PseZja', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(9, 'Dereck Bogisich', 'ckreiger@example.org', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'bxGPg5W3lA', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(10, 'Sam Wolff', 'ngibson@example.com', '2022-03-26 14:07:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'qiBPcDb6Gq', '2022-03-26 14:07:19', '2022-03-26 14:07:19'),
-(11, 'admin', 'admin', '2022-03-26 14:07:20', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'XYpues8XoA', '2022-03-26 14:07:20', '2022-03-26 14:07:20');
+(1, 'admin', 'admin@qd.com', '2022-04-08 01:11:10', '$2y$10$whR4pzEZdCXjvsEkFPByMO7SDyAghLcpj3TBgh0u6nBJJhv37aaNK', 'BnvMoIMZGT', '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(2, 'محمد الأحمد', 'mhd@qd.com', '2022-04-08 01:11:10', '$2y$10$AjTPf4BN3CZyxrgTU2Hgu.KXHbB4U0tfgIWIY2u7yAPY0//bzc0GG', 'hSvrAHm56t', '2022-04-08 01:11:10', '2022-04-08 01:11:10'),
+(3, 'أحمد الأحمد', 'ahmad@qd.com', '2022-04-08 01:11:10', '$2y$10$CyAaTX.vEZR1iISbKu8hmeZcrC84YyHU/eOW.gR9/OgkEVdYpv3bW', '51nSoCBrfe', '2022-04-08 01:11:11', '2022-04-08 01:11:11'),
+(4, 'حمدي الأحمد', 'hamdi@qd.com', '2022-04-08 01:11:11', '$2y$10$pVRHwW4zFHYfOvyhNr1CCu4rvjo3KG33fKW9sI32N5Ls8kKXQQJpu', 'zsk49fxNYZ', '2022-04-08 01:11:11', '2022-04-08 01:11:11'),
+(5, 'حمد الأحمد', 'hamad@qd.com', '2022-04-08 01:11:11', '$2y$10$JSWUj.bwqSxxb.gK5tgN1udZWVYOoRyu8mds3YTV14QGaLyOVJine', 'VW9vDaUNq4', '2022-04-08 01:11:11', '2022-04-08 01:11:11');
 
 --
 -- Indexes for dumped tables
@@ -521,6 +488,14 @@ ALTER TABLE `item_main_categories`
   ADD UNIQUE KEY `item_main_categories_name_unique` (`name`);
 
 --
+-- Indexes for table `item_receipt`
+--
+ALTER TABLE `item_receipt`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `item_receipt_receipt_id_item_id_unique` (`receipt_id`,`item_id`),
+  ADD KEY `item_receipt_item_id_foreign` (`item_id`);
+
+--
 -- Indexes for table `item_units`
 --
 ALTER TABLE `item_units`
@@ -534,31 +509,10 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `model_has_permissions`
---
-ALTER TABLE `model_has_permissions`
-  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
-  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
-
---
--- Indexes for table `model_has_roles`
---
-ALTER TABLE `model_has_roles`
-  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
-  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
-
---
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `permissions`
---
-ALTER TABLE `permissions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -575,7 +529,7 @@ ALTER TABLE `receipts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `receipts_created_by_user_id_foreign` (`created_by_user_id`),
   ADD KEY `receipts_accepted_by_user_id_foreign` (`accepted_by_user_id`),
-  ADD KEY `receipts_must_approved_by_role_foreign` (`must_approved_by_role`),
+  ADD KEY `receipts_must_approved_by_role_id_foreign` (`must_approved_by_role_id`),
   ADD KEY `receipts_receipt_type_id_foreign` (`receipt_type_id`);
 
 --
@@ -590,15 +544,15 @@ ALTER TABLE `receipt_types`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`),
+  ADD UNIQUE KEY `roles_name_unique` (`name`),
   ADD KEY `roles_department_id_foreign` (`department_id`);
 
 --
--- Indexes for table `role_has_permissions`
+-- Indexes for table `role_user`
 --
-ALTER TABLE `role_has_permissions`
-  ADD PRIMARY KEY (`permission_id`,`role_id`),
-  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
+ALTER TABLE `role_user`
+  ADD KEY `role_user_user_id_foreign` (`user_id`),
+  ADD KEY `role_user_role_id_foreign` (`role_id`);
 
 --
 -- Indexes for table `users`
@@ -642,6 +596,12 @@ ALTER TABLE `item_main_categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `item_receipt`
+--
+ALTER TABLE `item_receipt`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `item_units`
 --
 ALTER TABLE `item_units`
@@ -651,13 +611,7 @@ ALTER TABLE `item_units`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
-
---
--- AUTO_INCREMENT for table `permissions`
---
-ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -669,7 +623,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `receipt_types`
@@ -687,7 +641,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -706,22 +660,17 @@ ALTER TABLE `item_categories`
   ADD CONSTRAINT `item_categories_item_main_category_id_foreign` FOREIGN KEY (`item_main_category_id`) REFERENCES `item_main_categories` (`id`);
 
 --
+-- Constraints for table `item_receipt`
+--
+ALTER TABLE `item_receipt`
+  ADD CONSTRAINT `item_receipt_item_id_foreign` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`),
+  ADD CONSTRAINT `item_receipt_receipt_id_foreign` FOREIGN KEY (`receipt_id`) REFERENCES `receipts` (`id`);
+
+--
 -- Constraints for table `item_units`
 --
 ALTER TABLE `item_units`
   ADD CONSTRAINT `item_units_item_id_foreign` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`);
-
---
--- Constraints for table `model_has_permissions`
---
-ALTER TABLE `model_has_permissions`
-  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `model_has_roles`
---
-ALTER TABLE `model_has_roles`
-  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `receipts`
@@ -729,7 +678,7 @@ ALTER TABLE `model_has_roles`
 ALTER TABLE `receipts`
   ADD CONSTRAINT `receipts_accepted_by_user_id_foreign` FOREIGN KEY (`accepted_by_user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `receipts_created_by_user_id_foreign` FOREIGN KEY (`created_by_user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `receipts_must_approved_by_role_foreign` FOREIGN KEY (`must_approved_by_role`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `receipts_must_approved_by_role_id_foreign` FOREIGN KEY (`must_approved_by_role_id`) REFERENCES `roles` (`id`),
   ADD CONSTRAINT `receipts_receipt_type_id_foreign` FOREIGN KEY (`receipt_type_id`) REFERENCES `receipt_types` (`id`);
 
 --
@@ -739,11 +688,11 @@ ALTER TABLE `roles`
   ADD CONSTRAINT `roles_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`);
 
 --
--- Constraints for table `role_has_permissions`
+-- Constraints for table `role_user`
 --
-ALTER TABLE `role_has_permissions`
-  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+ALTER TABLE `role_user`
+  ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
