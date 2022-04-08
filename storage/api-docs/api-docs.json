@@ -150,6 +150,26 @@
                 ]
             }
         },
+        "\/api\/clear-cache": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "clear-cache"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "\/api\/User\/profile": {
             "get": {
                 "summary": "",
