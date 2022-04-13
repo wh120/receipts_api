@@ -10,6 +10,7 @@ class ItemUnit extends Model
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
+    protected $fillable = ['name' ,'conversion_factor' , 'item_id'];
     public function item()
     {
         return $this->belongsTo(Item::class);

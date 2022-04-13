@@ -69,6 +69,7 @@ Route::group([
 
 
     Route::get('/Receipt/MyApprovalReceipts', [ App\Http\Controllers\ReceiptController::class, 'getMyApprovalReceipt']);
+    Route::get('/Receipt/MyReceipts', [ App\Http\Controllers\ReceiptController::class, 'getMyReceipts']);
 
     Route::get('/Receipt/{type_id}', [ App\Http\Controllers\ReceiptController::class, 'indexByType']);
     Route::post('/Receipt/{id}/approveReceipt', [ App\Http\Controllers\ReceiptController::class, 'approveReceipt']);

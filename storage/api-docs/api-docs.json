@@ -5,7 +5,7 @@
         "description": "Receipt API",
         "version": "1.0.1"
     },
-    "host": "alumaracoffe.com\/receipts\/public",
+    "host": "localhost",
     "basePath": "\/",
     "paths": {
         "\/api\/docs": {
@@ -1312,6 +1312,26 @@
             }
         },
         "\/api\/Receipt\/MyApprovalReceipts": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Receipt"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "\/api\/Receipt\/MyReceipts": {
             "get": {
                 "summary": "",
                 "description": "",

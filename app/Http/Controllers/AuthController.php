@@ -31,7 +31,7 @@ class AuthController extends Controller
             return $this->LoginError();
         }
 
-        return $this->respondWithToken($token,auth()->user()->id);
+        return $this->respondWithToken($token,auth()->user());
     }
 
     /**
@@ -74,12 +74,15 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token,$id=0)
+    protected function respondWithToken($token,$user)
     {
+
         return $this->sendItem([
             'accessToken' => $token,
             'tokenType' => 'bearer',
-            'userId'=> $id,
+            'userId'=> $user->id,
+            'roles'=> $user->roles,
+            'isAdmin'=> $user->roles->where('name','مدير النظام')->count()>0,
             'expireInSeconds' => auth()->factory()->getTTL() * 60
         ]);
 
