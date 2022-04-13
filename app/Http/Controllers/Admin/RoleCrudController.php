@@ -41,7 +41,7 @@ class RoleCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('name');
-        CRUD::column('guard_name');
+
         CRUD::column('created_at');
         CRUD::column('updated_at');
         CRUD::column('department_id');
@@ -65,7 +65,7 @@ class RoleCrudController extends CrudController
 
       //  CRUD::field('id');
         CRUD::field('name');
-        CRUD::field('guard_name');
+
         CRUD::field('created_at');
         CRUD::field('updated_at');
         CRUD::field('department_id');
