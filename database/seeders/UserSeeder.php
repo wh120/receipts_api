@@ -61,6 +61,9 @@ class UserSeeder extends Seeder
         $role =Role::find(4);
         $user->roles()->save($role);
 
+        $role =Role::find(5);
+        $user->roles()->save($role);
+
 
         $user = User::create([
             'name' => 'حمد الأحمد',

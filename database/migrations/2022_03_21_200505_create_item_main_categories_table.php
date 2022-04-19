@@ -17,6 +17,7 @@ class CreateItemMainCategoriesTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('name')->unique();
+            $table->foreignId('department_id')->nullable()->constrained();
 
           //  $table->timestamps();
         });

@@ -16,7 +16,7 @@ class CreateItemUnitsTable extends Migration
         Schema::create('item_units', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedTinyInteger('conversion_factor');
+            $table->unsignedInteger('conversion_factor');
             $table->boolean('is_default')->default(false);
             $table->foreignId('item_id')->constrained();
 

@@ -24,5 +24,10 @@ class Item extends Model
     {
         return $this->hasMany(ItemUnit::class);
     }
+    public function item_category()
+    {
+        return $this->belongsTo(ItemCategory::class);
+    }
+
 
 }

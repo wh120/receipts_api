@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
@@ -15,8 +16,21 @@ class ItemController extends Controller
      */
     public function index()
     {
+        $department_ids=[];
+         $d = auth()->user()->load('roles.department');
+
+        foreach ($d->roles as $item){
+            if($item->department)
+              $department_ids []= $item->department->id;
+        }
+
+
         return $this->sendList(
-            Item::with('units')->get()
+            Item::with('units')
+                ->whereHas('item_category.item_main_category', function ( $query)use ($department_ids) {
+                    $query->whereIn('department_id', $department_ids);
+                    $query->orWhereNull('department_id');
+                })->get()
         );
     }
 

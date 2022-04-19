@@ -81,6 +81,38 @@ class ItemSeeder extends Seeder
         }
 
 
+        $item = new Item();
+        $item->name = '1هوت شوكليت';
+        $item->code = '1263';
+        $item->description = '$name';
+        $item->item_category_id = 6;
+        $item->unit = 'ظرف';
+        $item->save();
+
+        $item = new Item();
+        $item->name = '2هوت شوكليت';
+        $item->code = '1253';
+        $item->description = '$name';
+        $item->item_category_id = 7;
+        $item->unit = 'ظرف';
+        $item->save();
+
+        $item = new Item();
+        $item->name = '3هوت شوكليت';
+        $item->code = '1233';
+        $item->description = '$name';
+        $item->item_category_id = 8;
+        $item->unit = 'ظرف';
+        $item->save();
+
+        $item = new Item();
+        $item->name = '4هوت شوكلي';
+        $item->code = '1234';
+        $item->description = '$name';
+        $item->item_category_id = 9;
+        $item->unit = 'ظرف';
+        $item->save();
+
 
 
     }
