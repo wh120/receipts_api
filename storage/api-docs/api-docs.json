@@ -190,6 +190,26 @@
                 ]
             }
         },
+        "\/api\/Department\/my": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Department"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "\/api\/Department": {
             "get": {
                 "summary": "",
@@ -1453,6 +1473,8 @@
                         "schema": {
                             "type": "object",
                             "required": [
+                                "from_department_id",
+                                "to_department_id",
                                 "items.*.id",
                                 "items.*.value"
                             ],
@@ -1461,6 +1483,12 @@
                                     "type": "string"
                                 },
                                 "must_approved_by_role_id": {
+                                    "type": "integer"
+                                },
+                                "from_department_id": {
+                                    "type": "integer"
+                                },
+                                "to_department_id": {
                                     "type": "integer"
                                 },
                                 "receipt_type_id": {

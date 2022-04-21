@@ -10,7 +10,7 @@ class Receipt extends Model
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
-    protected $fillable = ["receipt_number" ,"description" , "created_by_user_id" ,"must_approved_by_role_id","receipt_type_id" ];
+    protected $fillable = ["receipt_number" ,"description" , "created_by_user_id" ,"must_approved_by_role_id","receipt_type_id" ,"from_department_id" , "to_department_id"];
 
     public function items()
     {

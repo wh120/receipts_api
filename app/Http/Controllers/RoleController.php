@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use http\Env\Response;
+use Illuminate\Support\Str;
 use phpDocumentor\Reflection\Types\Integer;
 
 class RoleController extends Controller
@@ -42,6 +43,9 @@ class RoleController extends Controller
     public function store(StoreRoleRequest $request)
     {
         $params = $request->validated();
+
+        if($request->code ==null)
+            $params['code'] =Str::random(5);
         try {
             $model = Role::create( $params);
             return $this->created($model );

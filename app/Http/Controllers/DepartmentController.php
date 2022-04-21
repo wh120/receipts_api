@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
@@ -36,6 +37,16 @@ class DepartmentController extends Controller
     {
         return $this->sendList(
             Department::with('roles')->get()
+        );
+    }
+
+    public function myDepartment()
+    {
+        if(auth()->user()->isAdmin()) return $this->index();
+        return $this->sendList(
+            Department::with(['roles','items'])->whereHas('roles.users', function ( $query)  {
+                $query->where('id', auth()->user()->id);
+            })->get()
         );
     }
 
@@ -97,7 +108,10 @@ class DepartmentController extends Controller
 
     public function show(  $id)
     {
-        return $this->sendItem(Department::where('id',$id)->firstOrFail());
+        DB::enableQueryLog();
+
+         $this->sendItem(Department::with(['roles','items'])->get());
+         return $this->sendItem(DB::getQueryLog());
     }
 
     /**

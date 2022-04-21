@@ -25,6 +25,7 @@ class StoreRoleRequest extends BaseRequest
     {
         return [
             'name' => 'required|max:255|unique:roles',
+            'code' => 'nullable|max:255|unique:roles',
             'department_id'=> 'required|exists:departments,id|integer'
 
         ];

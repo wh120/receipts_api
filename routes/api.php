@@ -58,6 +58,8 @@ Route::group([
 
 
 
+    Route::get('/Department/my', [ App\Http\Controllers\DepartmentController::class, 'myDepartment']);
+
     Route::apiResource('Department', App\Http\Controllers\DepartmentController::class);
     Route::apiResource('Role', App\Http\Controllers\RoleController::class);
     Route::apiResource('ItemMainCategory', App\Http\Controllers\ItemMainCategoryController::class);

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PaginationListRequest;
+use App\Models\Department;
 use App\Models\Receipt;
 use App\Http\Requests\StoreReceiptRequest;
 use App\Http\Requests\UpdateReceiptRequest;
 use App\Models\ReceiptType;
+use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Query\Builder;
@@ -68,20 +70,128 @@ class ReceiptController extends Controller
      */
     public function store(StoreReceiptRequest $request)
     {
-        $params = $request->validated();
+         $params = $request->validated();
         $user = $request->user();
+
         if($user == null) throw new AuthenticationException();
 
         $params["receipt_number"] = date('ymdHis');
         $params["created_by_user_id"] = $user->id;
 
+
+        $authUserDepartments = auth()->user()->load('roles.department');
+        $type =ReceiptType::find($params["receipt_type_id"]);
+
+        if (isset($params['from_department_id'])){
+
+            if($params['from_department_id'] == $params['to_department_id'])
+                return $this->sendError($this->getMessage('from department equal to department'));
+
+
+        }else{
+            if(!$user->isAdmin())
+                return $this->sendError($this->getMessage('auth user not in from department'));
+            if($type->value =='output' )
+                return $this->sendError($this->getMessage('output receipts need from department'));
+
+        }
+
+
+            //check if auth user in from_department_id
+        $res = false;
+        foreach ($authUserDepartments->roles as $item){
+            if($item->department)
+                 if($item->department->id == $params['from_department_id'])
+                 {
+                     $res = true;
+                     break;
+                 }
+        }
+        if(!$res ) {
+            if(!$user->isAdmin())
+              return $this->sendError($this->getMessage('auth user not in from department'));
+        }
+
+        //check if must approved role in to_department_id
+        $ApprovedByRoleDepartment = Role::find($params['must_approved_by_role_id'])->load('department');
+
+        if($ApprovedByRoleDepartment->department == null )
+            return $this->sendError($this->getMessage('must approved by role not in to department'));
+
+
+        if($ApprovedByRoleDepartment->department->id != $params['to_department_id'])
+            return $this->sendError($this->getMessage('must approved by role not in to department'));
+
+
+
+
+
+        $toDepartment = Department::find($params['to_department_id']);
+
+        //check if have items
+        if($type->value == 'output'){
+            $fromDepartment = Department::find($params['from_department_id']);
+            $haveItems = $fromDepartment->items;
+
+            foreach ($params['items'] as $item)
+            {
+                $myItem = $haveItems->firstWhere('id', $item['id']);
+
+                if( !$myItem ) {
+                    return $this->sendError($this->getMessage('do not have items'));
+                }
+                else if($myItem->pivot->value < $item['value']){
+                    return $this->sendError($this->getMessage('do not have enough quantities'));
+                }
+            }
+         }
+
+
         try {
 
             $model= null;
-            DB::transaction(function () use ($params , &$model){
+            DB::transaction(function () use ($params , &$model ,$type ,$toDepartment){
                 $model = Receipt::create( $params);
+
                 foreach ($params['items'] as $item)
                 {
+                    if($type->value == 'output'){
+                        // update items in from department
+                        $fromDepartment = Department::find($params['from_department_id']);
+                        $lastItemVal =  $fromDepartment->items()->firstWhere('items.id',$item['id']);
+                        $lastItemVal->pivot->value = $lastItemVal->pivot->value - $item['value'];
+                        if($lastItemVal->pivot->value ==0){
+                            $fromDepartment->items()->detach($lastItemVal) ;
+                        }
+                        $lastItemVal->pivot->push();
+
+                        // update items in target  department
+
+                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
+
+                        if($lastItemVal == null){
+                            $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
+                        }
+                        else{
+                            $lastItemVal->pivot->value = $lastItemVal->pivot->value + $item['value'];
+                            $lastItemVal->pivot->push();
+                        }
+                    }
+                    else if($type->value == 'input'){
+
+                        // update items in target  department
+
+                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
+
+                        if($lastItemVal == null){
+                            $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
+                        }
+                        else{
+                            $lastItemVal->pivot->value = $lastItemVal->pivot->value + $item['value'];
+                            $lastItemVal->pivot->push();
+                        }
+                    }
+
                     $model->items()->attach($item['id'], ['value' => $item['value']]);
                     // should you need a sensible default pass it as a 3rd parameter to the array_get()
                 }
@@ -93,9 +203,11 @@ class ReceiptController extends Controller
 
 
         } catch (\Exception $e) {
-            return $this->catchError($e->getMessage() );
+            return $this->catchError($e->getTraceAsString(),$e->getTraceAsString() );
         }
     }
+
+
 
     /**
      * Display the specified resource.

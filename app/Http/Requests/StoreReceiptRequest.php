@@ -26,6 +26,8 @@ class StoreReceiptRequest extends FormRequest
         return [
             'receipt_number' => 'nullable',
             'must_approved_by_role_id' =>['integer' , 'nullable' , 'exists:roles,id'  ],
+            'from_department_id' =>['integer'  ,'nullable', 'exists:departments,id'  ],
+            'to_department_id' =>['integer'  ,'required', 'exists:departments,id'  ],
             'receipt_type_id' => ['integer' , ' required' , 'exists:receipt_types,id'],
             'description' => ['nullable' , 'string'],
             'items' => ['array' ,'min:1'],
@@ -33,5 +35,20 @@ class StoreReceiptRequest extends FormRequest
             'items.*.value' => ['integer' ,'required'],
 
         ];
+    }
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($this->query('must_approved_by_role_id') == 2) {
+                $validator->errors()->add('field', 'Something is wrong with this field!');
+            }
+        });
     }
 }

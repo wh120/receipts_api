@@ -18,7 +18,8 @@ class ReceiptSeeder extends Seeder
         $rec->receipt_number = '123456';
         $rec->created_by_user_id = 2;
         $rec->accepted_by_user_id = 1;
-        //$rec->department_id = 1;
+        $rec->from_department_id = 1;
+        $rec->to_department_id = 2;
         $rec->must_approved_by_role_id = 1;
         $rec->receipt_type_id = 1;
         $rec->description = 'لايوجد ملاحظات';

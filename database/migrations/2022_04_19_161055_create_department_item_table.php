@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateDepartmentItemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('department_item', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('code')->unique();
-            $table->foreignId('department_id')->nullable()->constrained();
-            $table->timestamps();
+            $table->foreignId('department_id')->constrained();
+            $table->foreignId('item_id')->constrained();
+            $table->bigInteger('value');
+
+            $table->unique(array('department_id', 'item_id'));
+
         });
     }
 
@@ -29,6 +31,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('department_item');
     }
 }

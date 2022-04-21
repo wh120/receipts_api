@@ -155,6 +155,36 @@ class Controller extends BaseController
             'ar' => "ليس لديك الدور المناسب لقبول الإيصال"
         ],
 
+        'auth user not in from department'=>[
+            'en' =>'You cannot create a receipt from outside your department',
+            'ar' => "لا يمكنك إنشاء إيصال من خارج القسم الخاص بك"
+        ],
+
+        'must approved by role not in to department'=>[
+            'en' =>'The role responsible for approval is not in the destination department',
+            'ar' => "الدور المسؤول عن الموافقة ليس في قسم الوجهة"
+        ],
+
+        'output receipts need from department'=>[
+            'en' =>'Output receipts need destination department',
+            'ar' => "إيصالات الأخراج تحتاج قسم الوجهة"
+        ],
+
+        'from department equal to department'=>[
+            'en' =>'From department same destination department',
+            'ar' => "قسم المصدر نفس قسم الوجهة"
+        ],
+
+        'do not have items'=>[
+            'en' =>'You do not have items to create the receipt',
+            'ar' => "ليس لديك العناصر لإنشاء الإيصال"
+        ],
+
+        'do not have enough quantities'=>[
+            'en' =>'You do not have enough quantities to create the receipt',
+            'ar' => "ليس لديك كميات كافية لإنشاء الإيصال"
+        ],
+
         'receipt already approved'=>[
             'en' =>'The receipt has already been approved',
             'ar' => "تمت الموافقة على الإيصال بالفعل"

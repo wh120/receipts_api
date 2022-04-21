@@ -16,4 +16,8 @@ class Department extends Model
     {
         return $this->hasMany(Role::class);
     }
+    public function items()
+    {
+        return $this->belongsToMany(Item::class)->withPivot('value' );;
+    }
 }

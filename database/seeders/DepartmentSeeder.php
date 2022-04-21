@@ -21,6 +21,8 @@ class DepartmentSeeder extends Seeder
 
             ['name'=>'قسم الأنتاج' ],
 
+            ['name'=>'قسم المشتريات' ],
+
             //...
         ];
         Department::insert($data);
