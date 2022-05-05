@@ -11,4 +11,9 @@ class ItemMainCategory extends Model
     use HasFactory;
     public $timestamps=false;
     protected $fillable = ['name','code' , 'department_id'];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

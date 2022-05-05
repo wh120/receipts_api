@@ -19,7 +19,9 @@ class ReceiptTypeSeeder extends Seeder
             ['name'=>'input' , 'value' =>'input' ],
             ['name'=>'output' , 'value' =>'output' ],
             ['name'=>'sale' , 'value' =>'output' ],
-            ['name'=>'purchase' , 'value' =>'input']
+            ['name'=>'purchase' , 'value' =>'input'],
+
+            ['name'=>'request' , 'value' =>'request' ],
             //...
         ];
         ReceiptType::insert($data);

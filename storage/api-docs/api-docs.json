@@ -459,6 +459,9 @@
                                 "name": {
                                     "type": "string"
                                 },
+                                "code": {
+                                    "type": "string"
+                                },
                                 "department_id": {
                                     "type": "integer"
                                 }
@@ -663,7 +666,8 @@
                             "type": "object",
                             "required": [
                                 "name",
-                                "code"
+                                "code",
+                                "department_id"
                             ],
                             "properties": {
                                 "name": {
@@ -671,6 +675,9 @@
                                 },
                                 "code": {
                                     "type": "string"
+                                },
+                                "department_id": {
+                                    "type": "integer"
                                 }
                             }
                         }
@@ -1473,7 +1480,6 @@
                         "schema": {
                             "type": "object",
                             "required": [
-                                "from_department_id",
                                 "to_department_id",
                                 "items.*.id",
                                 "items.*.value"

@@ -16,7 +16,7 @@ class ItemMainCategoryController extends Controller
     public function index()
     {
         return $this->sendList(
-            ItemMainCategory::all()
+            ItemMainCategory::with('department')->get()
         );
     }
 

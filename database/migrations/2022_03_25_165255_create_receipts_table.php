@@ -26,7 +26,7 @@ class CreateReceiptsTable extends Migration
             $table->foreignId('from_department_id')->nullable()->constrained('departments');
             $table->foreignId('to_department_id')->constrained('departments');
 
-            $table->foreignId('must_approved_by_role_id')->constrained('roles');
+            $table->foreignId('must_approved_by_role_id')->nullable()->constrained('roles');
 
             $table->timestamp('accepted_at')->nullable();
             $table->timestamps();

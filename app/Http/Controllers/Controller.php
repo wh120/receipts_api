@@ -160,6 +160,11 @@ class Controller extends BaseController
             'ar' => "لا يمكنك إنشاء إيصال من خارج القسم الخاص بك"
         ],
 
+        'auth user must not in from department'=>[
+            'en' =>'You can not be in the destination department',
+            'ar' => "لا يمكنك أن تكون في قسم الوجهة"
+        ],
+
         'must approved by role not in to department'=>[
             'en' =>'The role responsible for approval is not in the destination department',
             'ar' => "الدور المسؤول عن الموافقة ليس في قسم الوجهة"
@@ -170,6 +175,11 @@ class Controller extends BaseController
             'ar' => "إيصالات الأخراج تحتاج قسم الوجهة"
         ],
 
+
+        'input receipts need from department'=>[
+            'en' =>'Input receipts only create from the admin',
+            'ar' => "يتم إنشاء إيصالات الإدخال فقط من المدير"
+        ],
         'from department equal to department'=>[
             'en' =>'From department same destination department',
             'ar' => "قسم المصدر نفس قسم الوجهة"

@@ -78,79 +78,84 @@ class ReceiptController extends Controller
         $params["receipt_number"] = date('ymdHis');
         $params["created_by_user_id"] = $user->id;
 
-
-        $authUserDepartments = auth()->user()->load('roles.department');
         $type =ReceiptType::find($params["receipt_type_id"]);
 
-        if (isset($params['from_department_id'])){
 
-            if($params['from_department_id'] == $params['to_department_id'])
-                return $this->sendError($this->getMessage('from department equal to department'));
+        if($type->value == 'output' || $type->value == 'request'){
+
+            //check if must approved role in to_department_id
+            $ApprovedByRoleDepartment = Role::find($params['must_approved_by_role_id'])->load('department');
+
+            if($ApprovedByRoleDepartment->department == null )
+                return $this->sendError($this->getMessage('must approved by role not in to department'));
 
 
-        }else{
-            if(!$user->isAdmin())
-                return $this->sendError($this->getMessage('auth user not in from department'));
-            if($type->value =='output' )
+            if($ApprovedByRoleDepartment->department->id != $params['to_department_id'])
+                return $this->sendError($this->getMessage('must approved by role not in to department'));
+
+
+            $authUserDepartments = $user->load('roles.department');
+
+            if (! isset($params['from_department_id'])){
                 return $this->sendError($this->getMessage('output receipts need from department'));
+            }
+            else{
+                //todo global
+                if($params['from_department_id'] == $params['to_department_id'])
+                    return $this->sendError($this->getMessage('from department equal to department'));
 
-        }
+                //check if auth user in from_department_id
+                $res = false;
+                foreach ($authUserDepartments->roles as $item){
+                    if($item->department){
 
+                        if($item->department->id == $params['from_department_id'])
+                        {
+                            $res = true;
+                         //   break;
+                        }
+//                        if($item->department->id == $params['to_department_id']){
+//                            return $this->sendError($this->getMessage('auth user not in from department'));
+//                        }
+                    }
+                }
+                if(!$res ) {
+                    if(!$user->isAdmin())
+                        return $this->sendError($this->getMessage('auth user not in from department'));
+                }
+            }
 
-            //check if auth user in from_department_id
-        $res = false;
-        foreach ($authUserDepartments->roles as $item){
-            if($item->department)
-                 if($item->department->id == $params['from_department_id'])
-                 {
-                     $res = true;
-                     break;
-                 }
-        }
-        if(!$res ) {
-            if(!$user->isAdmin())
-              return $this->sendError($this->getMessage('auth user not in from department'));
-        }
-
-        //check if must approved role in to_department_id
-        $ApprovedByRoleDepartment = Role::find($params['must_approved_by_role_id'])->load('department');
-
-        if($ApprovedByRoleDepartment->department == null )
-            return $this->sendError($this->getMessage('must approved by role not in to department'));
-
-
-        if($ApprovedByRoleDepartment->department->id != $params['to_department_id'])
-            return $this->sendError($this->getMessage('must approved by role not in to department'));
-
-
-
-
-
-        $toDepartment = Department::find($params['to_department_id']);
-
-        //check if have items
-        if($type->value == 'output'){
             $fromDepartment = Department::find($params['from_department_id']);
             $haveItems = $fromDepartment->items;
 
-            foreach ($params['items'] as $item)
-            {
-                $myItem = $haveItems->firstWhere('id', $item['id']);
+            //Check available quantities
+            if($type->value == 'output')
+                foreach ($params['items'] as $item)
+                {
+                    $myItem = $haveItems->firstWhere('id', $item['id']);
 
-                if( !$myItem ) {
-                    return $this->sendError($this->getMessage('do not have items'));
+                    if( !$myItem ) {
+                        return $this->sendError($this->getMessage('do not have items'));
+                    }
+                    else if($myItem->pivot->value < $item['value']){
+                        return $this->sendError($this->getMessage('do not have enough quantities'));
+                    }
                 }
-                else if($myItem->pivot->value < $item['value']){
-                    return $this->sendError($this->getMessage('do not have enough quantities'));
-                }
-            }
          }
+
+        else if($type->value == 'input'){
+
+            if(!$user->isAdmin())
+                return $this->sendError($this->getMessage('input receipts need from department'));
+
+        }
 
 
         try {
 
             $model= null;
-            DB::transaction(function () use ($params , &$model ,$type ,$toDepartment){
+            DB::transaction(function () use ($params , &$model ,$type){
+                $toDepartment = Department::find($params['to_department_id']);
                 $model = Receipt::create( $params);
 
                 foreach ($params['items'] as $item)
@@ -180,7 +185,6 @@ class ReceiptController extends Controller
                     else if($type->value == 'input'){
 
                         // update items in target  department
-
                         $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
 
                         if($lastItemVal == null){
@@ -193,9 +197,8 @@ class ReceiptController extends Controller
                     }
 
                     $model->items()->attach($item['id'], ['value' => $item['value']]);
-                    // should you need a sensible default pass it as a 3rd parameter to the array_get()
+
                 }
-                //$model->items()->attach($params['items']);
 
             });
 
