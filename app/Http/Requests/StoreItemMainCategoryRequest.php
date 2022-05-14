@@ -26,7 +26,7 @@ class StoreItemMainCategoryRequest extends BaseRequest
         return [
             'name' => 'required|unique:item_main_categories|max:255',
             'code' => 'required|unique:item_main_categories|max:255',
-            'department_id'=> 'required|exists:departments,id|integer'
+            'department_id'=> 'nullable|exists:departments,id|integer'
         ];
     }
 }

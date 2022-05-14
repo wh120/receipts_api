@@ -6,6 +6,7 @@ use App\Models\Department;
 use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
@@ -16,6 +17,11 @@ class ItemController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->isAdmin()) 
+        return $this->sendList(
+            Item::with(['units' , 'item_category'])->get()
+        );
+       
         $department_ids=[];
          $d = auth()->user()->load('roles.department');
 
@@ -26,7 +32,7 @@ class ItemController extends Controller
 
 
         return $this->sendList(
-            Item::with('units')
+            Item::with(['units' , 'item_category'])
                 ->whereHas('item_category.item_main_category', function ( $query)use ($department_ids) {
                     $query->whereIn('department_id', $department_ids);
                     $query->orWhereNull('department_id');
@@ -54,8 +60,16 @@ class ItemController extends Controller
     {
         $params = $request->validated();
         try {
-            $model = Item::create( $params);
-            return $this->created($model );
+            $model;
+            DB::transaction(function () use($params ,&$model) {
+                $model = Item::create( $params);
+                $model->units()->createMany($params['units']);
+                
+            });
+
+            return $this->created($model->load('units') );
+           
+            
         } catch (\Exception $e) {
             return $this->catchError($e->getMessage() );
         }

@@ -18,7 +18,7 @@ class CreateItemUnitsTable extends Migration
             $table->string('name');
             $table->unsignedInteger('conversion_factor');
             $table->boolean('is_default')->default(false);
-            $table->foreignId('item_id')->constrained();
+            $table->foreignId('item_id')->constrained() ->onDelete('cascade');;
 
             $table->timestamps();
         });

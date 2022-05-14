@@ -666,8 +666,7 @@
                             "type": "object",
                             "required": [
                                 "name",
-                                "code",
-                                "department_id"
+                                "code"
                             ],
                             "properties": {
                                 "name": {
@@ -1104,7 +1103,9 @@
                                 "name",
                                 "code",
                                 "unit",
-                                "item_category_id"
+                                "item_category_id",
+                                "units.*.name",
+                                "units.*.conversion_factor"
                             ],
                             "properties": {
                                 "name": {
@@ -1124,6 +1125,22 @@
                                 },
                                 "item_category_id": {
                                     "type": "integer"
+                                },
+                                "units": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "conversion_factor": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
                                 }
                             }
                         }
