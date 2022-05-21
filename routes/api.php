@@ -77,6 +77,9 @@ Route::group([
     Route::post('/Receipt/{id}/approveReceipt', [ App\Http\Controllers\ReceiptController::class, 'approveReceipt']);
     Route::apiResource('Receipt', App\Http\Controllers\ReceiptController::class);
 
+    Route::post('/Transformation/transform', [ App\Http\Controllers\TransformationController::class, 'transform']);
+    Route::apiResource('Transformation', App\Http\Controllers\TransformationController::class);
+
 
     // Route::apiResource('User', App\Http\Controllers\UserController::class);
 

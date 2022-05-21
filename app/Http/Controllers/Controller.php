@@ -176,7 +176,7 @@ class Controller extends BaseController
         ],
 
 
-        'input receipts need from department'=>[
+        'input receipts must created by admin'=>[
             'en' =>'Input receipts only create from the admin',
             'ar' => "يتم إنشاء إيصالات الإدخال فقط من المدير"
         ],

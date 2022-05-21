@@ -83,17 +83,18 @@ class ReceiptController extends Controller
 
         if($type->value == 'output' || $type->value == 'request'){
 
-            //check if must approved role in to_department_id
-            $ApprovedByRoleDepartment = Role::find($params['must_approved_by_role_id'])->load('department');
+            if($request->must_approved_by_role_id != null){
+                //check if must approved role in to_department_id
+                $ApprovedByRoleDepartment = Role::find($params['must_approved_by_role_id'])->load('department');
 
-            if($ApprovedByRoleDepartment->department == null )
-                return $this->sendError($this->getMessage('must approved by role not in to department'));
-
-
-            if($ApprovedByRoleDepartment->department->id != $params['to_department_id'])
-                return $this->sendError($this->getMessage('must approved by role not in to department'));
+                if($ApprovedByRoleDepartment->department == null )
+                    return $this->sendError($this->getMessage('must approved by role not in to department'));
 
 
+                if($ApprovedByRoleDepartment->department->id != $params['to_department_id'])
+                    return $this->sendError($this->getMessage('must approved by role not in to department'));
+
+            }
             $authUserDepartments = $user->load('roles.department');
 
             if (! isset($params['from_department_id'])){
@@ -129,24 +130,23 @@ class ReceiptController extends Controller
             $haveItems = $fromDepartment->items;
 
             //Check available quantities
-            if($type->value == 'output')
-                foreach ($params['items'] as $item)
-                {
+            if($type->value == 'output') {
+                foreach ($params['items'] as $item) {
                     $myItem = $haveItems->firstWhere('id', $item['id']);
 
-                    if( !$myItem ) {
+                    if (!$myItem) {
                         return $this->sendError($this->getMessage('do not have items'));
-                    }
-                    else if($myItem->pivot->value < $item['value']){
+                    } else if ($myItem->pivot->value < $item['value']) {
                         return $this->sendError($this->getMessage('do not have enough quantities'));
                     }
                 }
+            }
          }
 
         else if($type->value == 'input'){
 
             if(!$user->isAdmin())
-                return $this->sendError($this->getMessage('input receipts need from department'));
+                return $this->sendError($this->getMessage('input receipts must created by admin'));
 
         }
 
@@ -178,8 +178,8 @@ class ReceiptController extends Controller
                             $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
                         }
                         else{
-                            $lastItemVal->pivot->value = $lastItemVal->pivot->value + $item['value'];
-                            $lastItemVal->pivot->push();
+                            $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
+                            $lastItemVal->value->push();
                         }
                     }
                     else if($type->value == 'input'){
@@ -191,8 +191,8 @@ class ReceiptController extends Controller
                             $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
                         }
                         else{
-                            $lastItemVal->pivot->value = $lastItemVal->pivot->value + $item['value'];
-                            $lastItemVal->pivot->push();
+                            $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
+                            $lastItemVal->value->push();
                         }
                     }
 
@@ -206,8 +206,12 @@ class ReceiptController extends Controller
 
 
         } catch (\Exception $e) {
-            return $this->catchError($e->getTraceAsString(),$e->getTraceAsString() );
+            return $this->catchError( $e->getMessage() .' '.$e->getLine() );
         }
+    }
+
+    public static function checkQuantities(){
+
     }
 
 

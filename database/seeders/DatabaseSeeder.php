@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             ReceiptTypeSeeder::class,
             ReceiptSeeder::class,
 
+            TransformationSeeder::class,
+
         ]);
     }
 }
