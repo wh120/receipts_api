@@ -28,9 +28,20 @@ class StoreTransformationRequest extends FormRequest
             'name' => ['string' , ' required'  ],
             'description' => ['nullable' , 'string'],
 
-            'items' => ['array' ,'min:1'],
-            'items.*.value' => ['integer' ,'required' , 'min:1'],
+
+            'items' => ['array' ,'min:0'],
+            'items.*.value' => ['integer' ,'required' , 'min:0'],
             'items.*.isInput' => ['boolean' ,'required' ],
+            'items.*.id' => ['integer' ,'required' ],
+
+            'inputs' => ['array' ,'min:1'],
+            'inputs.*.value' => ['integer' ,'required' , 'min:1'],
+            'inputs.*.id' => ['integer' ,'required' ],
+
+            'outputs' => ['array' ,'min:1'],
+            'outputs.*.value' => ['integer' ,'required' , 'min:1'],
+            'outputs.*.id' => ['integer' ,'required' ],
+
         ];
     }
 }

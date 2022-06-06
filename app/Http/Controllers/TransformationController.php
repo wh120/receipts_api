@@ -48,20 +48,42 @@ class TransformationController extends Controller
 
         try {
 
-            foreach ($request->items as $id => $value){
-                if(Item::find($id) == null )return  $this->notFoundError('Item '.$id. ' not found');
+//            foreach ($request->items as  $value){
+//                if(Item::find($value['id']) == null )return  $this->notFoundError('Item '.$value['id']. ' not found');
+//
+//                if($value['isInput'] ==1)
+//                    $hasInput=true;
+//                if($value['isInput'] ==0)
+//                    $hasOutput=true;
+//            }
+//            if(!$hasOutput ||!$hasInput) return $this->sendError('input or output can not be empty');
+//
+//
 
-                if($value['isInput'] ==1)
-                    $hasInput=true;
-                if($value['isInput'] ==0)
-                    $hasOutput=true;
-            }
-            if(!$hasOutput ||!$hasInput) return $this->sendError('input or output can not be empty');
-            $model = Transformation::create( $params);
-            $model->items()->attach($request->items);
+            $model=null;
+            DB::transaction(function () use ($params , &$model ){
+                $model = Transformation::create( $params);
+
+                foreach ($params['inputs'] as $item)
+                {
+
+                    $model->items()->attach($item['id'], ['value' => $item['value'] ,'isInput' => 1 ]);
+
+                }
+
+                foreach ($params['outputs'] as $item)
+                {
+
+                    $model->items()->attach($item['id'], ['value' => $item['value'] ,'isInput' => 0 ]);
+
+                }
+
+            });
+
+         //   $model->items()->attach($request->items);
             return $this->created($model->load('items') );
         } catch (\Exception $e) {
-            return $this->catchError($e->getMessage() );
+            return $this->catchError($e->getTrace() );
         }
     }
 
@@ -145,10 +167,11 @@ class TransformationController extends Controller
                     }
 
                 }
-                return $this->successfully();
+
 
 
             });
+            return $this->successfully();
 
         } catch (\Exception $e) {
             return $this->catchError( $e->getMessage() .' '.$e->getLine());
