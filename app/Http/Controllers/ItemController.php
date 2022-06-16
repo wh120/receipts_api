@@ -17,11 +17,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        if(auth()->user()->isAdmin()) 
+        if(auth()->user()->isAdmin())
         return $this->sendList(
-            Item::with(['units' , 'item_category'])->get()
+            Item::with(['units' , 'item_category:id,name'])->get()
         );
-       
+
         $department_ids=[];
          $d = auth()->user()->load('roles.department');
 
@@ -64,12 +64,12 @@ class ItemController extends Controller
             DB::transaction(function () use($params ,&$model) {
                 $model = Item::create( $params);
                 $model->units()->createMany($params['units']);
-                
+
             });
 
             return $this->created($model->load('units') );
-           
-            
+
+
         } catch (\Exception $e) {
             return $this->catchError($e->getMessage() );
         }

@@ -17,15 +17,18 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
+
             DepartmentSeeder::class,
             RoleSeeder::class,
-            ItemMainCategorySeeder::class,
-            ItemCategorySeeder::class,
-            ItemSeeder::class,
             UserSeeder::class,
+
+//            ItemMainCategorySeeder::class,
+//            ItemCategorySeeder::class,
+            ItemSeeder::class,
+//
             ReceiptTypeSeeder::class,
             ReceiptSeeder::class,
-
+//
             TransformationSeeder::class,
 
         ]);

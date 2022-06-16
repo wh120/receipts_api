@@ -1,23 +1,16 @@
 <?php
+namespace Database\Data;
 
-namespace Database\Seeders;
-
-use App\Models\Item;
-use App\Models\ItemUnit;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Seeder;
-
-class ItemSeeder extends Seeder
-{
+  class ItemData {
     public static $items = [
         "data" => [
             [
-                "code" => "-1",
+                "code" => "- 1",
                 "name" => "المواد الجاهزة",
                 "quantity" => "964,197.44"
             ],
             [
-                "code" => "-100",
+                "code" => "- 100",
                 "name" => "الشراب",
                 "quantity" => "889,750.96"
             ],
@@ -86,7 +79,7 @@ class ItemSeeder extends Seeder
                 "unit3" => "طرد"
             ],
             [
-                "code" => "-101",
+                "code" => "- 101",
                 "name" => "الميلو",
                 "quantity" => "27,397.76"
             ],
@@ -179,7 +172,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "صندوق"
             ],
             [
-                "code" => "-102",
+                "code" => "- 102",
                 "name" => "الكابتشينو",
                 "quantity" => "1,213.44"
             ],
@@ -220,7 +213,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "94.00"
             ],
             [
-                "code" => "-103",
+                "code" => "- 103",
                 "name" => "السحلب",
                 "quantity" => "45,707.00"
             ],
@@ -239,7 +232,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "0.00"
             ],
             [
-                "code" => "-104",
+                "code" => "- 104",
                 "name" => "شوكولا",
                 "quantity" => "128.28"
             ],
@@ -265,12 +258,12 @@ class ItemSeeder extends Seeder
                 "unit2" => "طن"
             ],
             [
-                "code" => "-2",
+                "code" => "- 2",
                 "name" => "المنكهات الصناعية والمواد الأولية",
                 "quantity" => "96,139.80"
             ],
             [
-                "code" => "-201",
+                "code" => "- 201",
                 "name" => "نكهة جوفيدان",
                 "quantity" => "5,887.50"
             ],
@@ -365,7 +358,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "850.00"
             ],
             [
-                "code" => "-202",
+                "code" => "- 202",
                 "name" => "نكهة ارومسا",
                 "quantity" => "0.00"
             ],
@@ -436,7 +429,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "0.00"
             ],
             [
-                "code" => "-203",
+                "code" => "- 203",
                 "name" => "نكهة سمرايز",
                 "quantity" => "1,495.00"
             ],
@@ -525,7 +518,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "-0.00"
             ],
             [
-                "code" => "-204",
+                "code" => "- 204",
                 "name" => "نكهة اروماتيك",
                 "quantity" => "713.30"
             ],
@@ -620,7 +613,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "81.00"
             ],
             [
-                "code" => "-205",
+                "code" => "- 205",
                 "name" => "نكهة امكو",
                 "quantity" => "0.00"
             ],
@@ -631,7 +624,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "0.00"
             ],
             [
-                "code" => "-206",
+                "code" => "- 206",
                 "name" => "نكهة برتقال وجزر",
                 "quantity" => "25.00"
             ],
@@ -642,7 +635,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "25.00"
             ],
             [
-                "code" => "-207",
+                "code" => "- 207",
                 "name" => "منكهات سائلة",
                 "quantity" => "19.00"
             ],
@@ -665,7 +658,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "1.50"
             ],
             [
-                "code" => "-221",
+                "code" => "- 221",
                 "name" => "مواد الشراب",
                 "quantity" => "19,955.00"
             ],
@@ -736,7 +729,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "1,925.00"
             ],
             [
-                "code" => "-222",
+                "code" => "- 222",
                 "name" => "مواد الميلو",
                 "quantity" => "60,035.00"
             ],
@@ -759,7 +752,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "160.00"
             ],
             [
-                "code" => "-223",
+                "code" => "- 223",
                 "name" => "مواد الكابتشينو و 3*1",
                 "quantity" => "6,460.00"
             ],
@@ -782,7 +775,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "1,175.00"
             ],
             [
-                "code" => "-224",
+                "code" => "- 224",
                 "name" => "مواد السحلب",
                 "quantity" => "1,168.50"
             ],
@@ -823,7 +816,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "4.50"
             ],
             [
-                "code" => "-231",
+                "code" => "- 231",
                 "name" => "الملونات",
                 "quantity" => "381.50"
             ],
@@ -858,12 +851,12 @@ class ItemSeeder extends Seeder
                 "quantity" => "38.50"
             ],
             [
-                "code" => "-3",
+                "code" => "- 3",
                 "name" => "مواد الرولات",
                 "quantity" => "119,468.04"
             ],
             [
-                "code" => "-301",
+                "code" => "- 301",
                 "name" => "رولات 9غ",
                 "quantity" => "12,185.00"
             ],
@@ -952,7 +945,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-302",
+                "code" => "- 302",
                 "name" => "رولات 35 غ",
                 "quantity" => "14,411.05"
             ],
@@ -1034,7 +1027,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-303",
+                "code" => "- 303",
                 "name" => "رولات 35 غ اصبع",
                 "quantity" => "21,775.00"
             ],
@@ -1123,7 +1116,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-304",
+                "code" => "- 304",
                 "name" => "رولات الميلو",
                 "quantity" => "29,753.63"
             ],
@@ -1191,7 +1184,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-305",
+                "code" => "- 305",
                 "name" => "رولات 3*1 وكابتشينو",
                 "quantity" => "5,508.25"
             ],
@@ -1238,7 +1231,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-306",
+                "code" => "- 306",
                 "name" => "رولات سحلب",
                 "quantity" => "1,462.00"
             ],
@@ -1264,7 +1257,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-307",
+                "code" => "- 307",
                 "name" => "رولات تغليف",
                 "quantity" => "1,135.83"
             ],
@@ -1290,7 +1283,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-308",
+                "code" => "- 308",
                 "name" => "رولات غير محلى",
                 "quantity" => "3,792.00"
             ],
@@ -1344,7 +1337,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-309",
+                "code" => "- 309",
                 "name" => "رول شراب 650غ",
                 "quantity" => "11,905.00"
             ],
@@ -1426,7 +1419,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-310",
+                "code" => "- 310",
                 "name" => "رول 45 غ",
                 "quantity" => "13,799.28"
             ],
@@ -1466,7 +1459,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-311",
+                "code" => "- 311",
                 "name" => "رول 600 غ",
                 "quantity" => "3,741.00"
             ],
@@ -1506,12 +1499,12 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-4",
+                "code" => "- 4",
                 "name" => "الصناديق الخارجية",
                 "quantity" => "148,581.00"
             ],
             [
-                "code" => "-401",
+                "code" => "- 401",
                 "name" => "صناديق 35غ",
                 "quantity" => "17,981.00"
             ],
@@ -1565,7 +1558,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-402",
+                "code" => "- 402",
                 "name" => "صناديق 35غ اصبع",
                 "quantity" => "42,386.00"
             ],
@@ -1647,7 +1640,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-403",
+                "code" => "- 403",
                 "name" => "صناديق الميلو",
                 "quantity" => "38,030.00"
             ],
@@ -1701,7 +1694,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-404",
+                "code" => "- 404",
                 "name" => "صناديق 3*1 وكابتشينو",
                 "quantity" => "5,683.00"
             ],
@@ -1727,7 +1720,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-405",
+                "code" => "- 405",
                 "name" => "صناديق السحلب",
                 "quantity" => "6,805.00"
             ],
@@ -1753,7 +1746,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-406",
+                "code" => "- 406",
                 "name" => "صناديق الشوكولا",
                 "quantity" => "5,401.00"
             ],
@@ -1772,7 +1765,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-407",
+                "code" => "- 407",
                 "name" => "صناديق 9غ",
                 "quantity" => "10,200.00"
             ],
@@ -1784,7 +1777,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-408",
+                "code" => "- 408",
                 "name" => "صناديق 10غ غير محلى",
                 "quantity" => "865.00"
             ],
@@ -1796,7 +1789,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-409",
+                "code" => "- 409",
                 "name" => "صناديق شراب 650غ",
                 "quantity" => "18,670.00"
             ],
@@ -1906,7 +1899,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-421",
+                "code" => "- 421",
                 "name" => "صحون خارجية",
                 "quantity" => "2,560.00"
             ],
@@ -1918,12 +1911,12 @@ class ItemSeeder extends Seeder
                 "unit2" => "ربطة"
             ],
             [
-                "code" => "-5",
+                "code" => "- 5",
                 "name" => "العلب والكليشات والأكياس",
                 "quantity" => "1,445,643.80"
             ],
             [
-                "code" => "-501",
+                "code" => "- 501",
                 "name" => "علب 9غ",
                 "quantity" => "499,883.00"
             ],
@@ -2012,7 +2005,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-502",
+                "code" => "- 502",
                 "name" => "علب 35 غ",
                 "quantity" => "83,564.00"
             ],
@@ -2059,7 +2052,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-503",
+                "code" => "- 503",
                 "name" => "علب 35 غ اصبع",
                 "quantity" => "430,777.00"
             ],
@@ -2148,7 +2141,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-504",
+                "code" => "- 504",
                 "name" => "علب غير محلى",
                 "quantity" => "34,050.00"
             ],
@@ -2209,7 +2202,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-505",
+                "code" => "- 505",
                 "name" => "علب داخلية كابتشينو 3*1",
                 "quantity" => "57,850.00"
             ],
@@ -2235,7 +2228,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-506",
+                "code" => "- 506",
                 "name" => "علب السحلب الداخلية",
                 "quantity" => "111,000.00"
             ],
@@ -2261,7 +2254,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-521",
+                "code" => "- 521",
                 "name" => "علب البلاستيك",
                 "quantity" => "97,609.00"
             ],
@@ -2364,7 +2357,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-531",
+                "code" => "- 531",
                 "name" => "الكليشات",
                 "quantity" => "129,858.00"
             ],
@@ -2481,7 +2474,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "رول"
             ],
             [
-                "code" => "-551",
+                "code" => "- 551",
                 "name" => "الأكياس",
                 "quantity" => "852.80"
             ],
@@ -2528,7 +2521,7 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-591",
+                "code" => "- 591",
                 "name" => "مواد متفرقة",
                 "quantity" => "200.00"
             ],
@@ -2547,12 +2540,12 @@ class ItemSeeder extends Seeder
                 "unit2" => "كرتونة"
             ],
             [
-                "code" => "-6",
+                "code" => "- 6",
                 "name" => "مواد مختلفة لزوم الانتاج",
                 "quantity" => "99,720.50"
             ],
             [
-                "code" => "-601",
+                "code" => "- 601",
                 "name" => "السكر والميلو الجاهز للتصنيع",
                 "quantity" => "96,435.00"
             ],
@@ -2577,7 +2570,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "0.00"
             ],
             [
-                "code" => "-641",
+                "code" => "- 641",
                 "name" => "مواد ومستلزمات الطباعة",
                 "quantity" => "2,797.50"
             ],
@@ -2618,7 +2611,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "2,776.00"
             ],
             [
-                "code" => "-651",
+                "code" => "- 651",
                 "name" => "مواد تنظيف",
                 "quantity" => "0.00"
             ],
@@ -2641,7 +2634,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "0.00"
             ],
             [
-                "code" => "-671",
+                "code" => "- 671",
                 "name" => "المحروقات",
                 "quantity" => "0.00"
             ],
@@ -2676,7 +2669,7 @@ class ItemSeeder extends Seeder
                 "quantity" => "0.00"
             ],
             [
-                "code" => "-681",
+                "code" => "- 681",
                 "name" => "مستلزمات الانتاج",
                 "quantity" => "488.00"
             ],
@@ -2736,183 +2729,6 @@ class ItemSeeder extends Seeder
             ]
         ]
     ];
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-//        $data = [
-//            "1000"=>
-//                [
-//                'شراب وينر ظرف 9 غ محلى' ,
-//                'شراب عمار ظرف 35 غ اصبع',
-//                'شراب عمار ظرف 35 غ مربع',
-//                'شراب عمار 650 غ',
-//                'شراب عمار 2 كغ علبة بلاستيك',
-//                'شراب محلى وينر دكما',
-//                'شراب عادي عمار دكما',
-//                'شراب عمار 10غ غير محلى'
-//                ],
-//            "1010"=>[
-//                "ميلو وينر علبة بلاستيك 200 غ",
-//                "ميلو وينر ظرف 25 غ",
-//                "ميلو الفائز علبة بلاستيك 250 غ",
-//                "ميلو الفائز ظرف 20غ",
-//                "ميلو الفائز ظرف 20 غ * 12 علبة",
-//                "ميلو الفائز دكما",
-//                "ميلو الفائز فرط",
-//                "ميلو الفائز 400 غ",
-//                "ميلو الفائز 800 غ",
-//                "ميلو وينر علبة بلاستيك 250 غ",
-//                "ميلو وينر ظرف 20 غ",
-//                "ميلو وينر 800غ",
-//
-//            ],
-//            "1020"=>[
-//                "كابتشينو وينر علب",
-//                "وينر 3*1 علب",
-//                "وينر 3*1 مطربان"
-//            ],
-//            "1030"=>[
-//                "سحلب وينر"
-//            ],
-//            "1040"=>[
-//                "شوكولا وينر 300 غ",
-//                "شوكولا وينر 700 غ",
-//                "شوكولا وينر دكما",
-//            ]
-//
-//        ] ;
-//
-//        foreach ($data as $code => $names){
-//            $code_id =1;
-//            $category_id =1;
-//            foreach ($names as $name){
-//                $item = new Item();
-//                $item->name = $name;
-//                $item->code = $code.$code_id++;
-//                $item->description = $name;
-//                $item->item_category_id = $category_id;
-//                $item->unit = 'ظرف';
-//                $item->save();
-//
-//                $item->units()->saveMany([
-//                    new ItemUnit(['name' => 'علبة' , 'conversion_factor'=>12]),
-//                    new ItemUnit(['name' => 'طرد' , 'conversion_factor'=>100]),
-//                ]);
-//
-//            }
-//            $category_id++;
-//        }
-//
-//
-//        $item = new Item();
-//        $item->name = '1هوت شوكليت';
-//        $item->code = '1263';
-//        $item->description = '$name';
-//        $item->item_category_id = 6;
-//        $item->unit = 'ظرف';
-//        $item->save();
-//
-//        $item = new Item();
-//        $item->name = '2هوت شوكليت';
-//        $item->code = '1253';
-//        $item->description = '$name';
-//        $item->item_category_id = 7;
-//        $item->unit = 'ظرف';
-//        $item->save();
-//
-//        $item = new Item();
-//        $item->name = '3هوت شوكليت';
-//        $item->code = '1233';
-//        $item->description = '$name';
-//        $item->item_category_id = 8;
-//        $item->unit = 'ظرف';
-//        $item->save();
-//
-//        $item = new Item();
-//        $item->name = '4هوت شوكلي';
-//        $item->code = '1234';
-//        $item->description = '$name';
-//        $item->item_category_id = 9;
-//        $item->unit = 'ظرف';
-//        $item->save();
 
-
-        $items = ItemSeeder::$items;
-        $itemMainCategory = null;
-        $itemCategory = null;
-
-        foreach ($items['data'] as $newItem){
-
-            $code = $newItem['code'];
-            $name = $newItem['name'];
-            $quantity = $newItem['quantity'];
-            $unit1 = null;
-            $unit2 = null;
-            $unit3 = null;
-
-            if(array_key_exists('unit1' , $newItem)) $unit1 = $newItem['unit1'];
-            if(array_key_exists('unit2' , $newItem))  $unit2 = $newItem['unit2'];
-            if(array_key_exists('unit3' , $newItem))  $unit3 = $newItem['unit3'];
-
-            $intCode = intval($code);
-
-            //Category
-            if($intCode < 0 ){
-                //ItemMainCategory
-                if($intCode > -10){
-
-                    $itemMainCategory = new \App\Models\ItemMainCategory();
-                    $itemMainCategory->name = $name;
-                    $itemMainCategory->code = $code;
-                    $itemMainCategory->department_id = null;
-                    $itemMainCategory->save();
-                }
-
-                //ItemCategory
-                else{
-
-                    $itemCategory = new \App\Models\ItemCategory();
-                    $itemCategory->name = $name;
-                    $itemCategory->code = $code;
-                    $itemCategory->item_main_category_id = $itemMainCategory->id;
-                    $itemCategory->save();
-
-                }
-
-
-            }else{
-
-                $newItem = new \App\Models\Item();
-                $newItem->name = $name;
-                $newItem->code = $code;
-//                $newItem->description = $name;
-                $newItem->item_category_id = $itemCategory->id;
-                $newItem->unit = $unit1;
-                $newItem->save();
-
-                if($unit2){
-                    $factor = 1;
-                    if($unit1 == 'ظرف' && $unit2 == 'علبة') $factor = 12;
-
-                    $newItem->units()->saveMany([
-                        new \App\Models\ItemUnit(['name' => $unit2 , 'conversion_factor'=>$factor]),
-                    ]);
-                }
-                if($unit3){
-                    $newItem->units()->saveMany([
-                        new \App\Models\ItemUnit(['name' => $unit3 , 'conversion_factor'=>1]),
-                    ]);
-                }
-            }
-
-
-
-        }
-
-
-    }
 }
+

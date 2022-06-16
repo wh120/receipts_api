@@ -17,6 +17,7 @@ class Item extends Model
         'is_default_unit' ,
         'item_category_id'  ,
     ];
+    public $timestamps =false;
 
 
 
