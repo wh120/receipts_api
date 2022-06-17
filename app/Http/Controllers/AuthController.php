@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
@@ -42,6 +43,31 @@ class AuthController extends Controller
     public function me()
     {
         return $this->sendItem(auth()->user(), 'Successfully logged in');
+    }
+
+
+    /**
+     * Change User Password.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $params = $request->validated();
+
+        $user = auth()->user();
+
+        $credentials =  ['email'=>$user->email, 'password'=>$params['old_password']];
+
+        if (!   auth()->attempt($credentials)) {
+            return $this->LoginError();
+        }
+
+        $user->password= $params['new_password'];
+        $user->update();
+
+
+        return $this->successfully();
     }
 
     /**

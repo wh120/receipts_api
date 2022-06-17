@@ -33,6 +33,7 @@ Route::group([
     Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
     Route::post('refresh', [App\Http\Controllers\AuthController::class, 'refresh']);
     Route::post('me', [App\Http\Controllers\AuthController::class, 'me']);
+    Route::post('changePassword', [App\Http\Controllers\AuthController::class, 'changePassword']);
 
 });
 
@@ -62,6 +63,8 @@ Route::group([
 ], function ($router) {
 
     Route::get('/User/profile', [App\Http\Controllers\UserController::class, 'getMyProfile']);
+
+    Route::apiResource('User', App\Http\Controllers\UserController::class);
 
 
 

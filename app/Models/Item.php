@@ -12,9 +12,9 @@ class Item extends Model
     protected $fillable = [
         'name'  ,
         'code' ,
-        'description' ,
+//        'description' ,
         'unit',
-        'is_default_unit' ,
+//        'is_default_unit' ,
         'item_category_id'  ,
     ];
     public $timestamps =false;

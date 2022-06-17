@@ -32,6 +32,9 @@ class UpdateItemRequest extends BaseRequest
             'unit'=>'required|max:255',
             'is_default_unit'=> 'nullable|boolean',
             'item_category_id' =>'required|exists:item_categories,id|integer',
+            'units' => ['array' , 'nullable'],
+            'units.*.name' => [  'required' , 'string'],
+            'units.*.conversion_factor'  => [ 'required' , 'integer' ],
         ];
     }
 }

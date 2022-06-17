@@ -83,7 +83,7 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        return $this->sendItem(Item::where('id',$id)->firstOrFail());
+        return $this->sendItem(Item::where('id',$id)->with(['units' , 'item_category:id,name'])->firstOrFail());
     }
 
     /**
@@ -112,7 +112,15 @@ class ItemController extends Controller
             if($model == null)
                 return $this->notFoundError( );
 
-            $model->update( $params);
+            $model;
+            DB::transaction(function () use($params ,&$model) {
+                $model->update( $params);
+                $model->units()->delete();
+                $model->units()->createMany($params['units']);
+
+            });
+
+
             return $this->updated($model );
 
         } catch (\Exception $e) {
