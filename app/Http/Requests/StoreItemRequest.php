@@ -28,7 +28,7 @@ class StoreItemRequest extends BaseRequest
             'code' => 'required|unique:items|max:255',
             'description'=>'nullable',
             'unit'=>'required|max:255',
-            'is_default_unit'=> 'boolean',
+            // 'is_default_unit'=> 'nullable',
             'item_category_id' =>'required|exists:item_categories,id|integer',
             'units' => ['array' , 'nullable'],
             'units.*.name' => [  'required' , 'string'],

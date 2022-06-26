@@ -27,7 +27,7 @@ class ReceiptController extends Controller
     {
 
         return $this->sendItem(
-            Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user.roles.department' ,'accepted_by_user'])
+            Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user.roles.department' ,'accepted_by_user' ,'from_department' , 'to_department'])
                 ->orderBy('id', 'DESC')->simplePaginate($request->page_count)
         );
     }
@@ -271,7 +271,7 @@ class ReceiptController extends Controller
     public function getMyReceipts()
     {
         $user  = auth()->user();
-        $receipts = Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user.roles.department' ,'accepted_by_user'])
+        $receipts = Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user.roles.department' ,'accepted_by_user' ,'from_department' , 'to_department'])
             ->where('created_by_user_id', $user->id)->orderBy('id', 'DESC')->simplePaginate( );
         return $this->sendItem($receipts, );
     }
