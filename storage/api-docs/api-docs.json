@@ -5,7 +5,7 @@
         "description": "Receipt API",
         "version": "1.0.1"
     },
-    "host": "sh-kd-service.com\/receipts_api\/publica",
+    "host": "sh-kd-service.com\/receipts_api\/public",
     "basePath": "\/",
     "paths": {
         "\/api\/docs": {
