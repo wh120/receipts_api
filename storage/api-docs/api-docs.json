@@ -5,7 +5,7 @@
         "description": "Receipt API",
         "version": "1.0.1"
     },
-    "host": "localhost",
+    "host": "alumaracoffe.com\/receipts\/public",
     "basePath": "\/",
     "paths": {
         "\/api\/docs": {
@@ -294,7 +294,7 @@
                             "required": [
                                 "name",
                                 "email",
-                                "roles.*"
+                                "roles.*.id"
                             ],
                             "properties": {
                                 "name": {
@@ -310,7 +310,12 @@
                                     "type": "array",
                                     "items": [
                                         {
-                                            "type": "string"
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     ]
                                 }
@@ -382,7 +387,7 @@
                             "required": [
                                 "name",
                                 "email",
-                                "roles.*"
+                                "roles.*.id"
                             ],
                             "properties": {
                                 "name": {
@@ -398,7 +403,12 @@
                                     "type": "array",
                                     "items": [
                                         {
-                                            "type": "string"
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     ]
                                 }
@@ -441,7 +451,7 @@
                             "required": [
                                 "name",
                                 "email",
-                                "roles.*"
+                                "roles.*.id"
                             ],
                             "properties": {
                                 "name": {
@@ -457,7 +467,12 @@
                                     "type": "array",
                                     "items": [
                                         {
-                                            "type": "string"
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            }
                                         }
                                     ]
                                 }
@@ -1423,9 +1438,6 @@
                                 },
                                 "unit": {
                                     "type": "string"
-                                },
-                                "is_default_unit": {
-                                    "type": "boolean"
                                 },
                                 "item_category_id": {
                                     "type": "integer"
