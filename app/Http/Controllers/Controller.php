@@ -36,6 +36,9 @@ class Controller extends BaseController
     }
     public function sendError($message='',$error =null, $code = 400)
     {
+        // if($error != null)
+        // $error = mb_convert_encoding($error, 'UTF-8', 'UTF-8');
+
         return response()->json([
             'success' => false,
             'message' => '',

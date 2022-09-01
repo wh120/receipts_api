@@ -136,7 +136,7 @@ class ReceiptController extends Controller
 
                     if (!$myItem) {
                         return $this->sendError($this->getMessage('do not have items'));
-                    } else if ($myItem->pivot->value < $item['value']) {
+                    } else if ($myItem->value->value < $item['value']) {
                         return $this->sendError($this->getMessage('do not have enough quantities'));
                     }
                 }
@@ -164,11 +164,11 @@ class ReceiptController extends Controller
                         // update items in from department
                         $fromDepartment = Department::find($params['from_department_id']);
                         $lastItemVal =  $fromDepartment->items()->firstWhere('items.id',$item['id']);
-                        $lastItemVal->pivot->value = $lastItemVal->pivot->value - $item['value'];
-                        if($lastItemVal->pivot->value ==0){
+                        $lastItemVal->value->value = $lastItemVal->value->value - $item['value'];
+                        if($lastItemVal->value->value ==0){
                             $fromDepartment->items()->detach($lastItemVal) ;
                         }
-                        $lastItemVal->pivot->push();
+                        $lastItemVal->value->push();
 
                         // update items in target  department
 
