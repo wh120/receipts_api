@@ -92,6 +92,8 @@ class TransformationController extends Controller
     {
         $params = $request->validated();
         $user = $request->user();
+        $count = $params['count'];
+        if($count == null) $count =1;
 
         try {
 
@@ -110,16 +112,9 @@ class TransformationController extends Controller
             }
 
 
-
-
             $department = Department::find($params['department_id']);
             $haveItems = $department->items;
-
             $tr = Transformation::find($params['transformation_id']);
-
-
-
-
 
 
             //Check available quantities
@@ -128,31 +123,24 @@ class TransformationController extends Controller
 
                 if (!$myItem) {
                     return $this->sendError($this->getMessage('do not have items'));
-                } else if ($myItem->value->value < $item['value']['value']) {
+                } else if ($myItem->value->value < ($item['value']['value'] * $count)) {
                     return $this->sendError($this->getMessage('do not have enough quantities'));
                 }
             }
 
 
-            DB::transaction(function () use ($params ,$tr,$haveItems,$department){
+            DB::transaction(function () use ($params ,$tr,$haveItems,$department,$count){
 
                 // update items in  department
                 foreach ($tr->inputs as $item) {
-
-
                     $lastItemVal = $haveItems->firstWhere('id', $item['id']);
-
-
-
-                    $lastItemVal->value->value = $lastItemVal->value->value - $item['value']['value'];
+                    $lastItemVal->value->value = $lastItemVal->value->value -( $item['value']['value'] * $count);
                     if ($lastItemVal->value->value == 0) {
                         $department->items()->detach($lastItemVal);
                     }
                     $lastItemVal->value->push();
 
                 }
-
-
                 // update output items in department
 
                 foreach ($tr->outputs as $item) {
@@ -160,9 +148,9 @@ class TransformationController extends Controller
                     $lastItemVal = $haveItems->firstWhere('id', $item['id']);
 
                     if ($lastItemVal == null) {
-                        $department->items()->attach($item['id'], ['value' => $item['value']['value']]);
+                        $department->items()->attach($item['id'], ['value' => $item['value']['value'] * $count]);
                     } else {
-                        $lastItemVal->value->value = $lastItemVal->value->value + $item['value']['value'];
+                        $lastItemVal->value->value = $lastItemVal->value->value + ($item['value']['value'] * $count);
                         $lastItemVal->value->push();
                     }
 

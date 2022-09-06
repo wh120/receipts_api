@@ -2071,6 +2071,9 @@
                                 },
                                 "transformation_id": {
                                     "type": "integer"
+                                },
+                                "count": {
+                                    "type": "integer"
                                 }
                             }
                         }

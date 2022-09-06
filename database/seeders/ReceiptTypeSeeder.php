@@ -16,10 +16,11 @@ class ReceiptTypeSeeder extends Seeder
     {
         $data = [
 
-            ['name'=>'input' , 'value' =>'input' ],
+
             ['name'=>'output' , 'value' =>'output' ],
             ['name'=>'request' , 'value' =>'request' ],
             ['name'=>'transformation' , 'value' =>'transformation' ],
+            ['name'=>'input' , 'value' =>'input' ],
             //...
         ];
         ReceiptType::insert($data);

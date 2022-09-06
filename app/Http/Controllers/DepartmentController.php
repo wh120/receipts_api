@@ -46,7 +46,7 @@ class DepartmentController extends Controller
         return $this->sendList(
             Department::with(['roles','items'])->whereHas('roles.users', function ( $query)  {
                 $query->where('id', auth()->user()->id);
-            })->get()
+            })->orderBy('name')->get()
         );
     }
 

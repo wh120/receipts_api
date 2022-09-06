@@ -17,7 +17,7 @@ class CreateDepartmentItemTable extends Migration
             $table->id();
             $table->foreignId('department_id')->constrained();
             $table->foreignId('item_id')->constrained();
-            $table->bigInteger('value');
+            $table->float('value' ,16,4 ,);
 
             $table->unique(array('department_id', 'item_id'));
 

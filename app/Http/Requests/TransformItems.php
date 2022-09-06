@@ -25,7 +25,8 @@ class TransformItems extends FormRequest
     {
         return [
             'department_id'=> 'required|exists:departments,id|integer',
-            'transformation_id'=> 'required|exists:transformations,id|integer'
+            'transformation_id'=> 'required|exists:transformations,id|integer',
+            'count'=>'integer|nullable | min:1'
         ];
     }
 }
