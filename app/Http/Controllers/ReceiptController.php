@@ -280,9 +280,9 @@ class ReceiptController extends Controller
     public function approveReceipt(Request $request)
     {
         $user = $request->user();
-        $receipt = Receipt::with('items')->where('id',$request->id)->firstOrFail();
+        $receipt = Receipt::where('id',$request->id)->firstOrFail();
 
-        if($receipt->accepted_at != null)   return $this->sendError($this->getMessage('receipt already approved'),$receipt);
+        if($receipt->accepted_at != null)   return $this->sendError($this->getMessage('receipt already approved'));
 
         $roles  = auth()->user()->roles()->pluck('id')->toArray();
 

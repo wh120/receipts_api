@@ -27,8 +27,7 @@ class TransformationSeeder extends Seeder
 
 
         $item_transformation = array(
-            array('id' => '1','transformation_id' => '1','item_id' => '1','value' => '3','isInput' => '1','created_at' => NULL,'updated_at' => NULL),
-            array('id' => '2','transformation_id' => '1','item_id' => '2','value' => '3','isInput' => '1','created_at' => NULL,'updated_at' => NULL),
+            array('id' => '1','transformation_id' => '1','item_id' => '1','value' => '1','isInput' => '1','created_at' => NULL,'updated_at' => NULL),
             array('id' => '3','transformation_id' => '1','item_id' => '4','value' => '1','isInput' => '0','created_at' => NULL,'updated_at' => NULL),
             array('id' => '4','transformation_id' => '2','item_id' => '158','value' => '392','isInput' => '1','created_at' => NULL,'updated_at' => NULL),
             array('id' => '5','transformation_id' => '2','item_id' => '329','value' => '30','isInput' => '1','created_at' => NULL,'updated_at' => NULL),

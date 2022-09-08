@@ -131,6 +131,7 @@ class TransformationController extends Controller
             }
 
 
+
             DB::transaction(function () use ($params ,$tr,$haveItems,$department,$count , $user){
 
                 // update items in  department
@@ -174,12 +175,12 @@ class TransformationController extends Controller
                 // update items in  department
                 foreach ($tr->inputs as $item) {
 
-                    $rec->items()->attach([$item->id => ['value' => $tr->inputs->value]  ]);
+                    $rec->items()->attach([$item->id => ['value' => $item->value]  ]);
                 }
                 // update output items in department
 
                 foreach ($tr->outputs as $item) {
-                    $rec->items()->attach([$item->id => ['value' => $tr->outputs->value]  ]);
+                    $rec->items()->attach([$item->id => ['value' => $item->value]  ]);
 
                 }
 
