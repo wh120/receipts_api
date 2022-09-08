@@ -184,7 +184,7 @@ class ReceiptController extends Controller
                             }
                         }
                     }
-                    else if($type->value == 'input'){
+                    else if($type->value == 'input'  && false){
 
                         // update items in target  department
                         $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
@@ -311,7 +311,7 @@ class ReceiptController extends Controller
                 {
                     if($type->value == 'output'){
 
-                        $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item['id']);
+                        $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item->id);
 
                         if ($lastItemVal == null) {
 
@@ -324,16 +324,16 @@ class ReceiptController extends Controller
                     }
                     else if($type->value == 'input'){
 
-//                        // update items in target  department
-//                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
-//
-//                        if($lastItemVal == null){
-//                            $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
-//                        }
-//                        else{
-//                            $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
-//                            $lastItemVal->value->push();
-//                        }
+                        // update items in target  department
+                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item->id);
+
+                        if($lastItemVal == null){
+                            $toDepartment->items()->attach($item->id, ['value' => $item->value->value]);
+                        }
+                        else{
+                            $lastItemVal->value->value = $lastItemVal->value->value + $item->value->value;
+                            $lastItemVal->value->push();
+                        }
                     }
 
                    // $receipt->items()->attach($item['id'], ['value' => $item['value']]);
@@ -348,8 +348,6 @@ class ReceiptController extends Controller
         } catch (\Exception $e) {
             return $this->catchError( $e->getMessage() .' '.$e->getLine() );
         }
-
-
 
     }
 
