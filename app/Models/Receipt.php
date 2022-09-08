@@ -48,12 +48,12 @@ class Receipt extends Model
         return $this->belongsTo(Department::class );
     }
 
-    
 
-    public function getItemsAttribute($value)
-    {
-        return 'ucfirst($value)';
-    }
+
+//    public function getItemsAttribute($value)
+//    {
+//        return 'ucfirst($value)';
+//    }
 
 
 }

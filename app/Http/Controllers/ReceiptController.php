@@ -154,13 +154,14 @@ class ReceiptController extends Controller
         try {
 
             $model= null;
-            DB::transaction(function () use ($params , &$model ,$type){
+            DB::transaction(function () use ($params , &$model ,$type , $user){
                 $toDepartment = Department::find($params['to_department_id']);
                 $model = Receipt::create( $params);
 
                 foreach ($params['items'] as $item)
                 {
                     if($type->value == 'output'){
+
                         // update items in from department
                         $fromDepartment = Department::find($params['from_department_id']);
                         $lastItemVal =  $fromDepartment->items()->firstWhere('items.id',$item['id']);
@@ -170,16 +171,17 @@ class ReceiptController extends Controller
                         }
                         $lastItemVal->value->push();
 
-                        // update items in target  department
+                        // update items in target department
+                        if($user->isAdmin() && false)
+                        {
+                            $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item['id']);
 
-                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
-
-                        if($lastItemVal == null){
-                            $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
-                        }
-                        else{
-                            $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
-                            $lastItemVal->value->push();
+                            if ($lastItemVal == null) {
+                                $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
+                            } else {
+                                $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
+                                $lastItemVal->value->push();
+                            }
                         }
                     }
                     else if($type->value == 'input'){
@@ -277,21 +279,76 @@ class ReceiptController extends Controller
     }
     public function approveReceipt(Request $request)
     {
-        $receipt =Receipt:: where('id',$request->id)->firstOrFail();
+        $user = $request->user();
+        $receipt = Receipt::with('items')->where('id',$request->id)->firstOrFail();
 
         if($receipt->accepted_at != null)   return $this->sendError($this->getMessage('receipt already approved'),$receipt);
 
         $roles  = auth()->user()->roles()->pluck('id')->toArray();
-        if( in_array($receipt->must_approved_by_role_id , $roles) ){
 
-            $receipt->accepted_by_user_id = auth()->user()->id;
-            $receipt->accepted_at=Carbon::now();
-            $receipt->update();
+        if(! in_array($receipt->must_approved_by_role_id , $roles)  &&  !$user->isAdmin())
+            return $this->sendError($this->getMessage('can not approve receipt'),$receipt);
 
-            return $this->successfully($receipt);
 
-          }
-        else return $this->sendError($this->getMessage('can not approve receipt'),$receipt);
+       // return $receipt->receipt_type;
+
+
+        try {
+
+
+            DB::transaction(function () use ($request  ,$receipt ,$user ){
+
+                $receipt->accepted_by_user_id = auth()->user()->id;
+                $receipt->accepted_at=Carbon::now();
+                $receipt->update();
+
+
+                $toDepartment = Department::find($receipt->to_department_id);
+                $type =$receipt->receipt_type;
+
+
+                foreach ($receipt->items as $item)
+                {
+                    if($type->value == 'output'){
+
+                        $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item['id']);
+
+                        if ($lastItemVal == null) {
+
+                            $toDepartment->items()->attach($item->id, ['value' => ($item->value->value)]);
+                        } else {
+                            $lastItemVal->value->value = $lastItemVal->value->value + $item->value->value;
+                            $lastItemVal->value->push();
+                        }
+
+                    }
+                    else if($type->value == 'input'){
+
+//                        // update items in target  department
+//                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
+//
+//                        if($lastItemVal == null){
+//                            $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
+//                        }
+//                        else{
+//                            $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
+//                            $lastItemVal->value->push();
+//                        }
+                    }
+
+                   // $receipt->items()->attach($item['id'], ['value' => $item['value']]);
+
+                }
+
+            });
+
+            return $this->created($receipt->load('items') );
+
+
+        } catch (\Exception $e) {
+            return $this->catchError( $e->getMessage() .' '.$e->getLine() );
+        }
+
 
 
     }
