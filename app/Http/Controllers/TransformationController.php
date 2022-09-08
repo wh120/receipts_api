@@ -175,12 +175,12 @@ class TransformationController extends Controller
                 // update items in  department
                 foreach ($tr->inputs as $item) {
 
-                    $rec->items()->attach([$item->id => ['value' => $item->value]  ]);
+                    $rec->items()->attach([$item->id => ['value' => $item->value->value]  ]);
                 }
                 // update output items in department
 
                 foreach ($tr->outputs as $item) {
-                    $rec->items()->attach([$item->id => ['value' => $item->value]  ]);
+                    $rec->items()->attach([$item->id => ['value' => $item->value->value]  ]);
 
                 }
 
