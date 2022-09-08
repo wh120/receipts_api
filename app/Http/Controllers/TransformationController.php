@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TransformItems;
 use App\Models\Department;
 use App\Models\Item;
+use App\Models\Receipt;
 use App\Models\Transformation;
 use App\Http\Requests\StoreTransformationRequest;
 use App\Http\Requests\UpdateTransformationRequest;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class TransformationController extends Controller
@@ -129,7 +131,7 @@ class TransformationController extends Controller
             }
 
 
-            DB::transaction(function () use ($params ,$tr,$haveItems,$department,$count){
+            DB::transaction(function () use ($params ,$tr,$haveItems,$department,$count , $user){
 
                 // update items in  department
                 foreach ($tr->inputs as $item) {
@@ -153,6 +155,31 @@ class TransformationController extends Controller
                         $lastItemVal->value->value = $lastItemVal->value->value + ($item['value']['value'] * $count);
                         $lastItemVal->value->push();
                     }
+
+                }
+
+                $rec = new Receipt();
+                $rec->receipt_number = date('ymdHis');
+                $rec->created_by_user_id = $user->id;
+
+                $rec->from_department_id = $department->id;
+                $rec->to_department_id =  $department->id;
+//                $rec->must_approved_by_role_id = 1;
+                $rec->receipt_type_id = 3;
+                $rec->description = $tr->name;
+                $rec->accepted_at = now();
+                $rec->transformation_id = $tr->id;
+                $rec->save();
+
+                // update items in  department
+                foreach ($tr->inputs as $item) {
+
+                    $rec->items()->attach([$item->id => ['value' => $tr->inputs->value]  ]);
+                }
+                // update output items in department
+
+                foreach ($tr->outputs as $item) {
+                    $rec->items()->attach([$item->id => ['value' => $tr->outputs->value]  ]);
 
                 }
 

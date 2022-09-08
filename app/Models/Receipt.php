@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
@@ -14,7 +14,7 @@ class Receipt extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class)->as('value')->withPivot('value' );;
+        return $this->belongsToMany(Item::class)->as('value')->withPivot('value' ,'isInput' );;
     }
 
     public function must_approved_by_role()
@@ -47,6 +47,11 @@ class Receipt extends Model
     {
         return $this->belongsTo(Department::class );
     }
+    public function transformation()
+    {
+        return $this->belongsTo(Transformation::class );
+    }
+
 
 
 

@@ -17,7 +17,9 @@ class CreateItemReceiptsTable extends Migration
             $table->id();
             $table->foreignId('receipt_id')->constrained();
             $table->foreignId('item_id')->constrained();
-            $table->bigInteger('value');
+            $table->boolean('isInput')->nullable();
+            $table->double('value');
+
             $table->timestamps();
 
             $table->unique(['receipt_id', 'item_id']);

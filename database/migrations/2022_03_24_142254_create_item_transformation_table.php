@@ -17,7 +17,7 @@ class CreateItemTransformationTable extends Migration
             $table->id();
             $table->foreignId('transformation_id')->constrained()->onDelete('cascade');
             $table->foreignId('item_id')->constrained();
-            $table->bigInteger('value');
+            $table->double('value');
             $table->boolean('isInput');
             $table->timestamps();
         });
