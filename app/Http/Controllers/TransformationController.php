@@ -159,6 +159,9 @@ class TransformationController extends Controller
 
                 }
 
+
+                //create receipt for transformation
+
                 $rec = new Receipt();
                 $rec->receipt_number = date('ymdHis');
                 $rec->created_by_user_id = $user->id;
@@ -174,12 +177,13 @@ class TransformationController extends Controller
 
                 // update items in  department
                 foreach ($tr->inputs as $item) {
-
+                    ///todo recode this
                     $rec->items()->attach([$item->id => ['value' => $item->value->value]  ]);
                 }
-                // update output items in department
 
+                // update output items in department
                 foreach ($tr->outputs as $item) {
+                    ///todo recode this
                     $rec->items()->attach([$item->id => ['value' => $item->value->value]  ]);
 
                 }
