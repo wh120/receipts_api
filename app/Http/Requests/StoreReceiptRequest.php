@@ -32,7 +32,9 @@ class StoreReceiptRequest extends FormRequest
             'description' => ['nullable' , 'string'],
             'items' => ['array' ,'min:1'],
             'items.*.id' => ['integer' ,'required'],
-            'items.*.value' => ['integer' ,'required'],
+            'items.*.value' => ['numeric' ,'required'],
+            'items.*.values' => ['json' ,'required'],
+
 
         ];
     }

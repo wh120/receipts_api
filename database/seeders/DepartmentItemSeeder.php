@@ -2203,8 +2203,19 @@ class DepartmentItemSeeder extends Seeder
             foreach ($items as $item) {
 
                 $itemData = Item::where('code' , $item["رمز المادة"])->first();
-                if($itemData != null)
-                $department->items()->attach($itemData->id, ['value' => $item["الكمية"]]);
+                if($itemData != null){
+
+                    $value =  $item["الكمية"];
+                    $values=[];
+                    if(array_key_exists("كمية 2",$item))$values[]=sprintf("%.2f", $item["كمية 2"]);
+                    if(array_key_exists("كمية 3",$item))$values[]=sprintf("%.2f", $item["كمية 3"]);
+
+                    $department->items()->attach($itemData->id, [
+                        'values' => json_encode( $values),
+                        'value' => $value
+                    ]);
+                }
+
 
             }
 

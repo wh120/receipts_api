@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PaginationListRequest;
 use App\Models\Department;
+use App\Models\Item;
 use App\Models\Receipt;
 use App\Http\Requests\StoreReceiptRequest;
 use App\Http\Requests\UpdateReceiptRequest;
@@ -81,6 +82,19 @@ class ReceiptController extends Controller
         $type =ReceiptType::find($params["receipt_type_id"]);
 
 
+//        check values
+
+        foreach ($params['items'] as $item){
+
+
+//            $values =);
+            $itm = Item::find($item['id'])->loadCount('units');
+
+            if($itm['units_count'] != count(json_decode($item['values'])))
+                return $this->sendError($this->getMessage('do not have items'));
+        }
+
+
         if($type->value == 'output' || $type->value == 'request'){
 
             if($request->must_approved_by_role_id != null){
@@ -126,19 +140,35 @@ class ReceiptController extends Controller
                 }
             }
 
+
+
             $fromDepartment = Department::find($params['from_department_id']);
             $haveItems = $fromDepartment->items;
+
+
 
             //Check available quantities
             if($type->value == 'output') {
                 foreach ($params['items'] as $item) {
                     $myItem = $haveItems->firstWhere('id', $item['id']);
 
+
+
                     if (!$myItem) {
                         return $this->sendError($this->getMessage('do not have items'));
                     } else if ($myItem->value->value < $item['value']) {
+
                         return $this->sendError($this->getMessage('do not have enough quantities'));
                     }
+
+                    $values = json_decode($item['values']);
+                    $myValues=json_decode($myItem->value->values);
+                    foreach ($values as $key =>$val){
+                        if($myValues[$key] < $values[$key])
+                            return $this->sendError($this->getMessage('do not have enough quantities'));
+
+                    }
+
                 }
             }
          }
@@ -160,15 +190,27 @@ class ReceiptController extends Controller
 
                 foreach ($params['items'] as $item)
                 {
+
                     if($type->value == 'output'){
 
                         // update items in from department
                         $fromDepartment = Department::find($params['from_department_id']);
                         $lastItemVal =  $fromDepartment->items()->firstWhere('items.id',$item['id']);
                         $lastItemVal->value->value = $lastItemVal->value->value - $item['value'];
-                        if($lastItemVal->value->value ==0){
-                            $fromDepartment->items()->detach($lastItemVal) ;
+
+                        $values = json_decode($item['values']);
+                        $list=json_decode($lastItemVal->value->values);
+
+                        foreach ($values as $key => $val){
+
+                            $list[$key]= $list[$key]-$values[$key];
                         }
+                        $lastItemVal->value->values = json_encode($list);
+
+
+//                        if($lastItemVal->value->value ==0){
+//                            $fromDepartment->items()->detach($lastItemVal) ;
+//                        }
                         $lastItemVal->value->push();
 
                         // update items in target department
@@ -184,21 +226,37 @@ class ReceiptController extends Controller
                             }
                         }
                     }
-                    else if($type->value == 'input'  && false){
+                    else if($type->value == 'input'  ){
 
                         // update items in target  department
                         $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
 
+
                         if($lastItemVal == null){
-                            $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
+                            $toDepartment->items()->attach($item['id'],
+                                ['value' => $item['value'] , 'values' => $item['values'] ]
+                            );
                         }
                         else{
                             $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
+                            $values = json_decode($item['values']);
+                            $list=json_decode($lastItemVal->value->values);
+
+
+                            foreach ($values as $key => $val){
+
+                                $list[$key]= $list[$key]+$values[$key];
+                            }
+                            $lastItemVal->value->values = json_encode($list);
                             $lastItemVal->value->push();
                         }
                     }
 
-                    $model->items()->attach($item['id'], ['value' => $item['value']]);
+                    $model->items()->attach($item['id'],
+                        ['value' => $item['value']  ,
+                            'values' => $item['values'],
+                            'isInput' => true],
+                    );
 
                 }
 
@@ -208,7 +266,7 @@ class ReceiptController extends Controller
 
 
         } catch (\Exception $e) {
-            return $this->catchError( $e->getMessage() .' '.$e->getLine() );
+            return $this->catchError( $e->getMessage() .' '.$e->getTraceAsString() );
         }
     }
 

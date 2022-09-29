@@ -14,8 +14,11 @@ class Item extends Model
         'code' ,
 //        'description' ,
         'unit',
-//        'is_default_unit' ,
+        'is_default_unit' ,
         'item_category_id'  ,
+    ];
+    protected $casts = [
+        'is_default_unit'=>'boolean'
     ];
     public $timestamps =false;
 

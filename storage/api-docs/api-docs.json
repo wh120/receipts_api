@@ -1851,7 +1851,8 @@
                             "required": [
                                 "to_department_id",
                                 "items.*.id",
-                                "items.*.value"
+                                "items.*.value",
+                                "items.*.values"
                             ],
                             "properties": {
                                 "receipt_number": {
@@ -1882,7 +1883,10 @@
                                                     "type": "integer"
                                                 },
                                                 "value": {
-                                                    "type": "integer"
+                                                    "type": "number"
+                                                },
+                                                "values": {
+                                                    "type": "string"
                                                 }
                                             }
                                         }
@@ -2186,6 +2190,14 @@
                                                 },
                                                 "id": {
                                                     "type": "integer"
+                                                },
+                                                "values": {
+                                                    "type": "array",
+                                                    "items": [
+                                                        {
+                                                            "type": "integer"
+                                                        }
+                                                    ]
                                                 }
                                             }
                                         }

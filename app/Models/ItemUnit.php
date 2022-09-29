@@ -12,7 +12,12 @@ class ItemUnit extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name' ,'conversion_factor' , 'item_id'];
+    protected $fillable = ['name' ,'conversion_factor' , 'item_id' , 'is_default'];
+
+    protected $casts = [
+        'is_default'=>'boolean'
+    ];
+
     public function item()
     {
         return $this->belongsTo(Item::class);

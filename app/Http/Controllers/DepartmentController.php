@@ -36,7 +36,7 @@ class DepartmentController extends Controller
     public function index()
     {
         return $this->sendList(
-            Department::with(['roles' , 'items'])->get()
+            Department::with(['roles' , 'items.units'])->get()
         );
     }
 
@@ -44,7 +44,7 @@ class DepartmentController extends Controller
     {
         if(auth()->user()->isAdmin()) return $this->index();
         return $this->sendList(
-            Department::with(['roles','items'])->whereHas('roles.users', function ( $query)  {
+            Department::with(['roles','items.units'])->whereHas('roles.users', function ( $query)  {
                 $query->where('id', auth()->user()->id);
             })->orderBy('name')->get()
         );

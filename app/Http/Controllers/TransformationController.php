@@ -22,7 +22,7 @@ class TransformationController extends Controller
     public function index()
     {
         return $this->sendList(
-            Transformation::with(['inputs' , 'outputs'])->get()
+            Transformation::with(['inputs.units' , 'outputs.units'])->get()
         );
     }
 
@@ -69,14 +69,18 @@ class TransformationController extends Controller
                 foreach ($params['inputs'] as $item)
                 {
 
-                    $model->items()->attach($item['id'], ['value' => $item['value'] ,'isInput' => 1 ]);
+                    $model->items()->attach(
+                        $item['id'],
+                        ['value' => $item['value'] ,'isInput' => 1 ,  'values' => json_encode($item['values'])
+                        ]
+                    );
 
                 }
 
                 foreach ($params['outputs'] as $item)
                 {
 
-                    $model->items()->attach($item['id'], ['value' => $item['value'] ,'isInput' => 0 ]);
+                    $model->items()->attach($item['id'], ['value' => $item['value'] ,'isInput' => 0 ,  'values' => json_encode($item['values']) ]);
 
                 }
 
@@ -114,6 +118,7 @@ class TransformationController extends Controller
             }
 
 
+
             $department = Department::find($params['department_id']);
             $haveItems = $department->items;
             $tr = Transformation::find($params['transformation_id']);
@@ -128,19 +133,38 @@ class TransformationController extends Controller
                 } else if ($myItem->value->value < ($item['value']['value'] * $count)) {
                     return $this->sendError($this->getMessage('do not have enough quantities'));
                 }
+
+                $values = json_decode($item['value']['values']);
+                $myValues=json_decode($myItem->value->values);
+
+
+                foreach ($values as $key =>$val){
+                    if($myValues[$key] < $values[$key])
+                        return $this->sendError($this->getMessage('do not have enough quantities'));
+
+                }
             }
 
 
 
             DB::transaction(function () use ($params ,$tr,$haveItems,$department,$count , $user){
 
-                // update items in  department
+                // update input items in  department
                 foreach ($tr->inputs as $item) {
                     $lastItemVal = $haveItems->firstWhere('id', $item['id']);
-                    $lastItemVal->value->value = $lastItemVal->value->value -( $item['value']['value'] * $count);
-                    if ($lastItemVal->value->value == 0) {
-                        $department->items()->detach($lastItemVal);
+                    $lastItemVal->value->value = $lastItemVal->value->value - ( $item['value']['value'] * $count);
+
+                    $values = json_decode($item['value']['values']);
+                    $list=json_decode($lastItemVal->value->values);
+                    foreach ($values as $key => $val){
+
+                        $list[$key]= $list[$key]-$values[$key];
                     }
+                    $lastItemVal->value->values = json_encode($list);
+
+//                    if ($lastItemVal->value->value == 0) {
+//                        $department->items()->detach($lastItemVal);
+//                    }
                     $lastItemVal->value->push();
 
                 }
@@ -151,9 +175,21 @@ class TransformationController extends Controller
                     $lastItemVal = $haveItems->firstWhere('id', $item['id']);
 
                     if ($lastItemVal == null) {
-                        $department->items()->attach($item['id'], ['value' => $item['value']['value'] * $count]);
+                        $department->items()->attach($item['id'], ['value' => $item['value']['value'] * $count ,
+
+                            'values' => $item['value']['values']
+                            ]);
                     } else {
                         $lastItemVal->value->value = $lastItemVal->value->value + ($item['value']['value'] * $count);
+
+                        $values = json_decode($item['value']['values']);
+                        $list=json_decode($lastItemVal->value->values);
+
+                        foreach ($values as $key => $val){
+
+                            $list[$key]= $list[$key]+$values[$key];
+                        }
+
                         $lastItemVal->value->push();
                     }
 
@@ -176,15 +212,19 @@ class TransformationController extends Controller
                 $rec->save();
 
                 // update items in  department
+
                 foreach ($tr->inputs as $item) {
+
+
                     ///todo recode this
-                    $rec->items()->attach([$item->id => ['value' => $item->value->value]  ]);
+                    $rec->items()->attach([$item->id => ['value' => $item->value->value ,'isInput'=>true , 'values'=> $item->value->values]  ]);
                 }
 
                 // update output items in department
                 foreach ($tr->outputs as $item) {
+
                     ///todo recode this
-                    $rec->items()->attach([$item->id => ['value' => $item->value->value]  ]);
+                    $rec->items()->attach([$item->id => ['value' => $item->value->value  ,'isInput'=>false , 'values'=> $item->value->values ]  ]);
 
                 }
 
