@@ -1,4 +1,7 @@
 //php artisan laravel-swagger:generate --filter="/api" > storage\api-docs\api-docs.json
+//https://products.aspose.app/cells/conversion/excel-to-json
+//https://codebeautify.org/json-to-php-array-converter
+
   // Get All
   /**
      * @OA\GET(
