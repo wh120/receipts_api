@@ -35,13 +35,13 @@ class StoreTransformationRequest extends FormRequest
 //            'items.*.id' => ['integer' ,'required' ],
 
             'inputs' => ['array' ,'min:1'],
-            'inputs.*.value' => ['numeric' ,'required' , 'min:1'],
+            'inputs.*.value' => ['numeric' ,'required' , 'min:0'],
             'inputs.*.id' => ['integer' ,'required' ],
             'inputs.*.values' => ['array' , 'min:0'],
             'inputs.*.values.*' => ['numeric'],
 
             'outputs' => ['array' ,'min:1'],
-            'outputs.*.value' => ['numeric' ,'required' , 'min:1'],
+            'outputs.*.value' => ['numeric' ,'required' , 'min:0'],
 
             'outputs.*.id' => ['numeric' ,'required' ],
 
