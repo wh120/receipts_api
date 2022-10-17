@@ -335,10 +335,13 @@ class ReceiptController extends Controller
             ->where('created_by_user_id', $user->id)->orderBy('id', 'DESC')->simplePaginate( );
         return $this->sendItem($receipts, );
     }
+
+
     public function approveReceipt(Request $request)
     {
         $user = $request->user();
         $receipt = Receipt::where('id',$request->id)->firstOrFail();
+
 
         if($receipt->accepted_at != null)   return $this->sendError($this->getMessage('receipt already approved'));
 
@@ -371,11 +374,22 @@ class ReceiptController extends Controller
 
                         $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item->id);
 
-                        if ($lastItemVal == null) {
-
-                            $toDepartment->items()->attach($item->id, ['value' => ($item->value->value)]);
-                        } else {
+                        if($lastItemVal == null){
+                            $toDepartment->items()->attach($item['id'],
+                                ['value' => $item->value->value , 'values' => $item->value->values ]
+                            );
+                        }
+                        else{
                             $lastItemVal->value->value = $lastItemVal->value->value + $item->value->value;
+
+                            $values = json_decode($item->value->values);
+                            $list=json_decode($lastItemVal->value->values);
+
+
+                            foreach ($values as $key => $val){
+                                $list[$key]= $list[$key]+$values[$key];
+                            }
+                            $lastItemVal->value->values = json_encode($list);
                             $lastItemVal->value->push();
                         }
 
@@ -383,13 +397,24 @@ class ReceiptController extends Controller
                     else if($type->value == 'input'){
 
                         // update items in target  department
-                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item->id);
+                        $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item->id);
 
                         if($lastItemVal == null){
-                            $toDepartment->items()->attach($item->id, ['value' => $item->value->value]);
+                            $toDepartment->items()->attach($item['id'],
+                                ['value' => $item->value->value , 'values' => $item->value->values ]
+                            );
                         }
                         else{
                             $lastItemVal->value->value = $lastItemVal->value->value + $item->value->value;
+
+                            $values = json_decode($item->value->values);
+                            $list=json_decode($lastItemVal->value->values);
+
+
+                            foreach ($values as $key => $val){
+                                $list[$key]= $list[$key]+$values[$key];
+                            }
+                            $lastItemVal->value->values = json_encode($list);
                             $lastItemVal->value->push();
                         }
                     }

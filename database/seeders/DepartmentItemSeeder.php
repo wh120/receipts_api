@@ -6,7 +6,9 @@ use App\Models\Department;
 use App\Models\Item;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
+//php artisan db:seed --class=DepartmentItemSeeder
 class DepartmentItemSeeder extends Seeder
 {
     public static $array = [
@@ -2272,6 +2274,7 @@ class DepartmentItemSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('department_item')->delete();
         $data = DepartmentItemSeeder::$array;
         foreach ($data as $dept => $items) {
             $department = Department::firstOrCreate(['name' => $dept]);

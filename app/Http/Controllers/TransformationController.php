@@ -134,8 +134,12 @@ class TransformationController extends Controller
                     return $this->sendError($this->getMessage('do not have enough quantities'));
                 }
 
+
+
                 $values = json_decode($item['value']['values']);
                 $myValues=json_decode($myItem->value->values);
+
+                return $this->sendError('error ssssssss' ,$myItem );
 
 
                 foreach ($values as $key =>$val){
