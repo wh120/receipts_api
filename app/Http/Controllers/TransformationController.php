@@ -139,7 +139,7 @@ class TransformationController extends Controller
                 $values = json_decode($item['value']['values']);
                 $myValues=json_decode($myItem->value->values);
 
-                return $this->sendError('error ssssssss' ,$myItem );
+
 
 
                 foreach ($values as $key =>$val){
