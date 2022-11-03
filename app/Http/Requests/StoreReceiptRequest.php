@@ -24,16 +24,19 @@ class StoreReceiptRequest extends FormRequest
     public function rules()
     {
         return [
-            'receipt_number' => 'nullable',
+//            'receipt_number' => 'nullable',
             'must_approved_by_role_id' =>['integer' , 'nullable' , 'exists:roles,id'  ],
             'from_department_id' =>['integer'  ,'nullable', 'exists:departments,id'  ],
             'to_department_id' =>['integer'  ,'required', 'exists:departments,id'  ],
             'receipt_type_id' => ['integer' , ' required' , 'exists:receipt_types,id'],
             'description' => ['nullable' , 'string'],
-            'items' => ['array' ,'min:1'],
+            'items' => ['array' ,'min:0'],
             'items.*.id' => ['integer' ,'required'],
-            'items.*.value' => ['numeric' ,'required'],
-            'items.*.values' => ['json' ,'required'],
+
+            'items.*.value0' => ['numeric' ,'nullable' , 'min:0'],
+            'items.*.value1' => ['numeric' ,'nullable' , 'min:0'],
+            'items.*.value2' => ['numeric' ,'nullable' , 'min:0'],
+
 
 
         ];

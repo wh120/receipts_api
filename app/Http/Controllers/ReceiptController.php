@@ -82,19 +82,6 @@ class ReceiptController extends Controller
         $type =ReceiptType::find($params["receipt_type_id"]);
 
 
-//        check values
-
-        foreach ($params['items'] as $item){
-
-
-//            $values =);
-            $itm = Item::find($item['id'])->loadCount('units');
-
-            if($itm['units_count'] != count(json_decode($item['values'])))
-                return $this->sendError($this->getMessage('do not have items'));
-        }
-
-
         if($type->value == 'output' || $type->value == 'request'){
 
             if($request->must_approved_by_role_id != null){
@@ -141,7 +128,6 @@ class ReceiptController extends Controller
             }
 
 
-
             $fromDepartment = Department::find($params['from_department_id']);
             $haveItems = $fromDepartment->items;
 
@@ -153,40 +139,43 @@ class ReceiptController extends Controller
                     $myItem = $haveItems->firstWhere('id', $item['id']);
 
 
-
                     if (!$myItem) {
                         return $this->sendError($this->getMessage('do not have items'));
-                    } else if ($myItem->value->value < $item['value']) {
+                    } else  {
 
-                        return $this->sendError($this->getMessage('do not have enough quantities'));
-                    }
+                        if ($myItem->value->value0 < $item['value0']||
+                            $myItem->value->value1 < $item['value1']||
+                            $myItem->value->value2 < $item['value2']
 
-                    $values = json_decode($item['values']);
-                    $myValues=json_decode($myItem->value->values);
-                    foreach ($values as $key =>$val){
-                        if($myValues[$key] < $values[$key])
-                            return $this->sendError($this->getMessage('do not have enough quantities'));
+                        )
+                            return $this->sendError($this->getMessage('do not have enough x') .$myItem->name);
 
                     }
-
                 }
             }
          }
 
         else if($type->value == 'input'){
 
-            if(!$user->isAdmin())
-                return $this->sendError($this->getMessage('input receipts must created by admin'));
+            if(!$user->isDataAdmin())
+                return $this->sendError($this->getMessage('input receipts must created by data admin'));
 
         }
+
 
 
         try {
 
             $model= null;
+
             DB::transaction(function () use ($params , &$model ,$type , $user){
                 $toDepartment = Department::find($params['to_department_id']);
+                $fromDepartment = Department::find($params['from_department_id']);
                 $model = Receipt::create( $params);
+                if($type->value == 'output')
+                    $fromDepartment->load('items');
+                if($type->value == 'input')
+                    $toDepartment->load('items');
 
                 foreach ($params['items'] as $item)
                 {
@@ -194,23 +183,11 @@ class ReceiptController extends Controller
                     if($type->value == 'output'){
 
                         // update items in from department
-                        $fromDepartment = Department::find($params['from_department_id']);
-                        $lastItemVal =  $fromDepartment->items()->firstWhere('items.id',$item['id']);
-                        $lastItemVal->value->value = $lastItemVal->value->value - $item['value'];
 
-                        $values = json_decode($item['values']);
-                        $list=json_decode($lastItemVal->value->values);
-
-                        foreach ($values as $key => $val){
-
-                            $list[$key]= $list[$key]-$values[$key];
-                        }
-                        $lastItemVal->value->values = json_encode($list);
-
-
-//                        if($lastItemVal->value->value ==0){
-//                            $fromDepartment->items()->detach($lastItemVal) ;
-//                        }
+                        $lastItemVal =  $fromDepartment->items->firstWhere('id',$item['id']);
+                        $lastItemVal->value->value0 = $lastItemVal->value->value0 - $item['value0'];
+                        $lastItemVal->value->value1 = $lastItemVal->value->value1 - $item['value1'];
+                        $lastItemVal->value->value2 = $lastItemVal->value->value2 - $item['value2'];
                         $lastItemVal->value->push();
 
                         // update items in target department
@@ -219,7 +196,11 @@ class ReceiptController extends Controller
                             $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item['id']);
 
                             if ($lastItemVal == null) {
-                                $toDepartment->items()->attach($item['id'], ['value' => $item['value']]);
+                                $toDepartment->items()->attach($item['id'],
+                                    ['value0' => $item['value0']],
+                                    ['value1' => $item['value1']],
+                                    ['value2' => $item['value2']]
+                                );
                             } else {
                                 $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
                                 $lastItemVal->value->push();
@@ -229,33 +210,31 @@ class ReceiptController extends Controller
                     else if($type->value == 'input'  ){
 
                         // update items in target  department
-                        $lastItemVal =  $toDepartment->items()->firstWhere('items.id',$item['id']);
-
+                        $lastItemVal =  $toDepartment->items->firstWhere('id',$item['id']);
 
                         if($lastItemVal == null){
                             $toDepartment->items()->attach($item['id'],
-                                ['value' => $item['value'] , 'values' => $item['values'] ]
+                                [
+                                    'value0' => $item['value0'] ,
+                                    'value1' => $item['value1'] ,
+                                    'value2' => $item['value2']
+                                ]
                             );
                         }
                         else{
-                            $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
-                            $values = json_decode($item['values']);
-                            $list=json_decode($lastItemVal->value->values);
-
-
-                            foreach ($values as $key => $val){
-
-                                $list[$key]= $list[$key]+$values[$key];
-                            }
-                            $lastItemVal->value->values = json_encode($list);
+                            $lastItemVal->value->value0 = $lastItemVal->value->value0 + $item['value0'];
+                            $lastItemVal->value->value1 = $lastItemVal->value->value1 + $item['value1'];
+                            $lastItemVal->value->value2 = $lastItemVal->value->value2 + $item['value2'];
                             $lastItemVal->value->push();
                         }
                     }
 
                     $model->items()->attach($item['id'],
-                        ['value' => $item['value']  ,
-                            'values' => $item['values'],
-                            'isInput' => true],
+                        [
+                            'value0' => $item['value0']  ,
+                            'value1' => $item['value1']  ,
+                            'value2' => $item['value2']  ,
+                            'isInput' => true]
                     );
 
                 }

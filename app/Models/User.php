@@ -86,6 +86,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->roles()->firstWhere('code','admin') != null;
     }
+    public function isDataAdmin()
+    {
+        if($this->isAdmin()) return  true;
+        return $this->roles()->firstWhere('code','data_admin') != null;
+    }
 
 
 }

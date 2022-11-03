@@ -14,7 +14,7 @@ class Receipt extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class)->as('value')->withPivot('value' , 'values' ,'isInput' );
+        return $this->belongsToMany(Item::class)->as('value')->withPivot('value0' , 'value1' , 'value2' ,'isInput' );
     }
 
     public function must_approved_by_role()

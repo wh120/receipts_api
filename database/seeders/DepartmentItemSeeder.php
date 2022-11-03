@@ -2287,13 +2287,21 @@ class DepartmentItemSeeder extends Seeder
                 if($itemData != null){
 
                     $value =  $item["الكمية"];
+                    $value2=0;
+                    $value3=0;
+                    if(array_key_exists("كمية 2",$item))
+                        $value2 =  $item["كمية 2"];
+                    if(array_key_exists("كمية 3",$item))
+                        $value3 =  $item["كمية 3"];
                     $values=[];
                     if(array_key_exists("كمية 2",$item))$values[]=sprintf("%.2f", $item["كمية 2"]);
                     if(array_key_exists("كمية 3",$item))$values[]=sprintf("%.2f", $item["كمية 3"]);
 
                     $department->items()->attach($itemData->id, [
-                        'values' => json_encode( $values),
-                        'value' => $value
+
+                        'value0' => $value,
+                        'value1' => $value2,
+                        'value2' => $value3,
                     ]);
                 }
 

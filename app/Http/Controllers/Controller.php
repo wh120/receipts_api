@@ -179,9 +179,9 @@ class Controller extends BaseController
         ],
 
 
-        'input receipts must created by admin'=>[
-            'en' =>'Input receipts only create from the admin',
-            'ar' => "يتم إنشاء إيصالات الإدخال فقط من المدير"
+        'input receipts must created by data admin'=>[
+            'en' =>'Input receipts only create from the data admin',
+            'ar' => "يتم إنشاء إيصالات الإدخال فقط من قِبل مدير البيانات"
         ],
         'from department equal to department'=>[
             'en' =>'From department same destination department',
@@ -196,6 +196,11 @@ class Controller extends BaseController
         'do not have enough quantities'=>[
             'en' =>'You do not have enough quantities to create the receipt',
             'ar' => "ليس لديك كميات كافية لإنشاء الإيصال"
+        ],
+
+        'do not have enough x'=>[
+            'en' =>'You do not have enough ',
+            'ar' => "ليس لديك كمية من "
         ],
 
         'receipt already approved'=>[

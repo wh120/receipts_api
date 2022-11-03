@@ -1850,14 +1850,9 @@
                             "type": "object",
                             "required": [
                                 "to_department_id",
-                                "items.*.id",
-                                "items.*.value",
-                                "items.*.values"
+                                "items.*.id"
                             ],
                             "properties": {
-                                "receipt_number": {
-                                    "type": "string"
-                                },
                                 "must_approved_by_role_id": {
                                     "type": "integer"
                                 },
@@ -1882,11 +1877,14 @@
                                                 "id": {
                                                     "type": "integer"
                                                 },
-                                                "value": {
+                                                "value0": {
                                                     "type": "number"
                                                 },
-                                                "values": {
-                                                    "type": "string"
+                                                "value1": {
+                                                    "type": "number"
+                                                },
+                                                "value2": {
+                                                    "type": "number"
                                                 }
                                             }
                                         }
@@ -2129,9 +2127,6 @@
                         "schema": {
                             "type": "object",
                             "required": [
-                                "items.*.value",
-                                "items.*.isInput",
-                                "items.*.id",
                                 "inputs.*.value",
                                 "inputs.*.id",
                                 "outputs.*.value",
@@ -2144,25 +2139,6 @@
                                 "description": {
                                     "type": "string"
                                 },
-                                "items": {
-                                    "type": "array",
-                                    "items": [
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "value": {
-                                                    "type": "integer"
-                                                },
-                                                "isInput": {
-                                                    "type": "boolean"
-                                                },
-                                                "id": {
-                                                    "type": "integer"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                },
                                 "inputs": {
                                     "type": "array",
                                     "items": [
@@ -2170,10 +2146,18 @@
                                             "type": "object",
                                             "properties": {
                                                 "value": {
-                                                    "type": "integer"
+                                                    "type": "number"
                                                 },
                                                 "id": {
                                                     "type": "integer"
+                                                },
+                                                "values": {
+                                                    "type": "array",
+                                                    "items": [
+                                                        {
+                                                            "type": "number"
+                                                        }
+                                                    ]
                                                 }
                                             }
                                         }
@@ -2186,16 +2170,16 @@
                                             "type": "object",
                                             "properties": {
                                                 "value": {
-                                                    "type": "integer"
+                                                    "type": "number"
                                                 },
                                                 "id": {
-                                                    "type": "integer"
+                                                    "type": "number"
                                                 },
                                                 "values": {
                                                     "type": "array",
                                                     "items": [
                                                         {
-                                                            "type": "integer"
+                                                            "type": "number"
                                                         }
                                                     ]
                                                 }

@@ -18,6 +18,6 @@ class Department extends Model
     }
     public function items()
     {
-        return $this->belongsToMany(Item::class)->as('value')->withPivot('value' , 'values' );;
+        return $this->belongsToMany(Item::class)->as('value')->withPivot( 'value0' , 'value1', 'value2' );
     }
 }
