@@ -52,6 +52,20 @@ class Receipt extends Model
         return $this->belongsTo(Transformation::class );
     }
 
+    /**
+     * @param $item
+     */
+    public function addItem( $item): void
+    {
+        $this->items()->attach($item['id'],
+            [
+                'value0' => $item['value0']  ,
+                'value1' => $item['value1']  ,
+                'value2' => $item['value2']  ,
+                'isInput' => true]
+        );
+    }
+
 
 
 

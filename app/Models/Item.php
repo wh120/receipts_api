@@ -33,5 +33,13 @@ class Item extends Model
         return $this->belongsTo(ItemCategory::class);
     }
 
+    public function canConsume($item , $count=1):bool{
+
+        return !($this->value->value0 < $item['value0'] *$count ||
+            $this->value->value1 < $item['value1'] *$count ||
+            $this->value->value2 < $item['value2'] *$count )  ;
+
+    }
+
 
 }

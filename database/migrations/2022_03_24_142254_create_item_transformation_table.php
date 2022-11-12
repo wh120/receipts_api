@@ -22,7 +22,7 @@ class CreateItemTransformationTable extends Migration
             $table->double('value1')->default(0);
             $table->double('value2')->default(0);
             $table->double('value4')->default(0);
-            $table->json('values')->nullable();
+
             $table->boolean('isInput');
             $table->timestamps();
         });

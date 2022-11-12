@@ -143,11 +143,7 @@ class ReceiptController extends Controller
                         return $this->sendError($this->getMessage('do not have items'));
                     } else  {
 
-                        if ($myItem->value->value0 < $item['value0']||
-                            $myItem->value->value1 < $item['value1']||
-                            $myItem->value->value2 < $item['value2']
-
-                        )
+                        if (!$myItem->canConsume($item))
                             return $this->sendError($this->getMessage('do not have enough x') .$myItem->name);
 
                     }
@@ -172,71 +168,38 @@ class ReceiptController extends Controller
                 $toDepartment = Department::find($params['to_department_id']);
                 $fromDepartment = Department::find($params['from_department_id']);
                 $model = Receipt::create( $params);
+
+
+
                 if($type->value == 'output')
-                    $fromDepartment->load('items');
-                if($type->value == 'input')
-                    $toDepartment->load('items');
-
-                foreach ($params['items'] as $item)
                 {
-
-                    if($type->value == 'output'){
-
+                    $fromDepartment->load('items');
+                    foreach ($params['items'] as $item)
+                    {
                         // update items in from department
 
-                        $lastItemVal =  $fromDepartment->items->firstWhere('id',$item['id']);
-                        $lastItemVal->value->value0 = $lastItemVal->value->value0 - $item['value0'];
-                        $lastItemVal->value->value1 = $lastItemVal->value->value1 - $item['value1'];
-                        $lastItemVal->value->value2 = $lastItemVal->value->value2 - $item['value2'];
-                        $lastItemVal->value->push();
+                        $fromDepartment->removeItem($item);
 
                         // update items in target department
                         if($user->isAdmin() && false)
                         {
-                            $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item['id']);
+                            $toDepartment->addItem($item);
 
-                            if ($lastItemVal == null) {
-                                $toDepartment->items()->attach($item['id'],
-                                    ['value0' => $item['value0']],
-                                    ['value1' => $item['value1']],
-                                    ['value2' => $item['value2']]
-                                );
-                            } else {
-                                $lastItemVal->value->value = $lastItemVal->value->value + $item['value'];
-                                $lastItemVal->value->push();
-                            }
                         }
+                        $model->addItem($item);
+
                     }
-                    else if($type->value == 'input'  ){
+                }
+                else if($type->value == 'input'){
+                    $toDepartment->load('items');
+                    foreach ($params['items'] as $item)
+                    {
 
                         // update items in target  department
-                        $lastItemVal =  $toDepartment->items->firstWhere('id',$item['id']);
+                        $toDepartment->addItem($item);
+                        $model->addItem($item);
 
-                        if($lastItemVal == null){
-                            $toDepartment->items()->attach($item['id'],
-                                [
-                                    'value0' => $item['value0'] ,
-                                    'value1' => $item['value1'] ,
-                                    'value2' => $item['value2']
-                                ]
-                            );
-                        }
-                        else{
-                            $lastItemVal->value->value0 = $lastItemVal->value->value0 + $item['value0'];
-                            $lastItemVal->value->value1 = $lastItemVal->value->value1 + $item['value1'];
-                            $lastItemVal->value->value2 = $lastItemVal->value->value2 + $item['value2'];
-                            $lastItemVal->value->push();
-                        }
                     }
-
-                    $model->items()->attach($item['id'],
-                        [
-                            'value0' => $item['value0']  ,
-                            'value1' => $item['value1']  ,
-                            'value2' => $item['value2']  ,
-                            'isInput' => true]
-                    );
-
                 }
 
             });
@@ -249,9 +212,6 @@ class ReceiptController extends Controller
         }
     }
 
-    public static function checkQuantities(){
-
-    }
 
 
 
@@ -322,6 +282,7 @@ class ReceiptController extends Controller
         $receipt = Receipt::where('id',$request->id)->firstOrFail();
 
 
+
         if($receipt->accepted_at != null)   return $this->sendError($this->getMessage('receipt already approved'));
 
         $roles  = auth()->user()->roles()->pluck('id')->toArray();
@@ -330,76 +291,34 @@ class ReceiptController extends Controller
             return $this->sendError($this->getMessage('can not approve receipt'),$receipt);
 
 
-       // return $receipt->receipt_type;
-
-
         try {
-
-
             DB::transaction(function () use ($request  ,$receipt ,$user ){
 
                 $receipt->accepted_by_user_id = auth()->user()->id;
                 $receipt->accepted_at=Carbon::now();
                 $receipt->update();
 
-
                 $toDepartment = Department::find($receipt->to_department_id);
                 $type =$receipt->receipt_type;
 
 
-                foreach ($receipt->items as $item)
-                {
-                    if($type->value == 'output'){
-
-                        $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item->id);
-
-                        if($lastItemVal == null){
-                            $toDepartment->items()->attach($item['id'],
-                                ['value' => $item->value->value , 'values' => $item->value->values ]
-                            );
-                        }
-                        else{
-                            $lastItemVal->value->value = $lastItemVal->value->value + $item->value->value;
-
-                            $values = json_decode($item->value->values);
-                            $list=json_decode($lastItemVal->value->values);
+                if($type->value == 'output'){
 
 
-                            foreach ($values as $key => $val){
-                                $list[$key]= $list[$key]+$values[$key];
-                            }
-                            $lastItemVal->value->values = json_encode($list);
-                            $lastItemVal->value->push();
-                        }
+                    $toDepartment->load('items');
 
-                    }
-                    else if($type->value == 'input'){
-
-                        // update items in target  department
-                        $lastItemVal = $toDepartment->items()->firstWhere('items.id', $item->id);
-
-                        if($lastItemVal == null){
-                            $toDepartment->items()->attach($item['id'],
-                                ['value' => $item->value->value , 'values' => $item->value->values ]
-                            );
-                        }
-                        else{
-                            $lastItemVal->value->value = $lastItemVal->value->value + $item->value->value;
-
-                            $values = json_decode($item->value->values);
-                            $list=json_decode($lastItemVal->value->values);
-
-
-                            foreach ($values as $key => $val){
-                                $list[$key]= $list[$key]+$values[$key];
-                            }
-                            $lastItemVal->value->values = json_encode($list);
-                            $lastItemVal->value->push();
-                        }
+                    foreach ($receipt->items as $item)
+                    {
+                        $item->value->id =$item->id;
+                        $toDepartment->addItem($item->value);
                     }
 
-                   // $receipt->items()->attach($item['id'], ['value' => $item['value']]);
+                }else if($type->value == 'input' && false){
+                    foreach ($receipt->items as $item)
+                    {
+                        $toDepartment->addItem($item);
 
+                    }
                 }
 
             });
@@ -412,5 +331,7 @@ class ReceiptController extends Controller
         }
 
     }
+
+
 
 }

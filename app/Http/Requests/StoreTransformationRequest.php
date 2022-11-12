@@ -28,25 +28,19 @@ class StoreTransformationRequest extends FormRequest
             'name' => ['string' , ' required'  ],
             'description' => ['nullable' , 'string'],
 
-
-//            'items' => ['array' ,'min:0'],
-//            'items.*.value' => ['integer' ,'required' , 'min:0'],
-//            'items.*.isInput' => ['boolean' ,'required' ],
-//            'items.*.id' => ['integer' ,'required' ],
-
             'inputs' => ['array' ,'min:1'],
-            'inputs.*.value' => ['numeric' ,'required' , 'min:0'],
             'inputs.*.id' => ['integer' ,'required' ],
-            'inputs.*.values' => ['array' , 'min:0'],
-            'inputs.*.values.*' => ['numeric'],
+            'inputs.*.value0' => ['numeric' ,'nullable' , 'min:0'],
+            'inputs.*.value1' => ['numeric' ,'nullable' , 'min:0'],
+            'inputs.*.value2' => ['numeric' ,'nullable' , 'min:0'],
+
 
             'outputs' => ['array' ,'min:1'],
-            'outputs.*.value' => ['numeric' ,'required' , 'min:0'],
-
             'outputs.*.id' => ['numeric' ,'required' ],
+            'outputs.*.value0' => ['numeric' ,'nullable' , 'min:0'],
+            'outputs.*.value1' => ['numeric' ,'nullable' , 'min:0'],
+            'outputs.*.value2' => ['numeric' ,'nullable' , 'min:0'],
 
-            'outputs.*.values' => ['array' , 'min:0'],
-            'outputs.*.values.*' => ['numeric'],
 
 
         ];

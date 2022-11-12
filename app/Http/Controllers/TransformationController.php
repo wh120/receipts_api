@@ -45,48 +45,23 @@ class TransformationController extends Controller
     public function store(StoreTransformationRequest $request)
     {
         $params = $request->validated();
-        $hasInput = false;
-        $hasOutput=false;
-
         try {
-
-//            foreach ($request->items as  $value){
-//                if(Item::find($value['id']) == null )return  $this->notFoundError('Item '.$value['id']. ' not found');
-//
-//                if($value['isInput'] ==1)
-//                    $hasInput=true;
-//                if($value['isInput'] ==0)
-//                    $hasOutput=true;
-//            }
-//            if(!$hasOutput ||!$hasInput) return $this->sendError('input or output can not be empty');
-//
-//
-
             $model=null;
             DB::transaction(function () use ($params , &$model ){
                 $model = Transformation::create( $params);
 
                 foreach ($params['inputs'] as $item)
                 {
-
-                    $model->items()->attach(
-                        $item['id'],
-                        ['value' => $item['value'] ,'isInput' => 1 ,  'values' => json_encode($item['values'])
-                        ]
-                    );
-
+                    $model->addItem($item,1);
                 }
 
                 foreach ($params['outputs'] as $item)
                 {
-
-                    $model->items()->attach($item['id'], ['value' => $item['value'] ,'isInput' => 0 ,  'values' => json_encode($item['values']) ]);
-
+                    $model->addItem($item,0);
                 }
 
             });
 
-         //   $model->items()->attach($request->items);
             return $this->created($model->load('items') );
         } catch (\Exception $e) {
             return $this->catchError($e->getTrace() );
@@ -130,72 +105,24 @@ class TransformationController extends Controller
 
                 if (!$myItem) {
                     return $this->sendError($this->getMessage('do not have items'));
-                } else if ($myItem->value->value < ($item['value']['value'] * $count)) {
+                } else if ( !$myItem->canConsume($item->value,$count)) {
+                    !$myItem->canConsume($item);
                     return $this->sendError($this->getMessage('do not have enough quantities'));
                 }
-
-
-
-                $values = json_decode($item['value']['values']);
-                $myValues=json_decode($myItem->value->values);
-
-
-
-
-                foreach ($values as $key =>$val){
-                    if($myValues[$key] < $values[$key])
-                        return $this->sendError($this->getMessage('do not have enough quantities'));
-
-                }
             }
-
-
 
             DB::transaction(function () use ($params ,$tr,$haveItems,$department,$count , $user){
 
                 // update input items in  department
                 foreach ($tr->inputs as $item) {
-                    $lastItemVal = $haveItems->firstWhere('id', $item['id']);
-                    $lastItemVal->value->value = $lastItemVal->value->value - ( $item['value']['value'] * $count);
-
-                    $values = json_decode($item['value']['values']);
-                    $list=json_decode($lastItemVal->value->values);
-                    foreach ($values as $key => $val){
-
-                        $list[$key]= $list[$key]-$values[$key];
-                    }
-                    $lastItemVal->value->values = json_encode($list);
-
-//                    if ($lastItemVal->value->value == 0) {
-//                        $department->items()->detach($lastItemVal);
-//                    }
-                    $lastItemVal->value->push();
-
+                    $item->value->id = $item->id;
+                    $department->removeItem($item->value , $count);
                 }
                 // update output items in department
 
                 foreach ($tr->outputs as $item) {
-
-                    $lastItemVal = $haveItems->firstWhere('id', $item['id']);
-
-                    if ($lastItemVal == null) {
-                        $department->items()->attach($item['id'], ['value' => $item['value']['value'] * $count ,
-
-                            'values' => $item['value']['values']
-                            ]);
-                    } else {
-                        $lastItemVal->value->value = $lastItemVal->value->value + ($item['value']['value'] * $count);
-
-                        $values = json_decode($item['value']['values']);
-                        $list=json_decode($lastItemVal->value->values);
-
-                        foreach ($values as $key => $val){
-
-                            $list[$key]= $list[$key]+$values[$key];
-                        }
-
-                        $lastItemVal->value->push();
-                    }
+                    $item->value->id = $item->id;
+                    $department->addItem($item->value, $count);
 
                 }
 
@@ -216,21 +143,21 @@ class TransformationController extends Controller
                 $rec->save();
 
                 // update items in  department
-
-                foreach ($tr->inputs as $item) {
-
-
-                    ///todo recode this
-                    $rec->items()->attach([$item->id => ['value' => $item->value->value ,'isInput'=>true , 'values'=> $item->value->values]  ]);
-                }
+///todo
+//                foreach ($tr->inputs as $item) {
+//
+//
+//                    ///todo recode this
+//                    $rec->items()->attach([$item->id => ['value' => $item->value->value ,'isInput'=>true , 'values'=> $item->value->values]  ]);
+//                }
 
                 // update output items in department
-                foreach ($tr->outputs as $item) {
-
-                    ///todo recode this
-                    $rec->items()->attach([$item->id => ['value' => $item->value->value  ,'isInput'=>false , 'values'=> $item->value->values ]  ]);
-
-                }
+//                foreach ($tr->outputs as $item) {
+//
+//                    ///todo recode this
+//                    $rec->items()->attach([$item->id => ['value' => $item->value->value  ,'isInput'=>false , 'values'=> $item->value->values ]  ]);
+//
+//                }
 
 
 
