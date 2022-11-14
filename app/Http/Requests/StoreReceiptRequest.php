@@ -33,9 +33,9 @@ class StoreReceiptRequest extends FormRequest
             'items' => ['array' ,'min:0'],
             'items.*.id' => ['integer' ,'required'],
 
-            'items.*.value0' => ['numeric' ,'nullable' , 'min:0'],
-            'items.*.value1' => ['numeric' ,'nullable' , 'min:0'],
-            'items.*.value2' => ['numeric' ,'nullable' , 'min:0'],
+            'items.*.value0' => ['numeric'  , 'min:0'],
+            'items.*.value1' => ['numeric'   , 'min:0'],
+            'items.*.value2' => ['numeric'   , 'min:0'],
 
 
 

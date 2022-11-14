@@ -26,7 +26,8 @@ class RoleSeeder extends Seeder
             array('id' => '11','name' => 'مدير قسم تحضير الميلو','code' => 'PNw29','department_id' => '11','created_at' => '2022-09-03 06:47:08','updated_at' => '2022-09-03 06:47:08'),
             array('id' => '12','name' => 'مدير قسم لانتاج','code' => '2vxeE','department_id' => '2','created_at' => '2022-09-03 06:47:50','updated_at' => '2022-09-03 06:47:50'),
             array('id' => '13','name' => 'مدير قسم المشتريات','code' => 'ZE1nF','department_id' => '3','created_at' => '2022-09-03 06:48:08','updated_at' => '2022-09-03 06:48:08'),
-            array('id' => '14','name' => 'مدير قسم لإتلاف','code' => 'E1hMP','department_id' => '5','created_at' => '2022-09-03 06:48:34','updated_at' => '2022-09-03 06:48:34')
+            array('id' => '14','name' => 'مدير قسم لإتلاف','code' => 'E1hMP','department_id' => '5','created_at' => '2022-09-03 06:48:34','updated_at' => '2022-09-03 06:48:34'),
+            array('id' => '15','name' => 'زبون 1','code' => 'Xi1Tu','department_id' => '12','created_at' => '2022-10-12 08:58:51','updated_at' => '2022-10-12 08:58:51')
         );
 
         Role::insert($roles);

@@ -37,9 +37,9 @@ class StoreTransformationRequest extends FormRequest
 
             'outputs' => ['array' ,'min:1'],
             'outputs.*.id' => ['numeric' ,'required' ],
-            'outputs.*.value0' => ['numeric' ,'nullable' , 'min:0'],
-            'outputs.*.value1' => ['numeric' ,'nullable' , 'min:0'],
-            'outputs.*.value2' => ['numeric' ,'nullable' , 'min:0'],
+            'outputs.*.value0' => ['numeric'  , 'min:0'],
+            'outputs.*.value1' => ['numeric'   , 'min:0'],
+            'outputs.*.value2' => ['numeric' , 'min:0'],
 
 
 

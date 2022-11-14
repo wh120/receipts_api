@@ -23,7 +23,7 @@ class CreateItemReceiptsTable extends Migration
             $table->double('value1')->default(0);
             $table->double('value2')->default(0);
             $table->double('value4')->default(0);
-            $table->json('values')->nullable();
+
             $table->timestamps();
 
             $table->unique(['receipt_id', 'item_id']);

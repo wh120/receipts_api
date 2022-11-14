@@ -30,11 +30,10 @@ class StoreItemRequest extends BaseRequest
             'unit'=>'required|max:255',
             // 'is_default_unit'=> 'nullable',
             'item_category_id' =>'required|exists:item_categories,id|integer',
-            'units' => ['array' , 'nullable'],
+            'units' => ['array' , 'nullable' , 'max:3'],
             'units.*.name' => [  'required' , 'string'],
             'units.*.conversion_factor'  => [ 'required' , 'integer' ],
- 
- 
+
 
         ];
     }

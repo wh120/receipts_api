@@ -142,7 +142,7 @@ class TransformationController extends Controller
                 $rec->transformation_id = $tr->id;
                 $rec->save();
 
-                // update items in  department
+                // update items in  departmenta
 ///todo
 //                foreach ($tr->inputs as $item) {
 //

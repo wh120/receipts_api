@@ -102,7 +102,7 @@ class ReceiptController extends Controller
                 return $this->sendError($this->getMessage('output receipts need from department'));
             }
             else{
-                //todo global
+
                 if($params['from_department_id'] == $params['to_department_id'])
                     return $this->sendError($this->getMessage('from department equal to department'));
 
@@ -116,9 +116,7 @@ class ReceiptController extends Controller
                             $res = true;
                          //   break;
                         }
-//                        if($item->department->id == $params['to_department_id']){
-//                            return $this->sendError($this->getMessage('auth user not in from department'));
-//                        }
+
                     }
                 }
                 if(!$res ) {
