@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('name')->unique();
 //            $table->string('description')->nullable();
             $table->string('unit');
-            $table->string('is_default_unit')->default(true);
+            $table->string('is_default_unit')->nullable()->default(true);
             $table->foreignId('item_category_id')->constrained();
 
 
