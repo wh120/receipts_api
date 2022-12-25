@@ -22,7 +22,9 @@ class TransformationController extends Controller
     public function index()
     {
         return $this->sendList(
-            Transformation::with(['inputs.units' , 'outputs.units'])->get()
+            Transformation::with(['inputs.units' , 'outputs.units'])
+                ->where('is_active',1)
+                ->get()
         );
     }
 
@@ -224,6 +226,30 @@ class TransformationController extends Controller
             if(str_contains (  $e->getMessage() ,  'Cannot delete or update a parent row' ))
                 return $this->sendError($this->getMessage('Record is already in use by another records') );
 
+            return $this->catchError($e->getMessage() );
+        }
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Transformation  $transformation
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function switchActivation($id)
+    {
+        try {
+            $obj = Transformation::find( $id);
+            if($obj == null)
+                return $this->notFoundError();
+
+            $obj->is_active = ! $obj->is_active ;
+            $obj->update();
+            return $this->successfully($obj);
+
+        }
+        catch (\Exception $e) {
             return $this->catchError($e->getMessage() );
         }
     }

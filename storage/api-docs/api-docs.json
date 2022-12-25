@@ -1439,6 +1439,9 @@
                                 "unit": {
                                     "type": "string"
                                 },
+                                "is_default_unit": {
+                                    "type": "string"
+                                },
                                 "item_category_id": {
                                     "type": "integer"
                                 },
@@ -2038,6 +2041,35 @@
                 ]
             }
         },
+        "\/api\/Transformation\/{id}\/switchActivation": {
+            "post": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "",
+                "deprecated": false,
+                "tags": [
+                    "Transformation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "required": true,
+                        "description": ""
+                    }
+                ]
+            }
+        },
         "\/api\/Transformation\/transform": {
             "post": {
                 "summary": "",
@@ -2127,9 +2159,7 @@
                         "schema": {
                             "type": "object",
                             "required": [
-                                "inputs.*.value",
                                 "inputs.*.id",
-                                "outputs.*.value",
                                 "outputs.*.id"
                             ],
                             "properties": {
@@ -2145,19 +2175,17 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "value": {
-                                                    "type": "number"
-                                                },
                                                 "id": {
                                                     "type": "integer"
                                                 },
-                                                "values": {
-                                                    "type": "array",
-                                                    "items": [
-                                                        {
-                                                            "type": "number"
-                                                        }
-                                                    ]
+                                                "value0": {
+                                                    "type": "number"
+                                                },
+                                                "value1": {
+                                                    "type": "number"
+                                                },
+                                                "value2": {
+                                                    "type": "number"
                                                 }
                                             }
                                         }
@@ -2169,19 +2197,17 @@
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "value": {
-                                                    "type": "number"
-                                                },
                                                 "id": {
                                                     "type": "number"
                                                 },
-                                                "values": {
-                                                    "type": "array",
-                                                    "items": [
-                                                        {
-                                                            "type": "number"
-                                                        }
-                                                    ]
+                                                "value0": {
+                                                    "type": "number"
+                                                },
+                                                "value1": {
+                                                    "type": "number"
+                                                },
+                                                "value2": {
+                                                    "type": "number"
                                                 }
                                             }
                                         }

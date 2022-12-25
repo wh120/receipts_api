@@ -16,8 +16,8 @@ class CreateTransformationsTable extends Migration
         Schema::create('transformations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('is_active')->default(true);
             $table->string('description')->nullable();
-
             $table->timestamps();
         });
     }
