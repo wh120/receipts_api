@@ -89,7 +89,7 @@ Route::group([
 
     Route::post('/Transformation/{id}/switchActivation', [ App\Http\Controllers\TransformationController::class, 'switchActivation']);
     Route::post('/Transformation/transform', [ App\Http\Controllers\TransformationController::class, 'transform']);
-    Route::get('/Transformation/inactive', [ App\Http\Controllers\TransformationController::class, 'indexUnActive']);
+    Route::get('/Transformation/inactive', [ App\Http\Controllers\TransformationController::class, 'indexInactive']);
     Route::apiResource('Transformation', App\Http\Controllers\TransformationController::class);
 
 
