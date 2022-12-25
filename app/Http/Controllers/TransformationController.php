@@ -16,7 +16,7 @@ class TransformationController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param  boolean  $isActive
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
@@ -24,6 +24,20 @@ class TransformationController extends Controller
         return $this->sendList(
             Transformation::with(['inputs.units' , 'outputs.units'])
                 ->where('is_active',1)
+                ->get()
+        );
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @param  boolean  $isActive
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function indexUnActive()
+    {
+        return $this->sendList(
+            Transformation::with(['inputs.units' , 'outputs.units'])
+                ->where('is_active',0)
                 ->get()
         );
     }
