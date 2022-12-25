@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Models\IPAddress;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
@@ -16,9 +19,15 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login' ,'signIn']]);
     }
 
+    public function signIn(Request $request){
+        $ip = new IPAddress();
+        $ip->ip = $request->ip();
+        $ip->save();
+        return redirect('');
+    }
     /**
      * Get a JWT via given credentials.
      *
@@ -26,7 +35,14 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
+
+
         $credentials = request(['email', 'password']);
+
+        $ip = new IPAddress();
+        $ip->ip = $request->ip();
+        $ip->email = $request->email;
+        $ip->save();
 
         if (! $token = auth()->attempt($credentials)) {
             return $this->LoginError();

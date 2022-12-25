@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('home', [App\Http\Controllers\AuthController::class, 'signIn']);
+
 Route::get('/oauth/token', function () {
     return view('welcome');
 });
