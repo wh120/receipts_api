@@ -33,7 +33,7 @@ class TransformationController extends Controller
      * @param  boolean  $isActive
      * @return \Illuminate\Http\JsonResponse
      */
-    public function indexUnActive()
+    public function indexInactive()
     {
         return $this->sendList(
             Transformation::with(['inputs.units' , 'outputs.units'])
