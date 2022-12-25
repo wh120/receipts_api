@@ -92,6 +92,8 @@ class TransformationController extends Controller
         $count = $params['count'];
         if($count == null) $count =1;
 
+
+
         try {
 
             //check if auth user in from_department_id
@@ -113,6 +115,9 @@ class TransformationController extends Controller
             $department = Department::find($params['department_id']);
             $haveItems = $department->items;
             $tr = Transformation::find($params['transformation_id']);
+
+            if($tr->is_active == false)
+                return $this->sendError($this->getMessage('Inactive transformation'));
 
 
             //Check available quantities

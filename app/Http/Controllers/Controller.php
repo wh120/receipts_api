@@ -208,6 +208,11 @@ class Controller extends BaseController
             'ar' => "تمت الموافقة على الإيصال بالفعل"
         ],
 
+        'Inactive transformation'=>[
+            'ar' =>'لايمكن استخدام عملية تحويل غير مفعلة',
+            'en' =>'Inactive transformation cannot be used'
+        ],
+
 
     ];
 }
