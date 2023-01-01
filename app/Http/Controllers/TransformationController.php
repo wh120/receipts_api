@@ -158,7 +158,7 @@ class TransformationController extends Controller
                 $rec->to_department_id =  $department->id;
 //                $rec->must_approved_by_role_id = 1;
                 $rec->receipt_type_id = 3;
-                $rec->description = $tr->name;
+                $rec->description = $tr->name . ' (' .$count. ' )';
                 $rec->accepted_at = now();
                 $rec->transformation_id = $tr->id;
                 $rec->transformation_count = $count;
