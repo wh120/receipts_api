@@ -55,8 +55,8 @@ class Department extends Model
         $lastItemVal->value->value1 = $lastItemVal->value->value1 - ($item['value1']*$count);
         $lastItemVal->value->value2 = $lastItemVal->value->value2 - ($item['value2']*$count);
         //todo need test
-        if($lastItemVal->value->value0 == 0 && $lastItemVal->value->value1==0 && $lastItemVal->value->value2==0)
-            $lastItemVal->value->detach();
+//        if($lastItemVal->value->value0 == 0 && $lastItemVal->value->value1==0 && $lastItemVal->value->value2==0)
+//            $lastItemVal->value->detach();
         $lastItemVal->value->push();
 
     }
