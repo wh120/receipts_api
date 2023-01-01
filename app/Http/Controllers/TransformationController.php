@@ -161,6 +161,7 @@ class TransformationController extends Controller
                 $rec->description = $tr->name;
                 $rec->accepted_at = now();
                 $rec->transformation_id = $tr->id;
+                $rec->transformation_count = $count;
                 $rec->save();
 
                 // update items in  departmenta
