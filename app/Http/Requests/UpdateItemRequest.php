@@ -34,7 +34,7 @@ class UpdateItemRequest extends BaseRequest
             'item_category_id' =>'required|exists:item_categories,id|integer',
             'units' => ['array' , 'nullable'],
             'units.*.name' => [  'required' , 'string'],
-            'units.*.conversion_factor'  => [ 'required' , 'integer' ],
+            'units.*.conversion_factor'  => [ 'required' , 'numeric' ],
         ];
     }
 }
