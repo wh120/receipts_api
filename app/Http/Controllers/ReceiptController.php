@@ -261,7 +261,7 @@ class ReceiptController extends Controller
     public function getMyApprovalReceipt()
     {
         $roles  = auth()->user()->roles()->pluck('id');
-        $receipts = Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user.roles.department','created_by_user'])->whereIn('must_approved_by_role_id' ,$roles)
+        $receipts = Receipt::with(['items.units' , 'must_approved_by_role.department' ,'created_by_user.roles.department','created_by_user' ,'accepted_by_user'])->whereIn('must_approved_by_role_id' ,$roles)
          //   ->whereNull('accepted_at' )
             ->orderBy('id', 'DESC')->simplePaginate( );
         return $this->sendItem($receipts, );
