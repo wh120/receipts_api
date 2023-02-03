@@ -66,10 +66,12 @@ class TransformationController extends Controller
             DB::transaction(function () use ($params , &$model ){
                 $model = Transformation::create( $params);
 
+
                 foreach ($params['inputs'] as $item)
                 {
                     $model->addItem($item,1);
                 }
+
 
                 foreach ($params['outputs'] as $item)
                 {
@@ -165,23 +167,6 @@ class TransformationController extends Controller
                 $rec->transformation_count = $count;
                 $rec->save();
 
-                // update items in  departmenta
-///todo
-//                foreach ($tr->inputs as $item) {
-//
-//
-//                    ///todo recode this
-//                    $rec->items()->attach([$item->id => ['value' => $item->value->value ,'isInput'=>true , 'values'=> $item->value->values]  ]);
-//                }
-
-                // update output items in department
-//                foreach ($tr->outputs as $item) {
-//
-//                    ///todo recode this
-//                    $rec->items()->attach([$item->id => ['value' => $item->value->value  ,'isInput'=>false , 'values'=> $item->value->values ]  ]);
-//
-//                }
-
 
 
             });
@@ -218,12 +203,46 @@ class TransformationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateTransformationRequest  $request
-     * @param  \App\Models\Transformation  $transformation
-     * @return \Illuminate\Http\Response
+     * @param    $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(UpdateTransformationRequest $request, Transformation $transformation)
+    public function update(StoreTransformationRequest $request,  $id)
     {
-        //
+        $params = $request->validated();
+
+        try {
+            $model = Transformation::find( $id);
+            if($model == null)
+                return $this->notFoundError( );
+
+
+
+            DB::transaction(function () use ($params , &$model ){
+
+                $model->update( $params);
+
+                $arr =[];
+                foreach ($params['inputs'] as $item)
+                {
+                    $item['isInput'] =1;
+                    $arr += [$item['id'] => $item ];
+                }
+
+
+                foreach ($params['outputs'] as $item)
+                {
+                    $item['isInput'] =0;
+                    $arr += [$item['id'] => $item];
+                }
+                $model->items()->sync($arr) ;
+
+            });
+
+            return $this->updated($model->load('items') );
+
+        } catch (\Exception $e) {
+            return $this->catchError($e->getMessage() );
+        }
     }
 
     /**

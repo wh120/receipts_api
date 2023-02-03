@@ -1455,7 +1455,7 @@
                                                     "type": "string"
                                                 },
                                                 "conversion_factor": {
-                                                    "type": "integer"
+                                                    "type": "number"
                                                 }
                                             }
                                         }
@@ -1563,7 +1563,7 @@
                                                     "type": "string"
                                                 },
                                                 "conversion_factor": {
-                                                    "type": "integer"
+                                                    "type": "number"
                                                 }
                                             }
                                         }
@@ -1642,7 +1642,7 @@
                                                     "type": "string"
                                                 },
                                                 "conversion_factor": {
-                                                    "type": "integer"
+                                                    "type": "number"
                                                 }
                                             }
                                         }
@@ -2180,7 +2180,13 @@
                             "type": "object",
                             "required": [
                                 "inputs.*.id",
-                                "outputs.*.id"
+                                "inputs.*.value0",
+                                "inputs.*.value1",
+                                "inputs.*.value2",
+                                "outputs.*.id",
+                                "outputs.*.value0",
+                                "outputs.*.value1",
+                                "outputs.*.value2"
                             ],
                             "properties": {
                                 "name": {
@@ -2291,6 +2297,76 @@
                         "type": "string",
                         "required": true,
                         "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "inputs.*.id",
+                                "inputs.*.value0",
+                                "inputs.*.value1",
+                                "inputs.*.value2",
+                                "outputs.*.id",
+                                "outputs.*.value0",
+                                "outputs.*.value1",
+                                "outputs.*.value2"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "inputs": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "value0": {
+                                                    "type": "number"
+                                                },
+                                                "value1": {
+                                                    "type": "number"
+                                                },
+                                                "value2": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "outputs": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "value0": {
+                                                    "type": "number"
+                                                },
+                                                "value1": {
+                                                    "type": "number"
+                                                },
+                                                "value2": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
                     }
                 ]
             },
@@ -2318,6 +2394,76 @@
                         "type": "string",
                         "required": true,
                         "description": ""
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "inputs.*.id",
+                                "inputs.*.value0",
+                                "inputs.*.value1",
+                                "inputs.*.value2",
+                                "outputs.*.id",
+                                "outputs.*.value0",
+                                "outputs.*.value1",
+                                "outputs.*.value2"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "inputs": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "value0": {
+                                                    "type": "number"
+                                                },
+                                                "value1": {
+                                                    "type": "number"
+                                                },
+                                                "value2": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "outputs": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "value0": {
+                                                    "type": "number"
+                                                },
+                                                "value1": {
+                                                    "type": "number"
+                                                },
+                                                "value2": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
                     }
                 ]
             },
