@@ -203,6 +203,11 @@ class Controller extends BaseController
             'ar' => "ليس لديك كمية من "
         ],
 
+        'do not have x'=>[
+            'en' =>'You do not have ',
+            'ar' => "ليس لديك "
+        ],
+
         'receipt already approved'=>[
             'en' =>'The receipt has already been approved',
             'ar' => "تمت الموافقة على الإيصال بالفعل"

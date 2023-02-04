@@ -127,7 +127,7 @@ class TransformationController extends Controller
                 $myItem = $haveItems->firstWhere('id', $item['id']);
 
                 if (!$myItem) {
-                    return $this->sendError($this->getMessage('do not have items'));
+                    return $this->sendError($this->getMessage('do not have x') .$item->name );
                 } else if ( !$myItem->canConsume($item->value,$count)) {
                     !$myItem->canConsume($item);
                   //  return $this->sendError($this->getMessage('do not have enough quantities'));

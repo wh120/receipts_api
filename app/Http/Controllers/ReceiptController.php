@@ -138,7 +138,7 @@ class ReceiptController extends Controller
 
 
                     if (!$myItem) {
-                        return $this->sendError($this->getMessage('do not have items'));
+                        return $this->sendError($this->getMessage('do not have x') .$item->name );
                     } else  {
 
                         if (!$myItem->canConsume($item))
