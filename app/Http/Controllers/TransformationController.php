@@ -217,6 +217,7 @@ class TransformationController extends Controller
 
 
 
+
             DB::transaction(function () use ($params , &$model ){
 
                 $model->update( $params);
@@ -224,15 +225,21 @@ class TransformationController extends Controller
                 $arr =[];
                 foreach ($params['inputs'] as $item)
                 {
-                    $item['isInput'] =1;
-                    $arr += [$item['id'] => $item ];
-                }
 
+                    $id =$item['id'];
+                    $item =array_intersect_key($item, [ 'value0'=>0 , 'value1' =>0 , 'value2'=>0  ]);
+                    $item['isInput'] =true;
+                    $arr += [$id => $item ];
+
+
+                }
 
                 foreach ($params['outputs'] as $item)
                 {
-                    $item['isInput'] =0;
-                    $arr += [$item['id'] => $item];
+                    $id =$item['id'];
+                    $item =array_intersect_key($item, [ 'value0'=>0 , 'value1' =>0 , 'value2'=>0  ]);
+                    $item['isInput'] =false;
+                    $arr += [$id => $item];
                 }
                 $model->items()->sync($arr) ;
 
